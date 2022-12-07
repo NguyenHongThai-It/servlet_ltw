@@ -1,0 +1,122 @@
+/* common */
+.content-left {
+  /* max-width: 34rem; */
+}
+.content-right {
+  /* max-width: 64rem; */
+}
+.content-right,
+.content-left {
+  box-shadow: 0 0.2rem 0.8rem rgb(0 0 0 / 15%);
+  border-radius: 1rem;
+  background: var(--white_1);
+  margin-top: 2rem;
+  padding: 1.6rem;
+  height: fit-content;
+}
+/* left */
+.content-left-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0 2rem;
+}
+.content-left__img {
+  width: 6rem;
+  height: 6rem;
+  overflow: hidden;
+  border-radius: 999rem;
+}
+.content-left-nav {
+  border-top: 0.1rem solid var(--light_6);
+}
+.content-left__link:hover {
+  color: var(--red_1);
+  background: var(--light_5);
+}
+.content-left__link {
+  color: var(--black_1);
+  padding: 0.8rem 1.6rem;
+  display: block;
+  font-weight: 600;
+}
+.content-left__link > i {
+  margin-right: 2rem;
+}
+.content-left-logout {
+  border-top: 0.1rem solid #ddd;
+}
+/* right */
+.content-right__item {
+  padding: 1.6rem;
+  cursor: pointer;
+}
+.content-right__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.01s linear;
+  border-radius: 0.4rem;
+}
+.content-right__top :not(:last-child) {
+  border-bottom: 0.1rem solid #ddd;
+}
+.content-right__item:hover {
+  background: #f6f6f6;
+}
+.content-right__top > .content-right__left > i {
+  margin-right: 1rem;
+}
+.content-right__right {
+  width: 3.6rem;
+  height: 3.6rem;
+  overflow: hidden;
+  border-radius: 999rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  transition: all 0.1s linear;
+}
+.content-right__right:hover {
+  color: var(--red_1);
+}
+
+.content-right__bottom.hide {
+  display: none;
+}
+.content-right__form {
+  padding-left: 3.2rem;
+  display: none;
+}
+.content-right__form.show {
+  display: block;
+}
+.content-right__form .content-right__input {
+  margin: 0.6rem 0 1rem;
+}
+.content-right__form .content-right__input input {
+  outline: none;
+  border: 0.1rem solid #ddd;
+  width: 24rem;
+  color: #474747;
+  padding: 0.4rem 1rem;
+  border-radius: 0.6rem;
+}
+.content-right__group {
+  margin-bottom: 1rem;
+}
+.content-right__group .content-right__edit {
+  background: var(--red_1);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.2rem 1rem;
+}
+.content-right__group .content-right__cancel {
+  padding: 0.2rem 1rem;
+  margin-right: 0.4rem;
+  outline: none;
+  border-radius: 0.6rem;
+  border: 0.1rem solid #ddd;
+}

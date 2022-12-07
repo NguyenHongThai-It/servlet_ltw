@@ -1,0 +1,71 @@
+/* loggin */
+.login--false{
+    display: none;
+}
+
+.login--true{
+    /* display: none; */
+}
+
+.login--user{
+    position: relative;
+}
+
+.login--overlay{
+    width: 14.5rem;
+    display: none;
+    border: 1px solid var(--gray_3);
+    color: var(--red_bold);
+    position: absolute;
+    top: 2.7rem;
+    right: 0;
+    transform-origin: top center;
+    animation: Growth ease-in 0.2s;
+    z-index: 3333;
+}
+
+@keyframes Growth {
+    from{
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+
+}
+
+.login--user:hover .login--overlay{
+    display: block;
+}
+
+.login--overlay::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: .5rem;
+    top: -.5rem;
+    right: 0;
+    position: absolute;
+}
+
+.login--overlay::after{
+    content: "";
+    display: block;
+    width: 50%;
+    height: 1.25rem;
+    top: -1.4rem;
+    right: 0;
+    position: absolute;
+}
+
+
+.login--section{
+    padding: .8rem 1.5rem;
+    color: #bf1e2e;
+    font-size: 1.5rem;
+}
+
+.login--section:hover{
+    background-color: var(--gray_2);
+}
+

@@ -1,0 +1,3164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- FONT - roboto-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- SLICK CAROUSEL -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+      integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- CUSTOM -->
+    <link rel="stylesheet" href="./asset/scss/custom.css" />
+    <link rel="stylesheet" href="./asset/scss/base/common.css" />
+
+    <link rel="stylesheet" href="./asset/scss/css/product.css" />
+    <link
+      rel="stylesheet"
+      href="./asset/scss/responsive/_product-responsive.css"
+    />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- Header -->
+      <section class="container header" id="header">
+        <div
+          class="header-wrap d-flex align-items-md-start align-items-center justify-content-md-between justify-content-center flex-column flex-lg-row"
+        >
+          <div class="header-left">
+            <a href="./home.html" class="header-left__link">
+              <img
+                src="./asset/img/home/logo.jpg"
+                alt=""
+                class="h-100 w-100 header-left__img"
+              />
+            </a>
+          </div>
+          <div
+            class="header-right d-flex flex-md-column align-items-center align-items-md-stretch mt-md-3 mt-0"
+          >
+            <div class="header-right-top">
+              <ul class="header-right-list d-none d-md-flex gap-sm-1 p-0">
+                <li class="header-right__item">
+                  <a href="./home.html" class="header-right__link fw-normal">
+                    Trang chủ
+                  </a>
+                </li>
+                <li class="header-right__item">
+                  <a href="./about.html" class="header-right__link fw-normal">
+                    Giới thiệu
+                  </a>
+                </li>
+                <li class="header-right__item">
+                  <a href="./contact.html" class="header-right__link fw-normal">
+                    Liên hệ
+                  </a>
+                </li>
+                <li class="header-right__item">
+                  <a
+                    href="./shopping_guide.html"
+                    class="header-right__link fw-normal"
+                  >
+                    Hướng dẫn mua hàng
+                  </a>
+                </li>
+                <li class="header-right__item">
+                  <a href="./policy.html" class="header-right__link fw-normal">
+                    Qui định & chính sách chung
+                  </a>
+                </li>
+                <li class="header-right__item">
+                  <a href="./login.html" class="header-right__link fw-normal">
+                    Đăng nhập
+                  </a>
+                </li>
+                <li class="header-right__item">
+                  <a
+                    href="./register.html"
+                    class="header-right__link fw-normal"
+                  >
+                    Đăng kí
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="header-right-center d-flex mb-2 mb-md-0">
+              <input
+                type="text"
+                class="header-right__search w-100"
+                placeholder="Nhập tên sản phẩm cần tìm ..."
+              />
+              <a href="./search.html " class="d-flex">
+                <button class="header-right__btn">Tìm kiếm</button>
+              </a>
+            </div>
+            <div class="header-right__bottom d-none d-md-flex">
+              Gợi ý từ khóa: Cao hồng sâm, Sâm tầm mật ong, Trà linh chi,...
+            </div>
+            <a
+              href="profile.html"
+              class="header-right__user d-md-none d-inline-block pointer ms-3"
+            >
+              <i class="fa-solid fa-user fs-1 text-red_bold"></i>
+            </a>
+            <a
+              href="cart.html"
+              class="header-right__user d-md-none d-inline-block pointer ms-3"
+            >
+              <i class="fa-solid fa-cart-shopping fs-1 text-red_bold"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- Slider -->
+      <section class="navigate mt-3 mt-md-0" id="navigate">
+        <ul
+          class="navigate-list align-items-center justify-content-center d-none d-lg-flex"
+        >
+          <li class="navigate-list__item">
+            <i class="fa-solid fa-bars"></i>
+            Tất cả sản phẩm
+            <ol class="navigate-sublist">
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Hồng sâm hàn quốc
+                  <i class="fa-solid fa-caret-down"></i>
+                </a>
+                <ul class="navigate-sublist navigate-sublist--right">
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Cao hồng sâm hàn quốc
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Sâm khô hàn quốc
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Sâm mật ông hàn quốc
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Hắc sâm hàn quốc
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Nhân sâm tươi hàn quốc
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Rượu sâm linh chi
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Trà hồng sâm hàn quốc và bột sâm
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Viên hồng sâm hàn quốc
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Kẹo sâm hàn quốc
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Nấm chi khô hàn quốc
+                  <i class="fa-solid fa-caret-down"></i>
+                </a>
+                <ul class="navigate-sublist navigate-sublist--right">
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Cao linh chi hàn quốc
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Linh chi khô hàn quốc
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Sản phẩm khác từ linh chi
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html#" class="navigate-sublist__link">
+                  Đông trùng hạ thảo hàn quốc
+                  <i class="fa-solid fa-caret-down"></i>
+                </a>
+                <ul class="navigate-sublist navigate-sublist--right">
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Nước đông trùng hạ thảo
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Viên đông trùng hạ thảo
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Cao đông trùng hạ thảo
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Thảo dược hàn quốc
+                  <i class="fa-solid fa-caret-down"></i>
+                </a>
+                <ul class="navigate-sublist navigate-sublist--right">
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      An cung ngưu hoàng
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Tinh dầu thông đỏ
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Bổ gan giải rượu
+                    </a>
+                  </li>
+                  <li class="navigate-sublist__item">
+                    <a href="./product.html" class="navigate-sublist__link">
+                      Sản phẩm khác
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </li>
+          <li class="navigate-list__item">
+            <a href="./product.html" class="navigate-list__link">
+              Hồng sâm hàn quốc
+              <i class="fa-solid fa-caret-down"></i>
+            </a>
+            <ol class="navigate-sublist navigate-sublist--simple">
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Cao hồng sâm hàn quốc
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Sâm khô hàn quốc
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Sâm mật ông hàn quốc
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Hắc sâm hàn quốc
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Nhân sâm tươi hàn quốc
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Rượu sâm linh chi
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Trà hồng sâm hàn quốc và bột sâm
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Viên hồng sâm hàn quốc
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Kẹo sâm hàn quốc
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li class="navigate-list__item">
+            <a href="./product.html" class="navigate-list__link">
+              Đông trùng hạ thảo
+              <i class="fa-solid fa-caret-down"></i>
+            </a>
+            <ol class="navigate-sublist navigate-sublist--simple">
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Nước đông trùng hạ thảo
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Viên đông trùng hạ thảo
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Cao đông trùng hạ thảo
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li class="navigate-list__item">
+            <a href="./product.html" class="navigate-list__link">
+              Nấm linh chi hàn quốc
+              <i class="fa-solid fa-caret-down"></i>
+            </a>
+            <ol class="navigate-sublist navigate-sublist--simple">
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Cao linh chi hàn quốc
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Linh chi khô hàn quốc
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Sản phẩm khác từ linh chi
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li class="navigate-list__item">
+            <a href="./product.html" class="navigate-list__link">
+              Thảo dược hàn quốc
+              <i class="fa-solid fa-caret-down"></i>
+            </a>
+            <ol class="navigate-sublist navigate-sublist--simple">
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  An cung ngưu hoàng
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Tinh dầu thông đỏ
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Bổ gan giải rượu
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Sản phẩm khác
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li class="navigate-list__item">
+            <a href="./product.html" class="navigate-list__link">
+              Hệ thống cửa hàng
+            </a>
+          </li>
+          <li class="navigate-list__item">
+            <a href="./product.html" class="navigate-list__link">
+              Tin tức
+              <i class="fa-solid fa-caret-down"></i>
+            </a>
+            <ol
+              class="navigate-sublist navigate-sublist--simple navigate-sublist--reverse"
+            >
+              <li class="navigate-sublist__item">
+                <a href="./product.html" class="navigate-sublist__link">
+                  Bài Viết Từ Hệ Thống K-GIN
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="#" class="navigate-sublist__link">
+                  Kiến Thức Về Nhân Sâm
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="#" class="navigate-sublist__link">
+                  Kiến Thức Về Hồng Sâm
+                </a>
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="#" class="navigate-sublist__link">
+                  Kiến Thức Về Linh Chi</a
+                >
+              </li>
+              <li class="navigate-sublist__item">
+                <a href="#" class="navigate-sublist__link">
+                  Kiến Thức Về ĐTHT</a
+                >
+              </li>
+            </ol>
+          </li>
+        </ul>
+
+        <div class="d-block d-lg-none d-block p-0 position-relative">
+          <div class="navigate-list__item" id="navigate-list-collapse">
+            <i class="fa-solid fa-bars"></i>
+            Tất cả sản phẩm
+          </div>
+          <ul
+            class="navigate-list-mobile position-absolute"
+            id="navigate-list-collapse__item"
+          >
+            <li
+              class="navigate-list-mobile__item"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample1"
+              aria-expanded="false"
+              aria-controls="collapseExample1"
+            >
+              <img src="./asset/img/home/menu-1.png" alt="" class="w-auto" />
+              <a href="#" class="navigate-list-mobile__link"
+                >Hồng sâm hàn quốc</a
+              >
+              <i
+                class="navigate-list-mobile__plus fa-solid fa-plus w-auto position-absolute"
+              ></i>
+            </li>
+            <ul
+              class="navigate-sublist-mobile collapse p-1"
+              id="collapseExample1"
+            >
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Cao hồng sâm hàn quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Nước Hồng Sâm Hàn Quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Cao hồng sâm hàn quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Sâm Khô Hàn Quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Sâm Mật Ong Hàn Quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Hắc Sâm Hàn Quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Nhân Sâm Tươi Hàn Quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Rượu Sâm Linh Chi
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Viên Hồng Sâm Hàn Quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Trà Hồng Sâm Hàn Quốc Và Bột Sâm
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Kẹo Sâm Hàn Quốc
+                </a>
+              </li>
+            </ul>
+            <li
+              class="navigate-list-mobile__item"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample2"
+              aria-expanded="false"
+              aria-controls="collapseExample2"
+            >
+              <img src="./asset/img/home/menu-1.png" alt="" class="w-auto" />
+              <a href="#" class="navigate-list-mobile__link"
+                >Đồng trùng hạ thảo hàn quốc</a
+              >
+              <i
+                class="navigate-list-mobile__plus fa-solid fa-plus w-auto position-absolute"
+              ></i>
+            </li>
+            <ul
+              class="navigate-sublist-mobile collapse p-1"
+              id="collapseExample2"
+            >
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Nước Đông Trùng Hạ Thảo
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Viên Đông Trùng Hạ Thảo
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Cao Đông Trùng Hạ Thảo
+                </a>
+              </li>
+            </ul>
+
+            <li
+              class="navigate-list-mobile__item"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample3"
+              aria-expanded="false"
+              aria-controls="collapseExample3"
+            >
+              <img src="./asset/img/home/menu-1.png" alt="" class="w-auto" />
+              <a href="#" class="navigate-list-mobile__link"
+                >Nấm linh chi hàn quốc</a
+              >
+              <i
+                class="navigate-list-mobile__plus fa-solid fa-plus w-auto position-absolute"
+              ></i>
+            </li>
+            <ul
+              class="navigate-sublist-mobile collapse p-1"
+              id="collapseExample3"
+            >
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Cao Linh Chi Hàn Quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Linh Chi Khô Hàn Quốc
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Sản Phẩm Khác Từ Linh Chi
+                </a>
+              </li>
+            </ul>
+            <li
+              class="navigate-list-mobile__item"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample4"
+              aria-expanded="false"
+              aria-controls="collapseExample4"
+            >
+              <img src="./asset/img/home/menu-1.png" alt="" class="w-auto" />
+              <a href="#" class="navigate-list-mobile__link"
+                >Thảo dược hàn quốc</a
+              >
+              <i
+                class="navigate-list-mobile__plus fa-solid fa-plus w-auto position-absolute"
+              ></i>
+            </li>
+            <ul
+              class="navigate-sublist-mobile collapse p-1"
+              id="collapseExample4"
+            >
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  An Cung Ngưu Hoàng
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Tinh Dầu Thông Đỏ
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Bổ Gan Giải Rượu
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Sản Phẩm Khác
+                </a>
+              </li>
+            </ul>
+            <li class="navigate-list-mobile__item">
+              <img src="./asset/img/home/menu-1.png" alt="" class="w-auto" />
+              <a href="#" class="navigate-list-mobile__link"
+                >Hệ thống cửa hàng</a
+              >
+            </li>
+            <li
+              class="navigate-list-mobile__item"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample5"
+              aria-expanded="false"
+              aria-controls="collapseExample5"
+            >
+              <img src="./asset/img/home/menu-1.png" alt="" class="w-auto" />
+              <a href="#" class="navigate-list-mobile__link">Tin tức</a>
+              <i
+                class="navigate-list-mobile__plus fa-solid fa-plus w-auto position-absolute"
+              ></i>
+            </li>
+            <ul
+              class="navigate-sublist-mobile collapse p-1"
+              id="collapseExample5"
+            >
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Bài Viết Từ Hệ Thống K-GIN
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Kiến Thức Về Nhân Sâm
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Kiến Thức Về Hồng Sâm
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Kiến Thức Về Linh Chi
+                </a>
+              </li>
+              <li
+                class="navigate-sublist-mobile__item d-flex align-items-center gap-3 position-relative"
+              >
+                <a href="" class="navigate-sublist-mobile__link">
+                  Kiến Thức Về ĐTHT
+                </a>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Container -->
+      <div
+        class="main bg-leather pb-5"
+        style="background-image: url(./asset/img/home/background_1.jpg)"
+      >
+        <div class="container">
+          <!-- Beadcrumb -->
+          <nav
+            style="
+              --bs-breadcrumb-divider: url(
+                &#34;data:image/svg + xml,
+                %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+              );
+            "
+            aria-label="breadcrumb"
+          >
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#" class="text-red_bold">Home</a>
+              </li>
+              <li class="breadcrumb-item active fw-bold" aria-current="page">
+                Item
+              </li>
+            </ol>
+          </nav>
+
+          <section id="main" class="main">
+            <div class="row">
+              <div class="col col-lg-3 col-md-0 col-12 hide-div">
+                <div
+                  class="category category-margin category-img bg-leather_1 height-auto border"
+                  style="
+                    background-image: url(./asset/img/home/red-ginseng\ category\ background.png);
+                  "
+                >
+                  <div class="list-group text-start">
+                    <div
+                      class="border text-bg-gray_1 border-red_medium border-4 d-flex align-items-center"
+                    >
+                      <div
+                        class="special-banner p-2 d-flex align-items-center justify-content-center"
+                      >
+                        <span><b class="fs-2">Hồng Sâm Hàn Quốc</b></span>
+                      </div>
+                    </div>
+
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Cao Hồng Sâm Hàn Quốc</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Sâm Mật Ong Hàn Quốc</li>
+                    </a>
+
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Nhân Sâm Tươi Hàn Quốc</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Sâm Khô Hàn Quốc</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Trà Hồng Sâm Hàn Quốc Và Bột Sâm</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Kẹo Sâm Hàn Quốc</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Viên Hồng Sâm Hàn Quốc</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Hắc Sâm Hàn Quốc</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Rượu Sâm Linh Chi</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Nước Hồng Sâm Hàn Quốc</li>
+                    </a>
+
+                    <a href="./product.html" class="category-btn">
+                      <div class="category-btn--border">
+                        <div class="category-btn--textField">Xem Tất Cả</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  class="category category-margin category-img height-auto border"
+                  style="
+                    background-image: url(./asset/img/home/cordyceps\ category\ background.png);
+                  "
+                >
+                  <div class="list-group text-start">
+                    <div
+                      class="border text-bg-gray_1 border-red_medium border-4 d-flex align-items-center"
+                    >
+                      <div
+                        class="special-banner p-2 d-flex align-items-center justify-content-center"
+                      >
+                        <span class="text-center"
+                          ><b class="fs-2">Đông Trùng Hạ Thảo Hàn Quốc</b></span
+                        >
+                      </div>
+                    </div>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Nước Đông Trùng Hạ Thảo</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Viên Đông Trùng Hạ Thảo</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Cao Đông Trùng Hạ Thảo</li>
+                    </a>
+
+                    <a href="./product.html" class="category-btn">
+                      <div class="category-btn--border">
+                        <div class="category-btn--textField">Xem Tất Cả</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  class="category category-margin category-img bg-leather_1 height-auto border"
+                  style="
+                    background-image: url(./asset/img/home/ganoderma\ category\ background.png);
+                  "
+                >
+                  <div class="list-group text-start">
+                    <div
+                      class="border text-bg-gray_1 border-red_medium border-4 d-flex align-items-center"
+                    >
+                      <div
+                        class="special-banner p-2 d-flex align-items-center justify-content-center"
+                      >
+                        <span><b class="fs-2">Nấm Linh Chi</b></span>
+                      </div>
+                    </div>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Nấm Linh Chi Khô Hàn Quốc</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Cao Linh Chi Hàn Quốc</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Sản Phẩm Khác Từ Linh Chi</li>
+                    </a>
+
+                    <a href="./product.html" class="category-btn">
+                      <div class="category-btn--border">
+                        <div class="category-btn--textField">Xem Tất Cả</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  class="category category-margin category-img bg-leather_1 height-auto border"
+                  style="
+                    background-image: url(./asset/img/home/herbal\ category\ background.png);
+                  "
+                >
+                  <div class="list-group text-start">
+                    <div
+                      class="border text-bg-gray_1 border-red_medium border-4 d-flex align-items-center"
+                    >
+                      <div
+                        class="special-banner p-2 d-flex align-items-center justify-content-center"
+                      >
+                        <span><b class="fs-2">Thảo Dược</b></span>
+                      </div>
+                    </div>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>An Cung Ngưu Hoàng</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Tinh Dầu Thông Đỏ</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Bổ Gan Giải Rượu</li>
+                    </a>
+                    <a
+                      href="./product.html"
+                      class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
+                    >
+                      <li>Sản Phẩm Khác</li>
+                    </a>
+
+                    <a href="./product.html" class="category-btn">
+                      <div class="category-btn--border">
+                        <div class="category-btn--textField">Xem Tất Cả</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  class="d-none d-md-block category category-margin bg-leather_1 border"
+                >
+                  <div class="list-group text-start">
+                    <div
+                      class="border text-bg-gray_1 border-red_medium border-4 d-flex align-items-center"
+                    >
+                      <div
+                        class="special-banner p-2 d-flex align-items-center justify-content-center"
+                      >
+                        <span><b class="fs-2">Lọc Sản Phẩm</b></span>
+                      </div>
+                    </div>
+
+                    <a
+                      class="category-item bg-leather_1 text-dark list-group-item list-group-item-action"
+                    >
+                      <b class="ms-3">Lọc Theo Giá</b>
+                    </a>
+                    <div
+                      class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
+                    >
+                      <input
+                        type="radio"
+                        name="Dosage-forms"
+                        id="less-1-MIL"
+                        class="ms-4 me-3"
+                      />
+                      <label for="less-1-MIL" class="w-100"
+                        >&#60; 1 Triệu</label
+                      >
+                    </div>
+                    <div
+                      class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
+                    >
+                      <input
+                        type="radio"
+                        name="Dosage-forms"
+                        id="1-MIL-to-2.5-MIL"
+                        class="ms-4 me-3"
+                      />
+                      <label for="1-MIL-to-2.5-MIL" class="w-100"
+                        >1 Triệu &#8722; 2,5 Triệu</label
+                      >
+                    </div>
+                    <div
+                      class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
+                    >
+                      <input
+                        type="radio"
+                        name="Dosage-forms"
+                        id="2.5-MIL-to-5-MIL"
+                        class="ms-4 me-3"
+                      />
+                      <label for="2.5-MIL-to-5-MIL" class="w-100"
+                        >2,5 Triệu &#8722; 5 Triệu</label
+                      >
+                    </div>
+                    <div
+                      class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
+                    >
+                      <input
+                        type="radio"
+                        name="Dosage-forms"
+                        id="over-5-MIL"
+                        class="ms-4 me-3"
+                      />
+                      <label for="over-5-MIL" class="w-100"
+                        >&#62; 5 Triệu</label
+                      >
+                    </div>
+
+                    <a
+                      class="category-item bg-leather_1 text-dark list-group-item list-group-item-action"
+                    >
+                      <b class="ms-3">Lọc Theo Dạng Sản Phẩm</b>
+                    </a>
+                    <div
+                      class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
+                    >
+                      <input
+                        type="checkbox"
+                        name="Dosage-forms"
+                        id="dry-form"
+                        class="ms-4 me-3"
+                      />
+                      <label for="dry-form" class="w-100">Dạng Khô</label>
+                    </div>
+                    <div
+                      class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
+                    >
+                      <input
+                        type="checkbox"
+                        name="Dosage-forms"
+                        id="extracts-form"
+                        class="ms-4 me-3"
+                      />
+                      <label for="extracts-form" class="w-100">Dạng Cao</label>
+                    </div>
+                    <div
+                      class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
+                    >
+                      <input
+                        type="checkbox"
+                        name="Dosage-forms"
+                        id="liquid-form"
+                        class="ms-4 me-3"
+                      />
+                      <label for="liquid-form" class="w-100">Dạng Nước</label>
+                    </div>
+                    <div
+                      class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
+                    >
+                      <input
+                        type="checkbox"
+                        name="Dosage-forms"
+                        id="tablet-form"
+                        class="ms-4 me-3"
+                      />
+                      <label for="tablet-form" class="w-100">Dạng Viên</label>
+                    </div>
+                    <div
+                      class="border-bottom border-gray_4 category-item p-2 d-flex align-items-center"
+                    >
+                      <input
+                        type="checkbox"
+                        name="Dosage-forms"
+                        id="powder-form"
+                        class="ms-4 me-3"
+                      />
+                      <label for="powder-form" class="w-100">Dạng Bột</label>
+                    </div>
+                  </div>
+
+                  <a href="#" class="category-btn">
+                    <div class="category-btn--border m-auto mt-3">
+                      <div class="category-btn--textField">Tìm Sản Phẩm</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col col-lg-9 col-md-12 col-12 mt-5">
+                <div class="--goldenBackground p-1">
+                  <img
+                    class="--goldenBackground"
+                    src="./asset/img/product/banner-hong-sam.jpg"
+                    alt=""
+                  />
+                </div>
+
+                <div
+                  class="item-label--goldenBackground item-label--clipPath p-1 mt-4 m-auto"
+                >
+                  <div
+                    class="item-label--redTextFeild item-label--clipPath label-Advertise text-center"
+                    style="padding: 0.7rem"
+                  >
+                    <span class="fs-2 label-Advertise fw-bold"
+                      >Cao Hồng Sâm Hàn Quốc</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="horizontal-item flex-column flex-md-row pt-4 ps-md-4 pb-md-4 pb-0 transform-scale"
+                >
+                  <div
+                    class="w-75 h-25 me-md-4 m-auto rounded-4 overflow-hidden"
+                  >
+                    <img
+                      class="horizontal-item__img m-auto"
+                      src="./asset/img/product/cao-hslc-dai-dien-sua.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="pb-2 border-bottom">
+                      <h2
+                        class="horizontal-item__title fw-bold pt-3 pt-md-0 pb-lg-2"
+                      >
+                        Cao Hồng Sâm Linh Chi Pocheon Hàn Quốc
+                      </h2>
+                      <h5
+                        class="d-none d-lg-block horizontal-item__desc lh-base"
+                      >
+                        Cao hồng sâm linh chi Hàn Quốc, cao linh chi Pocheon là
+                        sản phẩm được chiết xuất từ hồng sâm 6 năm tuổi kết hợp
+                        với linh chi Hàn Quốc, sự kết hợp giữa 2 vị thuốc quý,
+                        có công dụng bồi bổ sức khỏe và phòng ngừa nhiều căn
+                        bệnh nguy hiểm, chống oxi hóa, kéo dài tuổi thọ.
+                      </h5>
+                    </div>
+
+                    <div
+                      class="d-flex flex-column flex-lg-row pb-3 ps-3 ps-md-0 pt-3 border-bottom"
+                    >
+                      <div class="flex-grow-1 text-lg-center">
+                        Quy Cách : 2 lọ x 240gr
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Xuất Xứ : Hàn Quốc
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Thương Hiệu : Bio Science
+                      </div>
+                    </div>
+
+                    <div
+                      class="item_sellPrice pb-2 pt-3 ps-3 ps-md-0 ps-lg-3 text-red_1 fw-bold d-flex align-items-end justify-content-around justify-content-md-between justify-content-lg-start lh-1 border-bottom"
+                    >
+                      <p
+                        class="me-5 ms-5 ms-lg-0 ps-md-4"
+                        style="font-size: 3.8rem"
+                      >
+                        -14%
+                      </p>
+                      <div class="text-start">
+                        <span
+                          class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                        >
+                          2.500.000 đ</span
+                        >
+                        <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex pt-4 pb-4 ps-3 ps-md-0 justify-content-center justify-content-lg-start"
+                    >
+                      <div
+                        class="item-btn--goldenBackground text-center me-4 item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                            ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                            nhanh</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="item-btn--goldenBackground text-center item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                          >
+                            <b
+                              >Xem chi tiết<i
+                                class="fa-solid fa-angles-right ms-2"
+                              ></i></b
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="horizontal-item flex-column flex-md-row pt-4 ps-md-4 pb-md-4 pb-0 transform-scale"
+                >
+                  <div
+                    class="w-75 h-25 me-md-4 m-auto rounded-4 overflow-hidden"
+                  >
+                    <img
+                      class="horizontal-item__img m-auto"
+                      src="https://via.placeholder.com/300x268"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="pb-2 border-bottom">
+                      <h2
+                        class="horizontal-item__title fw-bold pt-3 pt-md-0 pb-lg-2"
+                      >
+                        ĐÔNG TRÙNG HẠ THẢO DẠNG VIÊN NGUYÊN CHẤT 100%
+                      </h2>
+                      <h5
+                        class="d-none d-lg-block horizontal-item__desc lh-base"
+                      >
+                        Đông trùng hạ thảo dạng viên loại 120 viên Hàn Quốc
+                        nguyên chất được chiết xuất hoàn toàn 100% từ đông trùng
+                        hạ thảo nguyên bản. Sản phẩm dạng viên dễ sử dụng, phù
+                        hợp với nhiều đối tượng rất thích hợp làm quà biếu tặng
+                        mang ý nghĩa sức khỏe.
+                      </h5>
+                    </div>
+
+                    <div
+                      class="d-flex flex-column flex-lg-row pb-3 ps-3 ps-md-0 pt-3 border-bottom"
+                    >
+                      <div class="flex-grow-1 text-lg-center">
+                        Quy Cách : 120 viên x 1 hộp
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Xuất Xứ : Hàn Quốc
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Thương Hiệu : Bio Science
+                      </div>
+                    </div>
+
+                    <div
+                      class="item_sellPrice pb-2 pt-3 ps-3 ps-md-0 ps-lg-3 text-red_1 fw-bold d-flex align-items-end justify-content-around justify-content-md-between justify-content-lg-start lh-1 border-bottom"
+                    >
+                      <p
+                        class="me-5 ms-5 ms-lg-0 ps-md-4"
+                        style="font-size: 3.8rem"
+                      >
+                        -14%
+                      </p>
+                      <div class="text-start">
+                        <span
+                          class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                        >
+                          2.500.000 đ</span
+                        >
+                        <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex pt-4 pb-4 ps-3 ps-md-0 justify-content-center justify-content-lg-start"
+                    >
+                      <div
+                        class="item-btn--goldenBackground text-center me-4 item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                            ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                            nhanh</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="item-btn--goldenBackground text-center item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                          >
+                            <b
+                              >Xem chi tiết<i
+                                class="fa-solid fa-angles-right ms-2"
+                              ></i></b
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="horizontal-item flex-column flex-md-row pt-4 ps-md-4 pb-md-4 pb-0 transform-scale"
+                >
+                  <div
+                    class="w-75 h-25 me-md-4 m-auto rounded-4 overflow-hidden"
+                  >
+                    <img
+                      class="horizontal-item__img m-auto"
+                      src="https://via.placeholder.com/300x268"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="pb-2 border-bottom">
+                      <h2
+                        class="horizontal-item__title fw-bold pt-3 pt-md-0 pb-lg-2"
+                      >
+                        ĐÔNG TRÙNG HẠ THẢO DẠNG VIÊN NGUYÊN CHẤT 100%
+                      </h2>
+                      <h5
+                        class="d-none d-lg-block horizontal-item__desc lh-base"
+                      >
+                        Đông trùng hạ thảo dạng viên loại 120 viên Hàn Quốc
+                        nguyên chất được chiết xuất hoàn toàn 100% từ đông trùng
+                        hạ thảo nguyên bản. Sản phẩm dạng viên dễ sử dụng, phù
+                        hợp với nhiều đối tượng rất thích hợp làm quà biếu tặng
+                        mang ý nghĩa sức khỏe.
+                      </h5>
+                    </div>
+
+                    <div
+                      class="d-flex flex-column flex-lg-row pb-3 ps-3 ps-md-0 pt-3 border-bottom"
+                    >
+                      <div class="flex-grow-1 text-lg-center">
+                        Quy Cách : 120 viên x 1 hộp
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Xuất Xứ : Hàn Quốc
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Thương Hiệu : Bio Science
+                      </div>
+                    </div>
+
+                    <div
+                      class="item_sellPrice pb-2 pt-3 ps-3 ps-md-0 ps-lg-3 text-red_1 fw-bold d-flex align-items-end justify-content-around justify-content-md-between justify-content-lg-start lh-1 border-bottom"
+                    >
+                      <p
+                        class="me-5 ms-5 ms-lg-0 ps-md-4"
+                        style="font-size: 3.8rem"
+                      >
+                        -14%
+                      </p>
+                      <div class="text-start">
+                        <span
+                          class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                        >
+                          2.500.000 đ</span
+                        >
+                        <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex pt-4 pb-4 ps-3 ps-md-0 justify-content-center justify-content-lg-start"
+                    >
+                      <div
+                        class="item-btn--goldenBackground text-center me-4 item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                            ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                            nhanh</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="item-btn--goldenBackground text-center item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                          >
+                            <b
+                              >Xem chi tiết<i
+                                class="fa-solid fa-angles-right ms-2"
+                              ></i></b
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="horizontal-item flex-column flex-md-row pt-4 ps-md-4 pb-md-4 pb-0 transform-scale"
+                >
+                  <div
+                    class="w-75 h-25 me-md-4 m-auto rounded-4 overflow-hidden"
+                  >
+                    <img
+                      class="horizontal-item__img m-auto"
+                      src="https://via.placeholder.com/300x268"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="pb-2 border-bottom">
+                      <h2
+                        class="horizontal-item__title fw-bold pt-3 pt-md-0 pb-lg-2"
+                      >
+                        ĐÔNG TRÙNG HẠ THẢO DẠNG VIÊN NGUYÊN CHẤT 100%
+                      </h2>
+                      <h5
+                        class="d-none d-lg-block horizontal-item__desc lh-base"
+                      >
+                        Đông trùng hạ thảo dạng viên loại 120 viên Hàn Quốc
+                        nguyên chất được chiết xuất hoàn toàn 100% từ đông trùng
+                        hạ thảo nguyên bản. Sản phẩm dạng viên dễ sử dụng, phù
+                        hợp với nhiều đối tượng rất thích hợp làm quà biếu tặng
+                        mang ý nghĩa sức khỏe.
+                      </h5>
+                    </div>
+
+                    <div
+                      class="d-flex flex-column flex-lg-row pb-3 ps-3 ps-md-0 pt-3 border-bottom"
+                    >
+                      <div class="flex-grow-1 text-lg-center">
+                        Quy Cách : 120 viên x 1 hộp
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Xuất Xứ : Hàn Quốc
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Thương Hiệu : Bio Science
+                      </div>
+                    </div>
+
+                    <div
+                      class="item_sellPrice pb-2 pt-3 ps-3 ps-md-0 ps-lg-3 text-red_1 fw-bold d-flex align-items-end justify-content-around justify-content-md-between justify-content-lg-start lh-1 border-bottom"
+                    >
+                      <p
+                        class="me-5 ms-5 ms-lg-0 ps-md-4"
+                        style="font-size: 3.8rem"
+                      >
+                        -14%
+                      </p>
+                      <div class="text-start">
+                        <span
+                          class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                        >
+                          2.500.000 đ</span
+                        >
+                        <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex pt-4 pb-4 ps-3 ps-md-0 justify-content-center justify-content-lg-start"
+                    >
+                      <div
+                        class="item-btn--goldenBackground text-center me-4 item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                            ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                            nhanh</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="item-btn--goldenBackground text-center item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                          >
+                            <b
+                              >Xem chi tiết<i
+                                class="fa-solid fa-angles-right ms-2"
+                              ></i></b
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="horizontal-item flex-column flex-md-row pt-4 ps-md-4 pb-md-4 pb-0 transform-scale"
+                >
+                  <div
+                    class="w-75 h-25 me-md-4 m-auto rounded-4 overflow-hidden"
+                  >
+                    <img
+                      class="horizontal-item__img m-auto"
+                      src="https://via.placeholder.com/300x268"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="pb-2 border-bottom">
+                      <h2
+                        class="horizontal-item__title fw-bold pt-3 pt-md-0 pb-lg-2"
+                      >
+                        ĐÔNG TRÙNG HẠ THẢO DẠNG VIÊN NGUYÊN CHẤT 100%
+                      </h2>
+                      <h5
+                        class="d-none d-lg-block horizontal-item__desc lh-base"
+                      >
+                        Đông trùng hạ thảo dạng viên loại 120 viên Hàn Quốc
+                        nguyên chất được chiết xuất hoàn toàn 100% từ đông trùng
+                        hạ thảo nguyên bản. Sản phẩm dạng viên dễ sử dụng, phù
+                        hợp với nhiều đối tượng rất thích hợp làm quà biếu tặng
+                        mang ý nghĩa sức khỏe.
+                      </h5>
+                    </div>
+
+                    <div
+                      class="d-flex flex-column flex-lg-row pb-3 ps-3 ps-md-0 pt-3 border-bottom"
+                    >
+                      <div class="flex-grow-1 text-lg-center">
+                        Quy Cách : 120 viên x 1 hộp
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Xuất Xứ : Hàn Quốc
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Thương Hiệu : Bio Science
+                      </div>
+                    </div>
+
+                    <div
+                      class="item_sellPrice pb-2 pt-3 ps-3 ps-md-0 ps-lg-3 text-red_1 fw-bold d-flex align-items-end justify-content-around justify-content-md-between justify-content-lg-start lh-1 border-bottom"
+                    >
+                      <p
+                        class="me-5 ms-5 ms-lg-0 ps-md-4"
+                        style="font-size: 3.8rem"
+                      >
+                        -14%
+                      </p>
+                      <div class="text-start">
+                        <span
+                          class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                        >
+                          2.500.000 đ</span
+                        >
+                        <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex pt-4 pb-4 ps-3 ps-md-0 justify-content-center justify-content-lg-start"
+                    >
+                      <div
+                        class="item-btn--goldenBackground text-center me-4 item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                            ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                            nhanh</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="item-btn--goldenBackground text-center item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                          >
+                            <b
+                              >Xem chi tiết<i
+                                class="fa-solid fa-angles-right ms-2"
+                              ></i></b
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="horizontal-item flex-column flex-md-row pt-4 ps-md-4 pb-md-4 pb-0 transform-scale"
+                >
+                  <div
+                    class="w-75 h-25 me-md-4 m-auto rounded-4 overflow-hidden"
+                  >
+                    <img
+                      class="horizontal-item__img m-auto"
+                      src="https://via.placeholder.com/300x268"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="pb-2 border-bottom">
+                      <h2
+                        class="horizontal-item__title fw-bold pt-3 pt-md-0 pb-lg-2"
+                      >
+                        ĐÔNG TRÙNG HẠ THẢO DẠNG VIÊN NGUYÊN CHẤT 100%
+                      </h2>
+                      <h5
+                        class="d-none d-lg-block horizontal-item__desc lh-base"
+                      >
+                        Đông trùng hạ thảo dạng viên loại 120 viên Hàn Quốc
+                        nguyên chất được chiết xuất hoàn toàn 100% từ đông trùng
+                        hạ thảo nguyên bản. Sản phẩm dạng viên dễ sử dụng, phù
+                        hợp với nhiều đối tượng rất thích hợp làm quà biếu tặng
+                        mang ý nghĩa sức khỏe.
+                      </h5>
+                    </div>
+
+                    <div
+                      class="d-flex flex-column flex-lg-row pb-3 ps-3 ps-md-0 pt-3 border-bottom"
+                    >
+                      <div class="flex-grow-1 text-lg-center">
+                        Quy Cách : 120 viên x 1 hộp
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Xuất Xứ : Hàn Quốc
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Thương Hiệu : Bio Science
+                      </div>
+                    </div>
+
+                    <div
+                      class="item_sellPrice pb-2 pt-3 ps-3 ps-md-0 ps-lg-3 text-red_1 fw-bold d-flex align-items-end justify-content-around justify-content-md-between justify-content-lg-start lh-1 border-bottom"
+                    >
+                      <p
+                        class="me-5 ms-5 ms-lg-0 ps-md-4"
+                        style="font-size: 3.8rem"
+                      >
+                        -14%
+                      </p>
+                      <div class="text-start">
+                        <span
+                          class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                        >
+                          2.500.000 đ</span
+                        >
+                        <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex pt-4 pb-4 ps-3 ps-md-0 justify-content-center justify-content-lg-start"
+                    >
+                      <div
+                        class="item-btn--goldenBackground text-center me-4 item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                            ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                            nhanh</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="item-btn--goldenBackground text-center item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                          >
+                            <b
+                              >Xem chi tiết<i
+                                class="fa-solid fa-angles-right ms-2"
+                              ></i></b
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="horizontal-item flex-column flex-md-row pt-4 ps-md-4 pb-md-4 pb-0 transform-scale"
+                >
+                  <div
+                    class="w-75 h-25 me-md-4 m-auto rounded-4 overflow-hidden"
+                  >
+                    <img
+                      class="horizontal-item__img m-auto"
+                      src="https://via.placeholder.com/300x268"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="pb-2 border-bottom">
+                      <h2
+                        class="horizontal-item__title fw-bold pt-3 pt-md-0 pb-lg-2"
+                      >
+                        ĐÔNG TRÙNG HẠ THẢO DẠNG VIÊN NGUYÊN CHẤT 100%
+                      </h2>
+                      <h5
+                        class="d-none d-lg-block horizontal-item__desc lh-base"
+                      >
+                        Đông trùng hạ thảo dạng viên loại 120 viên Hàn Quốc
+                        nguyên chất được chiết xuất hoàn toàn 100% từ đông trùng
+                        hạ thảo nguyên bản. Sản phẩm dạng viên dễ sử dụng, phù
+                        hợp với nhiều đối tượng rất thích hợp làm quà biếu tặng
+                        mang ý nghĩa sức khỏe.
+                      </h5>
+                    </div>
+
+                    <div
+                      class="d-flex flex-column flex-lg-row pb-3 ps-3 ps-md-0 pt-3 border-bottom"
+                    >
+                      <div class="flex-grow-1 text-lg-center">
+                        Quy Cách : 120 viên x 1 hộp
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Xuất Xứ : Hàn Quốc
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Thương Hiệu : Bio Science
+                      </div>
+                    </div>
+
+                    <div
+                      class="item_sellPrice pb-2 pt-3 ps-3 ps-md-0 ps-lg-3 text-red_1 fw-bold d-flex align-items-end justify-content-around justify-content-md-between justify-content-lg-start lh-1 border-bottom"
+                    >
+                      <p
+                        class="me-5 ms-5 ms-lg-0 ps-md-4"
+                        style="font-size: 3.8rem"
+                      >
+                        -14%
+                      </p>
+                      <div class="text-start">
+                        <span
+                          class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                        >
+                          2.500.000 đ</span
+                        >
+                        <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex pt-4 pb-4 ps-3 ps-md-0 justify-content-center justify-content-lg-start"
+                    >
+                      <div
+                        class="item-btn--goldenBackground text-center me-4 item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                            ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                            nhanh</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="item-btn--goldenBackground text-center item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                          >
+                            <b
+                              >Xem chi tiết<i
+                                class="fa-solid fa-angles-right ms-2"
+                              ></i></b
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="horizontal-item flex-column flex-md-row pt-4 ps-md-4 pb-md-4 pb-0 transform-scale"
+                >
+                  <div
+                    class="w-75 h-25 me-md-4 m-auto rounded-4 overflow-hidden"
+                  >
+                    <img
+                      class="horizontal-item__img m-auto"
+                      src="https://via.placeholder.com/300x268"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="pb-2 border-bottom">
+                      <h2
+                        class="horizontal-item__title fw-bold pt-3 pt-md-0 pb-lg-2"
+                      >
+                        ĐÔNG TRÙNG HẠ THẢO DẠNG VIÊN NGUYÊN CHẤT 100%
+                      </h2>
+                      <h5
+                        class="d-none d-lg-block horizontal-item__desc lh-base"
+                      >
+                        Đông trùng hạ thảo dạng viên loại 120 viên Hàn Quốc
+                        nguyên chất được chiết xuất hoàn toàn 100% từ đông trùng
+                        hạ thảo nguyên bản. Sản phẩm dạng viên dễ sử dụng, phù
+                        hợp với nhiều đối tượng rất thích hợp làm quà biếu tặng
+                        mang ý nghĩa sức khỏe.
+                      </h5>
+                    </div>
+
+                    <div
+                      class="d-flex flex-column flex-lg-row pb-3 ps-3 ps-md-0 pt-3 border-bottom"
+                    >
+                      <div class="flex-grow-1 text-lg-center">
+                        Quy Cách : 120 viên x 1 hộp
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Xuất Xứ : Hàn Quốc
+                      </div>
+                      <div class="flex-grow-1 text-lg-center">
+                        Thương Hiệu : Bio Science
+                      </div>
+                    </div>
+
+                    <div
+                      class="item_sellPrice pb-2 pt-3 ps-3 ps-md-0 ps-lg-3 text-red_1 fw-bold d-flex align-items-end justify-content-around justify-content-md-between justify-content-lg-start lh-1 border-bottom"
+                    >
+                      <p
+                        class="me-5 ms-5 ms-lg-0 ps-md-4"
+                        style="font-size: 3.8rem"
+                      >
+                        -14%
+                      </p>
+                      <div class="text-start">
+                        <span
+                          class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                        >
+                          2.500.000 đ</span
+                        >
+                        <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex pt-4 pb-4 ps-3 ps-md-0 justify-content-center justify-content-lg-start"
+                    >
+                      <div
+                        class="item-btn--goldenBackground text-center me-4 item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                            ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                            nhanh</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="item-btn--goldenBackground text-center item-btn--width"
+                      >
+                        <div
+                          class="item-btn--textFeild"
+                          style="padding: 0.2rem 1rem"
+                        >
+                          <a
+                            href="#"
+                            class="media-fontsize-sm btn btn-light_1"
+                            role="button"
+                            data-bs-toggle="button"
+                          >
+                            <b
+                              >Xem chi tiết<i
+                                class="fa-solid fa-angles-right ms-2"
+                              ></i></b
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Page navigation example " class="mt-3">
+                  <ul
+                    class="pagination"
+                    style="display: flex; justify-content: center"
+                  >
+                    <li class="page-item" style="width: 4.3rem; height: 4rem">
+                      <a
+                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
+                        href="#"
+                        aria-label="Previous"
+                      >
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item" style="width: 4.3rem; height: 4rem">
+                      <a
+                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
+                        href="#"
+                        >1</a
+                      >
+                    </li>
+                    <li class="page-item" style="width: 4.3rem; height: 4rem">
+                      <a
+                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
+                        href="#"
+                        >2</a
+                      >
+                    </li>
+                    <li class="page-item" style="width: 4.3rem; height: 4rem">
+                      <a
+                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
+                        href="#"
+                        >3</a
+                      >
+                    </li>
+                    <li class="page-item" style="width: 4.3rem; height: 4rem">
+                      <a
+                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
+                        href="#"
+                        aria-label="Next"
+                      >
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+
+                <section id="slideBar1" class="bg-white p-5 rounded-3">
+                  <div
+                    class="bg-white text-start pe-3 lh-lg overflow-auto scroll-custom"
+                    style="height: 130rem"
+                  >
+                    <div class="introduce-0">
+                      <p class="fst-italic">
+                        <span class="fw-bold text-red_medium"
+                          >Đông trùng hạ thảo Hàn Quốc</span
+                        >
+                        là loài dược liệu quý hiếm ưa chuộng hiện nay. Có tác
+                        dụng bồi bổ và hỗ trợ điều trị các bệnh về gan, thận hay
+                        suy nhược cơ thể rất hiệu quả. Vậy đông trùng hạ thảo là
+                        gì? Tác dụng và mua đông trùng Hàn Quốc ở đâu là tốt
+                        nhất? Tất cả sẽ có trong bài viết sau đây.
+                      </p>
+
+                      <div
+                        class="introduce-0__img w-75 text-center mt-4 m-auto"
+                      >
+                        <img
+                          src="./asset/img/product/introduce img 1.jpg"
+                          alt=""
+                        />
+                        <p class="text-secondary fst-italic">
+                          Đông trùng hạ thảo Hàn Quốc là loại nấm tự nhiên ký
+                          sinh
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="introduce-1 mt-5">
+                      <h1 class="fw-bold">1. Tìm hiểu về đông trùng hạ thảo</h1>
+                      <div class="introduce-1-1">
+                        <h2 class="fw-bold">1.1 Đông trùng hạ thảo là gì?</h2>
+                        <p>
+                          <span class="fw-bold">Đông trùng hạ thảo</span> là
+                          dạng ký sinh của loài nấm Cordyceps sinensis trên cơ
+                          thể ấu trùng bướm trong môi trường tự nhiên và được
+                          khai thác tại các dãy núi cao Châu Á. Hiện nay, đông
+                          trùng hạ thảo Hàn Quốc là loại trùng thảo có giá trị
+                          dinh dưỡng cao, được ưa chuộng, và nhiều người tin
+                          dùng bởi tác dụng vượt trội của mình.
+                        </p>
+                      </div>
+
+                      <div class="introduce-1-2 mt-4">
+                        <h2 class="fw-bold">
+                          1.2. Phân loại đông trùng hạ thảo phổ biến hiện nay
+                        </h2>
+                        <div class="introduce-1-2-1">
+                          <h3 class="fw-bold">
+                            1.2.1. Đông trùng hạ thảo Hàn Quốc
+                          </h3>
+
+                          <p>
+                            Đông trùng hạ thảo Hàn Quốc là loại trùng thảo được
+                            nuôi cấy nhân tạo trong điều kiện tiêu chuẩn theo
+                            công nghệ hiện đại. Theo đánh giá, thành phần dinh
+                            dưỡng có trong đông trùng hạ thảo Hàn Quốc tương tự
+                            với loại tự nhiên, gần bằng với đông trùng hạ thảo ở
+                            Tây Tạng.
+                          </p>
+
+                          <div
+                            class="introduce-1-2-1__img w-75 text-center mt-4 m-auto"
+                          >
+                            <img
+                              src="./asset/img/product/introduce img 2.jpg"
+                              alt=""
+                            />
+                            <p class="text-secondary fst-italic lh-base">
+                              Đông trùng hạ thảo Hàn Quốc là loại trùng thảo
+                              được nuôi cấy nhân tạo trong điều kiện tiêu chuẩn
+                              theo công nghệ hiện đại
+                            </p>
+                          </div>
+
+                          <p>
+                            Theo y học cổ truyền, đông trùng hạ thảo Hàn Quốc là
+                            một loại thảo dược quý, có vị ngọt, tính ẩm, có công
+                            dụng bổ phế, tráng dương, bổ tinh túy, chỉ huyết, bổ
+                            dưỡng tạng phủ, hóa đàm. Hỗ trợ điều trị các bệnh về
+                            thận, sinh lý yếu, xuất tinh sớm, viêm phế quản, đau
+                            nhức xương khớp, đái đường, suy nhược cơ thể,..
+                          </p>
+                        </div>
+
+                        <div class="introduce-1-2-2">
+                          <h3 class="fw-bold">
+                            1.2.2. Đông trùng hạ thảo Tây Tạng
+                          </h3>
+
+                          <p>
+                            Là loại tiêu chuẩn, được hình thành và phát triển
+                            100% ở tự nhiên. Đây là loại đắt nhất hiện nay với
+                            giá mỗi kilogam lên đến cả tỷ đồng.
+                          </p>
+
+                          <div
+                            class="introduce-1-2-2__img w-75 text-center mt-4 m-auto"
+                          >
+                            <img
+                              src="./asset/img/product/introduce img 3.jpg"
+                              alt=""
+                            />
+                            <p class="text-secondary fst-italic lh-base">
+                              Đông trùng hạ thảo Tây Tạng là loại tiêu chuẩn,
+                              phát triển 100% ở tự nhiên
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="introduce-1-2-3">
+                          <h3 class="fw-bold">
+                            1.2.3. Đông trùng hạ thảo nhân tạo
+                          </h3>
+
+                          <p>
+                            Là loại được nuôi cấy trong phòng thí nghiệm hay các
+                            cơ sở nghiên cứu trên ấu trùng của sâu bướm, nhộng
+                            tằm, bọ xít, ve sầu hoặc gạo lứt, đậu xanh. Thường
+                            được nuôi cấy ở các quốc như Hàn Quốc, Nhật Bản, Mỹ,
+                            Việt Nam, Thái Lan.
+                          </p>
+
+                          <div
+                            class="introduce-1-2-3__img w-75 text-center mt-4 m-auto"
+                          >
+                            <img
+                              src="./asset/img/product/introduce img 4.jpg"
+                              alt=""
+                            />
+                            <p class="text-secondary fst-italic lh-base">
+                              Đông trùng hạ thảo nhân tạo là loại được nuôi cấy
+                              trong phòng thí nghiệm
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="introduce-1-2-4">
+                          <h3 class="fw-bold">
+                            1.2.4. Đông trùng hạ thảo dạng tươi
+                          </h3>
+
+                          <p>
+                            Là dạng đông trùng hạ thảo còn nguyên con, được khai
+                            thác dưới 1 tháng, hình dạng tự nhiên, nguyên con và
+                            vẫn còn ký sinh trên vật chủ. Nhiệt độ bảo quản có
+                            thể lên đến -50 độ C.
+                          </p>
+
+                          <div
+                            class="introduce-1-2-4__img w-75 text-center mt-4 m-auto"
+                          >
+                            <img
+                              src="./asset/img/product/introduce img 5.jpg"
+                              alt=""
+                            />
+                            <p class="text-secondary fst-italic lh-base">
+                              Đông trùng hạ thảo dạng tươi là dạng nguyên con,
+                              được khai thác dưới 1 tháng
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="introduce-1-2-5">
+                          <h3 class="fw-bold">
+                            1.2.5. Đông trùng hạ thảo dạng khô
+                          </h3>
+
+                          <p>
+                            Là loại sản phẩm còn nguyên con, được làm sạch, phơi
+                            khô hoặc bằng phương pháp sấy đối lưu, hoặc sấy
+                            lạnh, độ ẩm của đông trùng hạ thảo dạng khô chỉ còn
+                            5% nước là đạt tiêu chuẩn. Sử dụng được lâu, có thể
+                            bảo quản trong 3 năm và hàm lượng dược tính không
+                            cao bằng dạng tươi, đạt khoảng 95 -98%.
+                          </p>
+
+                          <div
+                            class="introduce-1-2-5__img w-75 text-center mt-4 m-auto"
+                          >
+                            <img
+                              src="./asset/img/product/introduce img 6.jpg"
+                              alt=""
+                            />
+                            <p class="text-secondary fst-italic lh-base">
+                              Đông trùng hạ thảo dạng tươi là dạng nguyên con,
+                              được khai thác dưới 1 tháng
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+
+          <section id="best-seller" class="best-seller">
+            <div
+              class="item-label--goldenBackground item-label--clipPath p-1 mt-4 m-auto"
+              style="width: 27rem"
+            >
+              <div
+                class="item-label--redTextFeild item-label--clipPath label-Advertise"
+                style="padding: 0.7rem"
+              >
+                <span class="fs-2 label-Advertise fw-bold"
+                  >Sản Phẩm Bán Chạy</span
+                >
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-12 m-auto auto-width">
+                <div class="card mt-4">
+                  <div
+                    class="item__img--hover d-flex align-items-center justify-content-center"
+                  >
+                    <img
+                      src="./asset/img/home/kgin-nam-linh-chi-nui-dai-dien-.jpg"
+                      class="img-ani card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body">
+                    <h5 class="item__tittle--hover card-title mb-4 fs-4">
+                      <b>NẤM LINH CHI NÚI ĐÁ VÀNG HÀN QUỐC</b>
+                    </h5>
+                    <div class="card-text pt-2">
+                      <div
+                        class="item_sellPrice ps-3 text-red_1 fw-bold d-flex align-items-end lh-1 justify-content-around"
+                      >
+                        <p class="me-3" style="font-size: 3.8rem">-8%</p>
+                        <div class="text-start">
+                          <span
+                            class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                          >
+                            2.500.000 đ</span
+                          >
+                          <p class="media-fontsize-lg lh-1">2.300.000 đ</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body p-4 pt-3">
+                    <div class="row">
+                      <div class="col-6 col-md-6 col-lg-6">
+                        <div class="item-btn--goldenBackground">
+                          <div
+                            class="item-btn--textFeild"
+                            style="padding: 0.2rem 1rem"
+                          >
+                            <a
+                              href="#"
+                              class="media-fontsize-sm btn btn-light_1"
+                              role="button"
+                              data-bs-toggle="button"
+                              ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                              nhanh</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-6 col-lg-6">
+                        <div class="item-btn--goldenBackground">
+                          <div
+                            class="item-btn--textFeild"
+                            style="padding: 0.2rem 1rem"
+                          >
+                            <a
+                              href="#"
+                              class="media-fontsize-sm btn btn-light_1"
+                              role="button"
+                              data-bs-toggle="button"
+                            >
+                              <b
+                                >Xem chi tiết<i
+                                  class="fa-solid fa-angles-right ms-2"
+                                ></i></b
+                            ></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-12 m-auto auto-width">
+                <div class="card mt-4">
+                  <div
+                    class="item__img--hover d-flex align-items-center justify-content-center"
+                  >
+                    <img
+                      src="./asset/img/home/nuoc-sam-100-anh-dai-dien-1.jpg"
+                      class="img-ani card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body">
+                    <h5 class="item__tittle--hover card-title mb-4 fs-4">
+                      <b>Nước Hồng Sâm Hàn Quốc hộp 30 gói Pocheon</b>
+                    </h5>
+                    <div class="card-text pt-2">
+                      <div
+                        class="item_sellPrice ps-3 text-red_1 fw-bold d-flex align-items-end lh-1 justify-content-around"
+                      >
+                        <p class="me-3" style="font-size: 3.8rem">-30%</p>
+                        <div class="text-start">
+                          <span
+                            class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                          >
+                            2.000.000 đ</span
+                          >
+                          <p class="media-fontsize-lg lh-1">1.400.000 đ</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body p-4 pt-3">
+                    <div class="row">
+                      <div class="col-6 col-md-6 col-lg-6">
+                        <div class="item-btn--goldenBackground">
+                          <div
+                            class="item-btn--textFeild"
+                            style="padding: 0.2rem 1rem"
+                          >
+                            <a
+                              href="#"
+                              class="media-fontsize-sm btn btn-light_1"
+                              role="button"
+                              data-bs-toggle="button"
+                              ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                              nhanh</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-6 col-lg-6">
+                        <div class="item-btn--goldenBackground">
+                          <div
+                            class="item-btn--textFeild"
+                            style="padding: 0.2rem 1rem"
+                          >
+                            <a
+                              href="#"
+                              class="media-fontsize-sm btn btn-light_1"
+                              role="button"
+                              data-bs-toggle="button"
+                            >
+                              <b
+                                >Xem chi tiết<i
+                                  class="fa-solid fa-angles-right ms-2"
+                                ></i></b
+                            ></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-12 m-auto auto-width">
+                <div class="card mt-4">
+                  <div
+                    class="item__img--hover d-flex align-items-center justify-content-center"
+                  >
+                    <img
+                      src="./asset/img/home/dt-go-den-1.jpg"
+                      class="img-ani card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body">
+                    <h5 class="item__tittle--hover card-title mb-4 fs-4">
+                      <b>Đông Trùng Hạ Thảo Dạng Nước Hộp Gỗ Đen 60 Gói</b>
+                    </h5>
+                    <div class="card-text pt-2">
+                      <div
+                        class="item_sellPrice ps-3 text-red_1 fw-bold d-flex align-items-end lh-1 justify-content-around"
+                      >
+                        <p class="me-3" style="font-size: 3.8rem">-19%</p>
+                        <div class="text-start">
+                          <span
+                            class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                          >
+                            1.850.000 đ</span
+                          >
+                          <p class="media-fontsize-lg lh-1">1.500.000 đ</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body p-4 pt-3">
+                    <div class="row">
+                      <div class="col-6 col-md-6 col-lg-6">
+                        <div class="item-btn--goldenBackground">
+                          <div
+                            class="item-btn--textFeild"
+                            style="padding: 0.2rem 1rem"
+                          >
+                            <a
+                              href="#"
+                              class="media-fontsize-sm btn btn-light_1"
+                              role="button"
+                              data-bs-toggle="button"
+                              ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                              nhanh</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-6 col-lg-6">
+                        <div class="item-btn--goldenBackground">
+                          <div
+                            class="item-btn--textFeild"
+                            style="padding: 0.2rem 1rem"
+                          >
+                            <a
+                              href="#"
+                              class="media-fontsize-sm btn btn-light_1"
+                              role="button"
+                              data-bs-toggle="button"
+                            >
+                              <b
+                                >Xem chi tiết<i
+                                  class="fa-solid fa-angles-right ms-2"
+                                ></i></b
+                            ></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-12 m-auto auto-width">
+                <div class="card mt-4">
+                  <div
+                    class="item__img--hover d-flex align-items-center justify-content-center"
+                  >
+                    <img
+                      src="./asset/img/home/sam-kho-150g-anh-dai-dien.jpg"
+                      class="img-ani card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body">
+                    <h5 class="item__tittle--hover card-title mb-4 fs-4">
+                      <b>Hồng sâm khô Hàn Quốc hộp thiếc 150g</b>
+                    </h5>
+                    <div class="card-text pt-2">
+                      <div
+                        class="item_sellPrice ps-3 text-red_1 fw-bold d-flex align-items-end lh-1 justify-content-around"
+                      >
+                        <p class="me-3" style="font-size: 3.8rem">-12%</p>
+                        <div class="text-start">
+                          <span
+                            class="fs-4 text-decoration-line-through fw-light text-secondary ms-1"
+                          >
+                            2.050.000 đ</span
+                          >
+                          <p class="media-fontsize-lg lh-1">1.800.000 đ</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body p-4 pt-3">
+                    <div class="row">
+                      <div class="col-6 col-md-6 col-lg-6">
+                        <div class="item-btn--goldenBackground">
+                          <div
+                            class="item-btn--textFeild"
+                            style="padding: 0.2rem 1rem"
+                          >
+                            <a
+                              href="#"
+                              class="media-fontsize-sm btn btn-light_1"
+                              role="button"
+                              data-bs-toggle="button"
+                              ><i class="fa-solid fa-paper-plane me-3"> </i>Xem
+                              nhanh</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-6 col-lg-6">
+                        <div class="item-btn--goldenBackground">
+                          <div
+                            class="item-btn--textFeild"
+                            style="padding: 0.2rem 1rem"
+                          >
+                            <a
+                              href="#"
+                              class="media-fontsize-sm btn btn-light_1"
+                              role="button"
+                              data-bs-toggle="button"
+                            >
+                              <b
+                                >Xem chi tiết<i
+                                  class="fa-solid fa-angles-right ms-2"
+                                ></i></b
+                            ></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="desc" class="desc mb-5">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-6">
+                <div class="content bg-white rounded-3">
+                  <div class="row mt-5 border-bottom text-start w-100">
+                    <div class="col-11 col-md-8 col-lg-8">
+                      <div
+                        class="item-label--goldenBackground item-label--clipPathE p-1 mt-4 m-auto"
+                      >
+                        <div
+                          class="item-label--goldTextFeild item-label--clipPathE label-Advertise"
+                          style="padding: 0.7rem"
+                        >
+                          <span
+                            class="fs-2 label-Advertise fw-bold ms-md-5 ms-xxl-4"
+                          >
+                            Giới thiệu về Nhân Sâm Hàn Quốc KGIN
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="p-4 pt-3">
+                    <div
+                      class="lh-lg overflow-auto m-3 scroll-custom"
+                      style="height: 48.75rem"
+                    >
+                      <p>
+                        <span class="fw-bold">K-GIN</span> là hệ thống cửa hàng
+                        chuyên phân phối các sản phẩm thảo dược từ sâm, nấm linh
+                        chi và đông trùng hạ thảo Hàn Quốc.
+                      </p>
+
+                      <p>
+                        Sản phẩm đông trùng hạ thảo của cửa hàng K-GIN cung cấp
+                        có giá bán phù hợp, hóa đơn VAT và có giấy chứng nhận
+                        công bố chất lượng sản phẩm. Nhằm đảm bảo lợi ích cao
+                        nhất cho quý khách hàng, cửa hàng KGIN cam kết 100% về
+                        chất lượng sản phẩm cũng như nguồn gốc xuất xứ, tem mác
+                        rõ ràng khi mua hàng.
+                      </p>
+
+                      <p class="fw-bold">
+                        Mọi thông tin quý khách vui lòng liên hệ:
+                      </p>
+
+                      <p class="fw-bold">HỒNG SÂM HÀN QUỐC K-GIN</p>
+
+                      <p class="fw-bold text-decoration-underline">
+                        Tại TPHCM:
+                      </p>
+
+                      <p>Showroom 1: Số 51 Võ Thị Sáu, F6, Quận 3, TP.HCM</p>
+
+                      <p class="fw-bold text-decoration-underline">
+                        Tại Hà Nội:
+                      </p>
+                      <p>Showroom 1: 149 Cầu Giấy – Hà Nội</p>
+                      <p>Showroom 2: 21 Tây Sơn – Đống Đa – Hà Nội</p>
+                      <p>Showroom 3: 121A – Phố Huế – Hai Bà Trưng – Hà Nội</p>
+                      <p>
+                        Showroom 4: 577 Nguyễn Trãi – Thanh Xuân Nam – Hà Nội (
+                        Đối diện pico Trung Văn)
+                      </p>
+
+                      <p><b>Hotline:</b> 19004625 (Zalo, sms: 0936.319.818)</p>
+
+                      <p>
+                        <b>Website:</b> https://kgin.com.vn/ – <b>Email:</b>
+                        contact@hongsamhanquoc.net
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-12 col-lg-6">
+                <div class="content bg-white rounded-3">
+                  <div class="row mt-5 border-bottom text-start w-100">
+                    <div class="col-11 col-md-8 col-lg-8">
+                      <div
+                        class="item-label--goldenBackground item-label--clipPathE p-1 mt-4 m-auto"
+                      >
+                        <div
+                          class="item-label--goldTextFeild item-label--clipPathE label-Advertise"
+                          style="padding: 0.7rem"
+                        >
+                          <span
+                            class="fs-2 label-Advertise fw-bold ms-md-5 ms-xxl-4"
+                            >Giới thiệu về Nhân Sâm Hàn Quốc KGIN</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="p-4 pt-0 pb-1">
+                    <div class="lh-base m-3">
+                      <div class="desc__item">
+                        <a href="#" class="text-decoration-none text-black_2">
+                          <span class="fw-bold"
+                            >[Cẩn Trọng] Bà Bầu Có Dùng Được Đông Trùng Hạ Thảo
+                            Không?</span
+                          >
+                          <div class="row pb-4 border-bottom">
+                            <div
+                              class="desc__img col-4 transform-scale--small overflow-hidden"
+                            >
+                              <img
+                                src="asset/img/product/desc img 1.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <p class="col-8">
+                              Công dụng của đông trùng hạ thảo được coi là tốt
+                              hơn cả nhân sâm nghìn năm tuổi. Vậy khi có thai
+                              hoặc bà bầu có dùng được không ?
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div class="desc__item mt-4">
+                        <a href="#" class="text-decoration-none text-black_2">
+                          <span class="fw-bold"
+                            >Thời điểm tốt nhất để tác dụng của đông trùng hạ
+                            thảo với phụ nữ đạt hiệu quả cao</span
+                          >
+                          <div class="row pb-4 border-bottom">
+                            <div
+                              class="desc__img col-4 transform-scale--small overflow-hidden"
+                            >
+                              <img
+                                src="asset/img/product/desc img 2.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <p class="col-8">
+                              Đông trùng hạ thảo có tốt cho phụ nữ không? Những
+                              tác dụng của đông trùng hạ thảo với phụ nữ là gì?
+                              Đó là
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div class="desc__item mt-4">
+                        <a href="#" class="text-decoration-none text-black_2">
+                          <span class="fw-bold"
+                            >Cách Nhận Biết Đông Trùng Hạ Thảo Giả, Thật | Chuẩn
+                            Trong 3s</span
+                          >
+                          <div class="row pb-4">
+                            <div
+                              class="desc__img col-4 transform-scale--small overflow-hidden"
+                            >
+                              <img
+                                src="asset/img/product/desc img 3.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <p class="col-8">
+                              Hiện nay có nhiều người đã dùng các thủ thuật làm
+                              giả đông trùng rất tinh vi. Sau đây, cửa hàng Nhân
+                              sâm Hàn Quốc
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Footer -->
+        <section class="footer" id="footer">
+          <div
+            class="footer__background"
+            style="
+              background-image: url(https://kgin.com.vn/wp-content/uploads/2021/09/footer-bg.jpg);
+            "
+          >
+            <div class="container text-white p-4">
+              <div class="row shadow">
+                <div class="col-md-4 p-0">
+                  <div class="pt-4">
+                    <h5 class="pb-3 ps-3">THÔNG TIN LIÊN HỆ</h5>
+                    <div class="p-3">
+                      <div class="footer__phone d-flex align-items-center">
+                        <i class="golden-text me-3 fa-solid fa-phone"></i>
+                        <span>Hotline: 1900.4626</span>
+                      </div>
+                      <div class="footer__zalo d-flex align-items-center">
+                        <i class="golden-text me-3 fa-regular fa-message"></i>
+                        <span>Zalo, Sms: 0936.319.818</span>
+                      </div>
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i class="golden-text me-3 far fa-envelope"></i>
+                        <span>Email: contact@hongsamhanquoc.net</span>
+                      </div>
+                      <div>
+                        <b class="">Mua hàng trực tiếp tại cửa hàng </b>
+                      </div>
+                      <div class="footer__openTime d-flex align-items-center">
+                        <i class="golden-text me-3 fa-regular fa-clock"></i>
+                        <span> Thời gian mở cửa: 8h - 20h45</span>
+                      </div>
+                      <div class="footer__logo mt-3 transform-scale">
+                        <a href="#"
+                          ><img
+                            width="100%"
+                            src="https://images.dmca.com/Badges/_dmca_premi_badge_5.png?ID=b19ad619-18fa-4ff5-aa78-23456472d07d"
+                            alt="DMCA.com Protection Status"
+                        /></a>
+                      </div>
+                      <h3 class="text-center fw-bold mt-5">
+                        Mã Ưu Đãi: KGIN3198
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-5 p-0">
+                  <div class="pt-4 h-100">
+                    <h5 class="pb-3 ps-3">HỆ THỐNG CỬA HÀNG</h5>
+                    <div class="p-3 border-secondary">
+                      <div><b class="">Tại Hà Nội:</b></div>
+                      <div class="footer__phone d-flex align-items-center">
+                        <i
+                          class="golden-text me-3 fa-solid fa-location-dot"
+                        ></i>
+                        <span
+                          >Cửa hàng 1: 21 Tây Sơn - Quan Trung- Đống Đa - Hà
+                          Nội</span
+                        >
+                      </div>
+                      <div class="footer__phone d-flex align-items-center">
+                        <i
+                          class="golden-text me-3 fa-solid fa-location-dot"
+                        ></i>
+                        <span
+                          >Cửa hàng 2: 121A Phố Huế - Hai Bà Trưng - Hà Nội (Ngã
+                          tư Phố Huế - Tuệ Tĩnh)</span
+                        >
+                      </div>
+                      <div class="footer__phone d-flex align-items-center">
+                        <i
+                          class="golden-text me-3 fa-solid fa-location-dot"
+                        ></i>
+                        <span
+                          >Cửa hàng 3: 149 Cầu Giấy - Quan Hoa - Cầu Giấy - Hà
+                          Nội</span
+                        >
+                      </div>
+                      <div class="footer__phone d-flex align-items-center">
+                        <i
+                          class="golden-text me-3 fa-solid fa-location-dot"
+                        ></i>
+                        <span
+                          >Cửa hàng 4: 577 Nguyễn Trãi - Thanh Xuân Nam - Thanh
+                          Xuân - Hà Nội ( Đối diện Pico Trung Văn)</span
+                        >
+                      </div>
+                      <div><b class="">Tại TP. HCM:</b></div>
+                      <div class="footer__phone d-flex align-items-center">
+                        <i
+                          class="golden-text me-3 fa-solid fa-location-dot"
+                        ></i>
+                        <span
+                          >Cửa hàng 5: 51 Võ Thị Sáu - Phường 6 - Quận 3 -
+                          TP.HCM</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 p-0">
+                  <div class="pt-4">
+                    <h5
+                      class="pb-3 ps-3"
+                      style="
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 1;
+                        -webkit-box-orient: vertical; /* word-break: keep-all; */
+                      "
+                    >
+                      DANH MỤC SẢN PHẨM
+                    </h5>
+                    <div class="p-3 border-secondary">
+                      <div class="mb-3 transform-scale">
+                        <img
+                          src="https://kgin.com.vn/wp-content/uploads/2021/09/link4.png"
+                          alt="Nước Đông Trùng Hạ Thảo"
+                          style="height: 3.5rem; width: 3.5rem"
+                        />
+                        <a
+                          href="./product.html"
+                          class="text-decoration-none text-white"
+                        >
+                          Nước Đông Trùng Hạ Thảo
+                        </a>
+                      </div>
+                      <div class="mb-3 transform-scale">
+                        <img
+                          src="https://kgin.com.vn/wp-content/uploads/2022/06/nam-linh-chi-icon.png"
+                          alt="Hồng Sâm Linh Chi Hàn Quốc"
+                          style="height: 3.5rem; width: 3.5rem"
+                        />
+                        <a
+                          href="./product.html"
+                          class="text-decoration-none text-white"
+                        >
+                          Hồng Sâm Linh Chi Hàn Quốc
+                        </a>
+                      </div>
+                      <div class="mb-3 transform-scale">
+                        <img
+                          src="https://kgin.com.vn/wp-content/uploads/2022/08/sam-han-quoc-01.png"
+                          alt="Hắc sâm"
+                          style="height: 3.5rem; width: 3.5rem"
+                        />
+                        <a
+                          href="./product.html"
+                          class="text-decoration-none text-white"
+                        >
+                          Hắc sâm
+                        </a>
+                      </div>
+                      <div class="mb-3 transform-scale">
+                        <img
+                          src="https://kgin.com.vn/wp-content/uploads/2022/08/cao-linh-chi-1.png"
+                          alt="Cao linh chi hộp gỗ"
+                          style="height: 3.5rem; width: 3.5rem"
+                        />
+                        <a
+                          href="./product.html"
+                          class="text-decoration-none text-white"
+                        >
+                          Cao linh chi hộp gỗ
+                        </a>
+                      </div>
+                      <div class="mb-3 transform-scale">
+                        <img
+                          src="https://kgin.com.vn/wp-content/uploads/2022/08/keo-sam-han-quoc-1.png"
+                          alt="Kẹo sâm không đường"
+                          style="height: 3.5rem; width: 3.5rem"
+                        />
+                        <a
+                          href="./product.html"
+                          class="text-decoration-none text-white"
+                        >
+                          Kẹo sâm không đường
+                        </a>
+                      </div>
+                      <div class="mb-3 transform-scale">
+                        <img
+                          src="https://kgin.com.vn/wp-content/uploads/2022/08/sam-han-quoc-01.png"
+                          alt="Sâm mật ong Hàn Quốc"
+                          style="height: 3.5rem; width: 3.5rem"
+                        />
+                        <a
+                          href="./product.html"
+                          class="text-decoration-none text-white"
+                        >
+                          Sâm mật ong Hàn Quốc
+                        </a>
+                      </div>
+                      <div class="mb-3 transform-scale">
+                        <img
+                          src="https://kgin.com.vn/wp-content/uploads/2022/08/cao-dong-trung-1.png"
+                          alt="Đông trùng hạ thảo dạng viên"
+                          style="height: 3.5rem; width: 3.5rem"
+                        />
+                        <a
+                          href="./product.html"
+                          class="text-decoration-none text-white"
+                        >
+                          Đông trùng hạ thảo dạng viên
+                        </a>
+                      </div>
+                      <div class="mb-3 transform-scale">
+                        <img
+                          src="https://kgin.com.vn/wp-content/uploads/2022/08/sam-han-quoc-01.png"
+                          alt="sâm tẩm mật ong nguyên củ"
+                          style="height: 3.5rem; width: 3.5rem"
+                        />
+                        <a
+                          href="./product.html"
+                          class="text-decoration-none text-white"
+                        >
+                          Sâm tẩm mật ong nguyên củ
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-5">
+                <div class="col-md-4 p-0">
+                  <ul class="list-group-flush p-0">
+                    <li class="d-inline-block list-group-item">
+                      <a
+                        href="#"
+                        class="fw-bold border-end border-white text-decoration-none text-white ps-1 pe-2"
+                        >Trang Chủ</a
+                      >
+                    </li>
+                    <li class="d-inline-block list-group-item">
+                      <a
+                        href="#"
+                        class="fw-bold border-end border-white text-decoration-none text-white ps-1 pe-2"
+                        >Tin Tức</a
+                      >
+                    </li>
+                    <li class="d-inline-block list-group-item">
+                      <a
+                        href="#"
+                        class="fw-bold border-end border-white text-decoration-none text-white ps-1 pe-2"
+                        style="border: none !important"
+                        >Liên Hệ</a
+                      >
+                    </li>
+                  </ul>
+                  <div class="d-flex">
+                    <div class="me-3 mt-2 transform-scale">
+                      <img
+                        src="https://kgin.com.vn/wp-content/uploads/2021/09/logo-footer.png"
+                        alt=""
+                        style="height: 7rem; width: 7rem"
+                      />
+                    </div>
+                    <div>
+                      <div>
+                        <span>HỒNG SÂM HÀN QUỐC K-GIN</span>
+                      </div>
+                      <div class="footer__phone d-flex align-items-center">
+                        <i class="golden-text me-3 fa-solid fa-phone"></i>
+                        <span>Hotline: 1900.4626</span>
+                      </div>
+                      <div class="footer__zalo d-flex align-items-center">
+                        <i class="golden-text me-3 fa-regular fa-message"></i>
+                        <span>Zalo, Sms: 0936.319.818</span>
+                      </div>
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i class="golden-text me-3 far fa-envelope"></i>
+                        <span>Email: contact@hongsamhanquoc.net</span>
+                      </div>
+                      <div class="mt-1 transform-scale">
+                        <img
+                          src="https://kgin.com.vn/wp-content/uploads/2021/09/salenoti.png"
+                          alt=""
+                          style="width: 11.2rem; height: 4.2rem"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5 p-0">
+                  <span class="fw-bold pb-3 ps-1">MUA SẮM TIỆN LỢI</span>
+                  <div class="row mt-3">
+                    <div class="col-md-7 p-0 ps-3">
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i
+                          class="golden-text me-3 fa-sharp fa-solid fa-pen-to-square"
+                        ></i>
+                        <a href="#" class="text-decoration-none text-white"
+                          >Hướng Dẫn Mua Hàng</a
+                        >
+                      </div>
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i
+                          class="golden-text me-3 fa-sharp fa-solid fa-map"
+                        ></i>
+                        <a href="#" class="text-decoration-none text-white"
+                          >Bản Đồ Đến Showroom Của KGIN</a
+                        >
+                      </div>
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i
+                          class="golden-text me-3 fa-sharp fa-brands fa-cc-visa"
+                        ></i>
+                        <a href="#" class="text-decoration-none text-white"
+                          >Thông Tin Tài Khoảng Ngân Hàng</a
+                        >
+                      </div>
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i
+                          class="golden-text me-3 fa-sharp fas fa-calendar-check"
+                        ></i>
+                        <a href="#" class="text-decoration-none text-white"
+                          >Quy Định Về Việc Đổi Trả Hàng</a
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-5 p-0 ps-3">
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i class="golden-text me-3 fa-solid fa-money-bill"></i>
+                        <a href="#" class="text-decoration-none text-white"
+                          >Thanh Toán Khi Nhận Hàng</a
+                        >
+                      </div>
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i class="golden-text me-3 fa-solid fa-truck-fast"></i>
+                        <a href="#" class="text-decoration-none text-white"
+                          >Giao Hàng Toàn Quốc</a
+                        >
+                      </div>
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i class="golden-text me-3 fa-solid fa-thumbs-up"></i>
+                        <a href="#" class="text-decoration-none text-white"
+                          >Nhân Sâm Hàn Quốc Uy Tín</a
+                        >
+                      </div>
+                      <div
+                        class="footer__mail d-flex align-items-center align-items-md-start align-items-lg-center"
+                      >
+                        <i
+                          class="golden-text me-3 fa-solid fa-circle-check"
+                        ></i>
+                        <a href="#" class="text-decoration-none text-white"
+                          >Dịch Vụ CSKH Chu Đáo</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 ps-5">
+                  <span class="fw-bold pb-3">FANPAGE FACEBOOK</span>
+                  <div
+                    style="width: 24.6rem; height: 15rem; padding: 2rem 1.5rem"
+                  >
+                    <a href="https://www.facebook.com/KGin.HongSamHanQuoc/">
+                      <img
+                        class="border"
+                        src="https://via.placeholder.com/246x150"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-end">Copyright 2021 thuộc về KGIN</div>
+        </section>
+      </div>
+    </div>
+  </body>
+
+  <!-- CUSTOM -->
+  <script src="./asset/js/common.js"></script>
+</html>

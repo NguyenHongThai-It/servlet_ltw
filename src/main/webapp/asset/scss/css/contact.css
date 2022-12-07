@@ -1,0 +1,223 @@
+/* Grid Body */
+.logo-header {
+  width: 4.5rem;
+}
+
+.item-img-container {
+  width: 90%;
+  height: 50%;
+  align-items: center;
+  overflow: hidden;
+}
+
+.item-img {
+  width: 100%;
+}
+
+.special-banner {
+  border: 0.3rem var(--orange_light1) solid;
+  color: var(--orange_light1);
+  width: 100%;
+  min-height: 5rem;
+  background-color: rgb(167, 22, 22);
+  clip-path: polygon(
+    4% 0,
+    96% 0,
+    100% 20%,
+    100% 80%,
+    96% 100%,
+    4% 100%,
+    0% 80%,
+    0% 20%
+  );
+}
+
+.item__img--hover {
+  width: 100%;
+  height: 28.2rem;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.img-ani {
+  height: 95%;
+  width: 95%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.item__img--hover:hover .img-ani {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.item__tittle--hover:hover {
+  color: var(--red_bold1);
+  cursor: pointer;
+}
+
+.item__btn {
+  width: 40%;
+  display: inline-block;
+  border: var(--orange_light1) 0.2rem solid;
+  cursor: pointer;
+  clip-path: polygon(
+    0.5rem 0%,
+    calc(100% - 0.5rem) 0%,
+    100% 0.5rem,
+    100% calc(100% - 0.5rem),
+    calc(100% - 0.5rem) 100%,
+    0.5rem 100%,
+    0% calc(100% - 0.5rem),
+    0% 0.5rem
+  );
+}
+
+.item__btn:hover .btn {
+  color: var(--red_bold1);
+}
+
+.item-label--goldenBackground {
+  background: linear-gradient(
+    0deg,
+    rgba(192, 142, 40, 1) 0%,
+    rgba(247, 236, 158, 1) 33%,
+    rgba(192, 142, 40, 1) 67%,
+    rgba(247, 236, 158, 1) 100%
+  );
+}
+
+.item-label--redTextFeild {
+  color: var(--orange_light);
+  background-color: var(--red_medium);
+}
+
+.item-label--redTextFeild {
+  color: var(--orange_light);
+  background-color: var(--red_medium);
+}
+
+.item-label--goldTextFeild {
+  color: var(--white_1);
+  background-color: var(--orange_light);
+}
+
+.item-label--clipPath {
+  clip-path: polygon(
+    1rem 0%,
+    calc(100% - 1rem) 0%,
+    100% 1rem,
+    100% calc(100% - 1rem),
+    calc(100% - 1rem) 100%,
+    1rem 100%,
+    0% calc(100% - 1rem),
+    0% 1rem
+  );
+}
+
+.item-label--clipPathE {
+  clip-path: polygon(
+    0 0%,
+    calc(100% - 1rem) 0%,
+    100% 1rem,
+    100% calc(100% - 1rem),
+    calc(100% - 1rem) 100%,
+    0 100%,
+    0% calc(100% - 1rem),
+    0% 1rem
+  );
+}
+
+.item-btn--goldenBackground {
+  padding: 0.15rem;
+  padding-bottom: 0.35rem;
+  background: linear-gradient(
+    0deg,
+    rgba(192, 142, 40, 1) 0%,
+    rgba(247, 236, 158, 1) 33%,
+    rgba(192, 142, 40, 1) 67%,
+    rgba(247, 236, 158, 1) 100%
+  );
+  clip-path: polygon(
+    0.5rem 0%,
+    calc(100% - 0.5rem) 0%,
+    100% 0.5rem,
+    100% calc(100% - 0.5rem),
+    calc(100% - 0.5rem) 100%,
+    0.5rem 100%,
+    0% calc(100% - 0.5rem),
+    0% 0.5rem
+  );
+}
+
+.item-btn--textFeild {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-gray_7-rgb), var(--bs-text-opacity)) !important;
+  background-color: var(--white_1);
+  clip-path: polygon(
+    0.5rem 0%,
+    calc(100% - 0.5rem) 0%,
+    100% 0.5rem,
+    100% calc(100% - 0.5rem),
+    calc(100% - 0.5rem) 100%,
+    0.5rem 100%,
+    0% calc(100% - 0.5rem),
+    0% 0.5rem
+  );
+}
+
+.item-btn--textFeild:hover * {
+  transition: none;
+  color: crimson;
+}
+
+.category-item {
+  color: var(--text-color);
+  background-color: transparent;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  border: none;
+}
+
+.category-item:hover {
+  cursor: pointer;
+  color: #f0ad4e;
+  background-color: #bf1e2e;
+}
+
+.transform-scale-bigImg img {
+  transition: 0.3s;
+}
+
+.transform-scale-bigImg:hover img {
+  transform: scale(1.09);
+}
+
+#introduce table,
+#introduce tr,
+#introduce td {
+  border: 0.1rem solid var(--black_1);
+  vertical-align: middle;
+}
+
+#introduce ::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+#introduce ::-webkit-scrollbar-thumb {
+  background-color: #bf1e2e;
+}
+
+#introduce ::-webkit-scrollbar-track {
+  background: linear-gradient(
+    0deg,
+    rgba(192, 142, 40, 1) 0%,
+    rgba(247, 236, 158, 1) 33%,
+    rgba(192, 142, 40, 1) 67%,
+    rgba(247, 236, 158, 1) 100%
+  );
+}
+
+#introduce ::-webkit-scrollbar-thumb:hover {
+  background-color: #3c0006;
+}

@@ -1,0 +1,52 @@
+/* Footer */
+.footer__background {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.shadow {
+  box-shadow: -4px 0 0px -3px rgb(0 0 0 / 12%);
+  margin: 35px 0;
+  color: #fff;
+}
+.footer-logo > img {
+  width: 260px;
+  height: 54px;
+}
+.border-secondary {
+  box-shadow: -4px 0 0px -3px rgb(0 0 0 / 12%);
+}
+h5.pb-3.ps-3 {
+  width: 100% !important;
+  box-shadow: 0 1px 0 0 rgb(0 0 0 / 12%);
+  border-bottom: 1px solid #bd303d;
+  margin-bottom: 0px;
+  font-size: 16px;
+}
+
+/*.container {*/
+/*  overflow: hidden;*/
+/*}*/
+.golden-text {
+  color: #f0ad4e;
+}
+.footer-end {
+  text-align: center;
+  background-color: #bf1e2e;
+  color: #fff;
+}
+
+#footer ::selection {
+  color: #f0ad4e;
+  background: #bf1e2e;
+}
+
+.transform-scale img {
+  transition: 0.3s;
+}
+
+.transform-scale:hover img {
+  transform: scale(1.09);
+}
+.footer__mail > i {
+  margin-top: 0.5rem;
+}

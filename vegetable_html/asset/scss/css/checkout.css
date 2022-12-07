@@ -1,0 +1,40 @@
+.Checkout__Left {
+  min-width: 40%;
+  width: 35%;
+}
+
+.Checkout__Right {
+  flex: 1;
+}
+.title {
+  color: var(--bs-red_bold);
+}
+
+.item-label--goldenBackground {
+  background: linear-gradient(
+    0deg,
+    rgba(192, 142, 40, 1) 0%,
+    rgba(247, 236, 158, 1) 33%,
+    rgba(192, 142, 40, 1) 67%,
+    rgba(247, 236, 158, 1) 100%
+  );
+}
+
+.item-label--redTextFeild {
+  text-align: center;
+  color: var(--orange_light);
+  background-color: var(--red_medium);
+}
+
+.item-label--clipPath {
+  clip-path: polygon(
+    1rem 0%,
+    calc(100% - 1rem) 0%,
+    100% 1rem,
+    100% calc(100% - 1rem),
+    calc(100% - 1rem) 100%,
+    1rem 100%,
+    0% calc(100% - 1rem),
+    0% 1rem
+  );
+}

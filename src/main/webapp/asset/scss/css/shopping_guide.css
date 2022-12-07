@@ -1,0 +1,104 @@
+/* End shopping-guide */
+.news .box-news {
+  padding: 1rem 2.5rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+  flex-direction: column;
+}
+.page #comments > :first-child {
+  margin-top: 2rem;
+  border-color: rgba(0, 0, 0, 0);
+}
+#comments > :first-child {
+  padding-top: 2rem;
+}
+
+#respond {
+  overflow: hidden;
+  margin-bottom: 4rem;
+}
+#respond .comment-reply-title {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+.comment-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+#comments .comment-respond small {
+  text-transform: uppercase;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  /* background: var(--primary-color); */
+  padding: 0.5rem;
+  border-radius: 0.6rem;
+}
+
+#comments .logged-in-as a:last-child,
+#comments .comment-respond small a {
+  color: var(--secondary-color);
+  display: none;
+}
+.comment-notes {
+  display: none;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+#cm-kgin.kgin-comment #respond .comment-form-comment {
+  margin-top: 6rem;
+}
+#cm-kgin.kgin-comment #respond .comment-form-cookies-consent,
+#cm-kgin.kgin-comment #respond .comment-form-comment {
+  width: 100%;
+}
+#cm-kgin.kgin-comment #respond .comment-form-url,
+#cm-kgin.kgin-comment #respond .comment-form-email,
+#cm-kgin.kgin-comment #respond .comment-form-author,
+#cm-kgin.kgin-comment #respond .comment-form-comment {
+  flex: unset;
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 0;
+}
+#respond .comment-form-comment {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: flex;
+  padding: 0.1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 4.5rem;
+}
+#cm-kgin.kgin-comment #respond .form-submit {
+  width: 14rem;
+}
+
+#respond .form-submit {
+  overflow: hidden;
+  margin: 0;
+}
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
