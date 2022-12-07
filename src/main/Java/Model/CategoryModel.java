@@ -1,6 +1,8 @@
 package Model;
 
 import Entities.Category;
+import Entities.ContentDetailCat;
+import Entities.ContentDetailProduct;
 import Entities.Nav;
 import Pool.ConnectionPool;
 
@@ -59,4 +61,44 @@ public class CategoryModel {
         return listCats;
 
     }
+
+    public ContentDetailCat getContentDetailCat(String cdpParentId, int status) {
+        ContentDetailCat cdc = null;
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+            String query = "Select * from content_detail_cat where id = ? and status = ?";
+
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setString(1, cdpParentId);
+            pstmtObj.setInt(2, status);
+            rs = pstmtObj.executeQuery();
+            while (rs.next()) {
+                cdc = new ContentDetailCat(rs.getString("id"), rs.getString("content"), rs.getInt("status"));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+        return cdc;
+    }
+
 }

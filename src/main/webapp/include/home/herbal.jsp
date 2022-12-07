@@ -48,7 +48,7 @@
                     </a>
                     <% }%>
 
-                    <a href="./product.html" class="category-btn">
+                    <a href="<%=request.getContextPath()%>/product" class="category-btn">
                         <div class="category-btn--border">
                             <div class="category-btn--textField">Xem Tất Cả</div>
                         </div>
