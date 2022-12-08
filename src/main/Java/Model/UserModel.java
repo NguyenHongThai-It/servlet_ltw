@@ -48,8 +48,9 @@ public class UserModel {
                 String avatar = rs.getString("avatar");
                 String address = rs.getString("address");
                 int role = rs.getInt("role");
+                int status = rs.getInt("status");
                 if (BCrypt.checkpw(password, userPassword)) {
-                    listUsers.add(new User(id, surname, name, userEmail, sdt, "", avatar, address, role));
+                    listUsers.add(new User(id, surname, name, userEmail, sdt, "", avatar, address, role, status));
                 }
             }
             if (listUsers.size() != 0) user = listUsers.get(0);
@@ -87,7 +88,7 @@ public class UserModel {
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
             String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
-            String query = "INSERT INTO users  (id,email,password,name,surname,sdt,avatar) values (UUID(),?, ?, ?, ?, ?,?)";
+            String query = "INSERT INTO users  (id,email,password,name,surname,sdt,avatar,status) values (UUID(),?, ?, ?, ?, ?,?,1)";
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, email);
             pstmtObj.setString(2, passwordHash);
@@ -206,10 +207,9 @@ public class UserModel {
         return user;
     }
 
-    public List<User> getListUserByFilter(String nameUser, String email) {
-        List<User> listUsers = new ArrayList<User>();
-        if (email == null) email = "";
-        if (nameUser == null) nameUser = "";
+    public List<User> getListUserModAndAdmin(int lim) {
+        List<User> listUsers = new ArrayList<>();
+        User user = null;
 
         try {
             jdbcObj = new ConnectionPool();
@@ -217,11 +217,10 @@ public class UserModel {
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
 
-            String query = "select * from users where email like ? and name like ?";
+            String query = "select * from users where role >=1 limit ?";
 
             pstmtObj = connObj.prepareStatement(query);
-            pstmtObj.setString(1, email.trim() + "%");
-            pstmtObj.setString(2, nameUser.trim() + "%");
+            pstmtObj.setInt(1, lim);
 
             rs = pstmtObj.executeQuery();
             while (rs.next()) {
@@ -234,7 +233,69 @@ public class UserModel {
                 String avatar = rs.getString("avatar");
                 String address = rs.getString("address");
                 int role = rs.getInt("role");
-                listUsers.add(new User(id, surname, name, userEmail, sdt, "", avatar, address, role));
+                int status = rs.getInt("status");
+                listUsers.add(new User(id, surname, name, userEmail, sdt, "", avatar, address, role, status));
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+        return listUsers;
+
+    }
+
+    public List<User> getListUserByFilter(String nameFilter, String idFilter, String roleFilter, int lim) {
+        List<User> listUsers = new ArrayList<User>();
+
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+
+            String query = "";
+            if (roleFilter.length() != 0 && roleFilter.equalsIgnoreCase("asc")) {
+                query = "select * from users where name like ? and id like ? order by role asc limit ?";
+            } else if (roleFilter.length() != 0 && roleFilter.equalsIgnoreCase("desc")) {
+                query = "select * from users where name like ? and id like ? order by role desc limit ?";
+            } else {
+                query = "select * from users where name like ? and id like ? limit ?";
+            }
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setString(1, nameFilter + "%");
+            pstmtObj.setString(2, idFilter + "%");
+            pstmtObj.setInt(3, lim);
+            rs = pstmtObj.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String surname = rs.getString("surname");
+                String name = rs.getString("name");
+                String userEmail = rs.getString("email");
+                String sdt = rs.getString("sdt");
+                String userPassword = rs.getString("password");
+                String avatar = rs.getString("avatar");
+                String address = rs.getString("address");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+
+                listUsers.add(new User(id, surname, name, userEmail, sdt, "", avatar, address, role, status));
             }
 
         } catch (Exception e) {
@@ -302,7 +363,7 @@ public class UserModel {
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
 
-            String query = " update users set surname =?, name = ?, email=?, sdt=?, password=?,avatar=?, address=?,role=?";
+            String query = " update users set surname =?, name = ?, email=?, sdt=?, password=?,avatar=?, address=?,role=?,status=?";
 
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, user.getSurname());
@@ -313,6 +374,7 @@ public class UserModel {
             pstmtObj.setString(6, user.getAvatar());
             pstmtObj.setString(7, user.getAddress());
             pstmtObj.setInt(8, user.getRole());
+            pstmtObj.setInt(8, user.getStatus());
 
 
             pstmtObj.executeUpdate();

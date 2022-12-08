@@ -11,8 +11,9 @@ public class User {
     private String avatar;
     private String address;
     private int role;
+    private int status;
 
-    public User(String userId, String surname, String name, String email, String phone, String password, String avatar, String address, int role) {
+    public User(String userId, String surname, String name, String email, String phone, String password, String avatar, String address, int role, int status) {
         this.userId = userId;
         this.surname = surname;
         this.name = name;
@@ -22,9 +23,18 @@ public class User {
         this.avatar = avatar;
         this.address = address;
         this.role = role;
+        this.status = status;
     }
 
     public User() {
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getUserId() {
@@ -111,6 +121,7 @@ public class User {
                 ", avatar='" + avatar + '\'' +
                 ", address='" + address + '\'' +
                 ", role=" + role +
+                ", status=" + status +
                 '}';
     }
 }

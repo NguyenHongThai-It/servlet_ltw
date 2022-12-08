@@ -29,6 +29,8 @@ public class ProductModel {
                 query = "Select * from product where bestsell = ? limit ?";
             } else if ("forOld".equalsIgnoreCase(key)) {
                 query = "Select * from product where forOld = ? limit ?";
+            } else if ("outstanding".equalsIgnoreCase(key)) {
+                query = "Select * from product where outstanding = ? limit ?";
             } else {
                 query = "Select * from product where bestsell = ? limit ?";
 
@@ -61,8 +63,9 @@ public class ProductModel {
                 int forOld = rs.getInt("forOld");
                 int form = rs.getInt("form");
                 String thumbnail = rs.getString("thumbnail");
+                int status = rs.getInt("status");
 
-                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail));
+                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail, status));
             }
 
         } catch (Exception e) {
@@ -90,7 +93,7 @@ public class ProductModel {
     }
 
 
-    public List<Product> getListProductByCat(int catType, String idMenu) {
+    public List<Product> getListProductByCat(int catId, String idMenu, int offset, int noOfRecords) {
         List<Product> listProduct = new ArrayList<Product>();
 
 
@@ -99,11 +102,14 @@ public class ProductModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String query = "SELECT DISTINCT(p.id),p.name,p.slug,p.description,p.rate,p.amount_sold,p.price,p.specification,p.origin,p.brand,p.price_disc,p.amount_rest,p.code_disc,p.dis_extra,p.content_detail_product,p.img,p.types,p.outstanding,p.bestsell,p.forOld,p.form,p.thumbnail FROM product p join categories cat on p.types = ? join menu me on cat.parentid = ? ";
+            String query = "SELECT DISTINCT(p.id),p.name,p.slug,p.description,p.rate,p.amount_sold,p.price,p.specification,p.origin,p.brand,p.price_disc,p.amount_rest,p.code_disc,p.dis_extra,p.content_detail_product,p.img,p.types,p.outstanding,p.bestsell,p.forOld,p.form,p.thumbnail,p.status FROM product p join categories cat on p.types = ? join menu me on cat.parentid = ? limit ? ,? ";
 
             pstmtObj = connObj.prepareStatement(query);
-            pstmtObj.setInt(1, catType);
+            pstmtObj.setInt(1, catId);
             pstmtObj.setString(2, idMenu);
+            pstmtObj.setInt(3, offset);
+            pstmtObj.setInt(4, noOfRecords);
+
             rs = pstmtObj.executeQuery();
 
             while (rs.next()) {
@@ -129,9 +135,10 @@ public class ProductModel {
                 int forOld = rs.getInt("forOld");
                 int form = rs.getInt("form");
                 String thumbnail = rs.getString("thumbnail");
+                int status = rs.getInt("status");
 
 
-                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail));
+                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail, status));
             }
 
         } catch (Exception e) {
@@ -159,7 +166,7 @@ public class ProductModel {
 
     }
 
-    public List<Product> getListProductByCatPageProduct(int catType) {
+    public List<Product> getListProductByCatPageProduct(int catId, int offset, int noOfRecords) {
         List<Product> listProduct = new ArrayList<Product>();
 
 
@@ -168,10 +175,13 @@ public class ProductModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String query = "SELECT DISTINCT(p.id),p.name,p.slug,p.description,p.rate,p.amount_sold,p.price,p.specification,p.origin,p.brand,p.price_disc,p.amount_rest,p.code_disc,p.dis_extra,p.content_detail_product,p.img,p.types,p.outstanding,p.bestsell,p.forOld,p.form,p.thumbnail FROM product p join categories cat on p.types = cat.types where cat.types = ?";
+            String query = "SELECT DISTINCT(p.id),p.name,p.slug,p.description,p.rate,p.amount_sold,p.price,p.specification,p.origin,p.brand,p.price_disc,p.amount_rest,p.code_disc,p.dis_extra,p.content_detail_product,p.img,p.types,p.outstanding,p.bestsell,p.forOld,p.form,p.thumbnail,p.status FROM product p join categories cat on p.types = cat.id where cat.id = ? limit ? ,?";
 
             pstmtObj = connObj.prepareStatement(query);
-            pstmtObj.setInt(1, catType);
+            pstmtObj.setInt(1, catId);
+            pstmtObj.setInt(2, offset);
+            pstmtObj.setInt(3, noOfRecords);
+
             rs = pstmtObj.executeQuery();
 
             while (rs.next()) {
@@ -197,9 +207,10 @@ public class ProductModel {
                 int forOld = rs.getInt("forOld");
                 int form = rs.getInt("form");
                 String thumbnail = rs.getString("thumbnail");
+                int status = rs.getInt("status");
 
 
-                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail));
+                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail, status));
             }
 
         } catch (Exception e) {
@@ -265,8 +276,9 @@ public class ProductModel {
                 int forOld = rs.getInt("forOld");
                 int form = rs.getInt("form");
                 String thumbnail = rs.getString("thumbnail");
+                int status = rs.getInt("status");
 
-                pro = (new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail));
+                pro = (new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail, status));
             }
 
         } catch (Exception e) {
@@ -293,7 +305,43 @@ public class ProductModel {
         return pro;
     }
 
-    public List<Product> getListProductByName(String nameSearch) {
+    public int getCountProduct() {
+        int count = 0;
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+            String query = "Select * from product ";
+            pstmtObj = connObj.prepareStatement(query);
+            rs = pstmtObj.executeQuery();
+
+            rs.last();
+            count = rs.getRow();
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+            return count;
+        }
+    }
+
+    public List<Product> getListProductByName(String nameSearch, int offset, int noOfRecords) {
         List<Product> listProduct = new ArrayList<Product>();
 
         try {
@@ -301,10 +349,12 @@ public class ProductModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String query = "Select * from product where name like ? limit 12";
+            String query = "Select * from product where name like ? limit ?,?";
 
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, nameSearch.trim() + "%");
+            pstmtObj.setInt(2, offset);
+            pstmtObj.setInt(3, noOfRecords);
             rs = pstmtObj.executeQuery();
 
             while (rs.next()) {
@@ -330,8 +380,9 @@ public class ProductModel {
                 int forOld = rs.getInt("forOld");
                 int form = rs.getInt("form");
                 String thumbnail = rs.getString("thumbnail");
+                int status = rs.getInt("status");
 
-                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail));
+                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail, status));
             }
 
         } catch (Exception e) {
@@ -358,7 +409,7 @@ public class ProductModel {
         return listProduct;
     }
 
-    public List<Product> getListProduct(int lim) {
+    public List<Product> getListProduct(int offset, int noOfRecords) {
         List<Product> listProduct = new ArrayList<Product>();
 
         try {
@@ -366,9 +417,11 @@ public class ProductModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String query = "Select * from product limit ?";
+            String query = "Select * from product limit ?,?";
             pstmtObj = connObj.prepareStatement(query);
-            pstmtObj.setInt(1, lim);
+            pstmtObj.setInt(1, offset);
+            pstmtObj.setInt(2, noOfRecords);
+
             rs = pstmtObj.executeQuery();
 
             while (rs.next()) {
@@ -394,8 +447,9 @@ public class ProductModel {
                 int forOld = rs.getInt("forOld");
                 int form = rs.getInt("form");
                 String thumbnail = rs.getString("thumbnail");
+                int status = rs.getInt("status");
 
-                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail));
+                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail, status));
             }
 
         } catch (Exception e) {
@@ -422,7 +476,7 @@ public class ProductModel {
         return listProduct;
     }
 
-    public List<Product> getListProductByFilter(String type, String sort) {
+    public List<Product> getListProductByFilter(String type, String sort, int offset, int noOfRecords) {
         List<Product> listProduct = new ArrayList<Product>();
 
         try {
@@ -430,13 +484,15 @@ public class ProductModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String query = "Select * from product where form IN (?) limit 12";
+            String query = "Select * from product where form IN (?) limit ?,?";
             if (sort != null && sort.equals("desc"))
-                query = "Select * from product where form IN (?) order by price_disc desc limit 12";
+                query = "Select * from product where form IN (?) order by price_disc desc limit ?,?";
             if (sort != null && sort.equals("asc"))
-                query = "Select * from product where form IN (?) order by price_disc asc limit 12";
+                query = "Select * from product where form IN (?) order by price_disc asc limit ?,?";
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, type);
+            pstmtObj.setInt(2, offset);
+            pstmtObj.setInt(3, noOfRecords);
             rs = pstmtObj.executeQuery();
 
             while (rs.next()) {
@@ -462,8 +518,9 @@ public class ProductModel {
                 int forOld = rs.getInt("forOld");
                 int form = rs.getInt("form");
                 String thumbnail = rs.getString("thumbnail");
+                int status = rs.getInt("status");
 
-                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail));
+                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail, status));
             }
 
         } catch (Exception e) {
@@ -531,7 +588,7 @@ public class ProductModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String query = "update product set name = ?, slug = ? , description =?,rate=?,amount_sold=?,price=?,specification=?,origin=?,brand=?,price_disc=?,amount_rest=?,code_disc=?,dis_extra=?,content_detail_product=?,img=?,types=?,outstanding=?bestsell=?,forOld=?,form=?,thumbnail=?";
+            String query = "update product set name = ?, slug = ? , description =?,rate=?,amount_sold=?,price=?,specification=?,origin=?,brand=?,price_disc=?,amount_rest=?,code_disc=?,dis_extra=?,content_detail_product=?,img=?,types=?,outstanding=?bestsell=?,forOld=?,form=?,thumbnail=?,status=?";
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, pro.getName());
             pstmtObj.setString(2, pro.getSlug());
@@ -554,6 +611,7 @@ public class ProductModel {
             pstmtObj.setInt(19, pro.getForOld());
             pstmtObj.setInt(20, pro.getForm());
             pstmtObj.setString(21, pro.getThumbnail());
+            pstmtObj.setInt(22, pro.getStatus());
 
 
             pstmtObj.executeUpdate();
@@ -619,8 +677,9 @@ public class ProductModel {
                 int forOld = rs.getInt("forOld");
                 int form = rs.getInt("form");
                 String thumbnail = rs.getString("thumbnail");
+                int status = rs.getInt("status");
 
-                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail));
+                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail, status));
             }
 
         } catch (Exception e) {

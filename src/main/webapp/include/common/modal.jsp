@@ -5,11 +5,21 @@
   Time: 8:54 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="vi_VN"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%
+    String id = request.getParameter("id") != null ? request.getParameter("id").toString() : "";
+    String name = request.getParameter("name") != null ? request.getParameter("name").toString() : "";
+    String thumbnail = request.getParameter("thumbnail") != null ? request.getParameter("thumbnail") : "";
+    String disc_extra = request.getParameter("disc_extra") != null ? request.getParameter("disc_extra") : "";
+    String price = request.getParameter("price") != null ? request.getParameter("price") : "";
+    String price_disc = request.getParameter("price_disc") != null ? request.getParameter("price_disc") : "";
+    String desc = request.getParameter("desc") != null ? request.getParameter("desc") : "";
+%>
 <div
         class="modal modal-lg fade"
-        id="exampleModal"
+        id="exampleModal<%=id%>"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -22,7 +32,7 @@
             <div class="d-lg-flex align-items-start">
                 <div class="modal-header col-lg-5 col-12">
                     <img
-                            src="/asset/img/home/cao-hoang-de-kgin-dai-dien.jpg"
+                            src="<%=thumbnail%>"
                             alt=""
                             style="
                     max-width: 50rem;
@@ -33,7 +43,7 @@
                 </div>
                 <div class="modal-body col-lg-7 col-12">
                     <h2 class="fs-1">
-                        Đông Trùng Hạ Thảo Dạng Nước Hộp Gỗ Đen 60 Gói
+                        <%=name%>>
                     </h2>
                     <div
                             class="d-flex align-items-center justify-content-between justify-content-lg-start gap-5"
@@ -50,14 +60,10 @@
                         <span class="text-red_dark fw-bold">1.6k đã bán</span>
                     </div>
                     <p>
-                        Đông trùng hạ thảo dạng nước hộp gỗ đen 60 gói, vị đắng nhẹ.
-                        Khi uống cho cảm giác hơi thanh ở đầu lưỡi, thơm mùi đông
-                        trùng. Sản phẩm đông trùng được đóng gói hộp gỗ vô cùng sang
-                        trọng và lịch sự là quà tặng ý nghĩa đến người thân và gia
-                        đình.
+                        <%=desc%>
                     </p>
 
-                    <div>
+                    <form action="<%= request.getContextPath()%>/detail-product" method="post">
                         <div class="d-flex justify-content-between">
                             <div class="d-flex flex-column gap-2">
                                 <div
@@ -101,7 +107,7 @@
                           <span
                                   class="text-decoration-line-through text-gray_2"
                           >
-                            1.850.000 đ
+                              <fmt:formatNumber value="<%=price%>" type="currency"/>
                           </span></span
                                     >
                                 </div>
@@ -115,7 +121,9 @@
                                     <span
                                     ><strong>:</strong>
                           <span class="text-red_dark fs-1 fw-semibold"
-                          >1.500.000 đ</span
+                          >
+                          <fmt:formatNumber value="<%=price_disc%>" type="currency"/>
+                          </span
                           ></span
                                     >
                                 </div>
@@ -140,7 +148,13 @@
                                                     type="number"
                                                     name="quantity"
                                                     id="quantity"
+                                                    value="1"
                                                     style="outline: none"
+                                            />
+                                            <input
+                                                    type="hidden"
+                                                    name="productId"
+                                                    value="<%=id%>"
                                             />
                                             <span
                                                     class="input-number-increment kgin-sharp-no-left"
@@ -253,18 +267,18 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div
-                                    class="item-label--goldenBackground item-label--clipPath p-1 mt-4 m-auto text-center col-12 col-lg-6"
+                            <button type="submit"
+                                    class=" border-0 pointer item-label--goldenBackground item-label--clipPath p-1 mt-4 m-auto text-center col-12 col-lg-6"
                             >
                                 <div
                                         class="item-label--redTextFeild item-label--clipPath label-Advertise"
                                         style="padding: 0.4rem"
                                 >
                         <span class="fs-2 label-Advertise fw-bold"
-                        >Sản Phẩm Bán Chạy</span
+                        >Mua hàng</span
                         >
                                 </div>
-                            </div>
+                            </button>
                             <div
                                     class="mt-5 mt-lg-4 position-relative col-12 col-lg-6 px-lg-2 px-0"
                             >
@@ -357,7 +371,7 @@
                                 <div>Cam kết hàng chính hãng 100%</div>
                             </div>
                         </div>
-                    </div>
+                    </form>
 
                     <div class="d-flex justify-content-around row mt-5">
                         <div

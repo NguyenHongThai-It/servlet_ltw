@@ -50,6 +50,19 @@ public class Utils {
         return true;
     }
 
+    public void passListUserHighLevel(HttpServletRequest request, int lim) {
+        List<User> lu = new UserModel().getListUserModAndAdmin(lim);
+        request.setAttribute("listUserHighLevel", lu);
+    }
+
+    public boolean authorizationForMod(int role) throws IOException, ServletException {
+        return role > 1 && role < 2;
+    }
+
+    public boolean authorizationForAdmin(int role) throws IOException, ServletException {
+        return role == 2;
+    }
+
     public void passSystemProductList(HttpServletRequest request, String name) {
         List<SystemProduct> listSP = new ArrayList<SystemProduct>();
 
@@ -77,5 +90,13 @@ public class Utils {
         return cart;
     }
 
-
+    public void handlePagination(HttpServletRequest request) {
+        int page = 1;
+        int recordsPerPage = 5;
+        if (request.getParameter("page") != null)
+            page = Integer.parseInt(
+                    request.getParameter("page"));
+        int offset = (page - 1) * recordsPerPage;
+        int noOfRecords = recordsPerPage;
+    }
 }

@@ -1,6 +1,7 @@
 <%@ page import="Entities.Product" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Entities.ContentDetailCat" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/18/2022
@@ -12,7 +13,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-    List<Product> listPro = request.getAttribute("listProduct") != null ? (List<Product>) request.getAttribute("listProduct") : new ArrayList<Product>();
+    List<Product> listPro = request.getAttribute("listProductPage") != null ? (List<Product>) request.getAttribute("listProductPage") : new ArrayList<Product>();
+    ContentDetailCat cdc = request.getAttribute("cdc") != null ? (ContentDetailCat) request.getAttribute("cdc") : new ContentDetailCat();
 
 %>
 <!DOCTYPE html>
@@ -65,6 +67,7 @@
 </head>
 
 <body>
+
 <div class="app">
     <!-- Header -->
     <jsp:include page="include/common/header.jsp"></jsp:include>
@@ -79,7 +82,6 @@
         <!-- Beadcrumb -->
 
         <jsp:include page="include/common/breadcrumb.jsp"></jsp:include>
-
         <div class="container">
 
 
@@ -128,249 +130,14 @@
 
 
                         <!-- Pagination -->
-                        <nav aria-label="Page navigation example " class="mt-3">
-                            <ul
-                                    class="pagination"
-                                    style="display: flex; justify-content: center"
-                            >
-                                <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                    <a
-                                            class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                            href="#"
-                                            aria-label="Previous"
-                                    >
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                    <a
-                                            class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                            href="#"
-                                    >1</a
-                                    >
-                                </li>
-                                <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                    <a
-                                            class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                            href="#"
-                                    >2</a
-                                    >
-                                </li>
-                                <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                    <a
-                                            class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                            href="#"
-                                    >3</a
-                                    >
-                                </li>
-                                <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                    <a
-                                            class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                            href="#"
-                                            aria-label="Next"
-                                    >
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-
+                        <jsp:include page="include/common/pagination.jsp"></jsp:include>
                         <section id="slideBar1" class="bg-white p-3 rounded-3">
                             <div
                                     class="bg-white text-start pe-3 lh-lg overflow-auto scroll-custom"
                                     style="height: 130rem"
                             >
                                 <%--here--%>
-                                <div class="introduce-0">
-                                    <p class="fst-italic">
-                        <span class="fw-bold text-red_medium"
-                        >Đông trùng hạ thảo Hàn Quốc</span
-                        >
-                                        là loài dược liệu quý hiếm ưa chuộng hiện nay. Có tác
-                                        dụng bồi bổ và hỗ trợ điều trị các bệnh về gan, thận hay
-                                        suy nhược cơ thể rất hiệu quả. Vậy đông trùng hạ thảo là
-                                        gì? Tác dụng và mua đông trùng Hàn Quốc ở đâu là tốt
-                                        nhất? Tất cả sẽ có trong bài viết sau đây.
-                                    </p>
-
-                                    <div
-                                            class="introduce-0__img w-75 text-center mt-4 m-auto"
-                                    >
-                                        <img
-                                                src="./asset/img/product/introduce img 1.jpg"
-                                                alt=""
-                                        />
-                                        <p class="text-secondary fst-italic">
-                                            Đông trùng hạ thảo Hàn Quốc là loại nấm tự nhiên ký
-                                            sinh
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="introduce-1 mt-5">
-                                    <h1 class="fw-bold">1. Tìm hiểu về đông trùng hạ thảo</h1>
-                                    <div class="introduce-1-1">
-                                        <h2 class="fw-bold">1.1 Đông trùng hạ thảo là gì?</h2>
-                                        <p>
-                                            <span class="fw-bold">Đông trùng hạ thảo</span> là
-                                            dạng ký sinh của loài nấm Cordyceps sinensis trên cơ
-                                            thể ấu trùng bướm trong môi trường tự nhiên và được
-                                            khai thác tại các dãy núi cao Châu Á. Hiện nay, đông
-                                            trùng hạ thảo Hàn Quốc là loại trùng thảo có giá trị
-                                            dinh dưỡng cao, được ưa chuộng, và nhiều người tin
-                                            dùng bởi tác dụng vượt trội của mình.
-                                        </p>
-                                    </div>
-
-                                    <div class="introduce-1-2 mt-4">
-                                        <h2 class="fw-bold">
-                                            1.2. Phân loại đông trùng hạ thảo phổ biến hiện nay
-                                        </h2>
-                                        <div class="introduce-1-2-1">
-                                            <h3 class="fw-bold">
-                                                1.2.1. Đông trùng hạ thảo Hàn Quốc
-                                            </h3>
-
-                                            <p>
-                                                Đông trùng hạ thảo Hàn Quốc là loại trùng thảo được
-                                                nuôi cấy nhân tạo trong điều kiện tiêu chuẩn theo
-                                                công nghệ hiện đại. Theo đánh giá, thành phần dinh
-                                                dưỡng có trong đông trùng hạ thảo Hàn Quốc tương tự
-                                                với loại tự nhiên, gần bằng với đông trùng hạ thảo ở
-                                                Tây Tạng.
-                                            </p>
-
-                                            <div
-                                                    class="introduce-1-2-1__img w-75 text-center mt-4 m-auto"
-                                            >
-                                                <img
-                                                        src="./asset/img/product/introduce img 2.jpg"
-                                                        alt=""
-                                                />
-                                                <p class="text-secondary fst-italic lh-base">
-                                                    Đông trùng hạ thảo Hàn Quốc là loại trùng thảo
-                                                    được nuôi cấy nhân tạo trong điều kiện tiêu chuẩn
-                                                    theo công nghệ hiện đại
-                                                </p>
-                                            </div>
-
-                                            <p>
-                                                Theo y học cổ truyền, đông trùng hạ thảo Hàn Quốc là
-                                                một loại thảo dược quý, có vị ngọt, tính ẩm, có công
-                                                dụng bổ phế, tráng dương, bổ tinh túy, chỉ huyết, bổ
-                                                dưỡng tạng phủ, hóa đàm. Hỗ trợ điều trị các bệnh về
-                                                thận, sinh lý yếu, xuất tinh sớm, viêm phế quản, đau
-                                                nhức xương khớp, đái đường, suy nhược cơ thể,..
-                                            </p>
-                                        </div>
-
-                                        <div class="introduce-1-2-2">
-                                            <h3 class="fw-bold">
-                                                1.2.2. Đông trùng hạ thảo Tây Tạng
-                                            </h3>
-
-                                            <p>
-                                                Là loại tiêu chuẩn, được hình thành và phát triển
-                                                100% ở tự nhiên. Đây là loại đắt nhất hiện nay với
-                                                giá mỗi kilogam lên đến cả tỷ đồng.
-                                            </p>
-
-                                            <div
-                                                    class="introduce-1-2-2__img w-75 text-center mt-4 m-auto"
-                                            >
-                                                <img
-                                                        src="./asset/img/product/introduce img 3.jpg"
-                                                        alt=""
-                                                />
-                                                <p class="text-secondary fst-italic lh-base">
-                                                    Đông trùng hạ thảo Tây Tạng là loại tiêu chuẩn,
-                                                    phát triển 100% ở tự nhiên
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="introduce-1-2-3">
-                                            <h3 class="fw-bold">
-                                                1.2.3. Đông trùng hạ thảo nhân tạo
-                                            </h3>
-
-                                            <p>
-                                                Là loại được nuôi cấy trong phòng thí nghiệm hay các
-                                                cơ sở nghiên cứu trên ấu trùng của sâu bướm, nhộng
-                                                tằm, bọ xít, ve sầu hoặc gạo lứt, đậu xanh. Thường
-                                                được nuôi cấy ở các quốc như Hàn Quốc, Nhật Bản, Mỹ,
-                                                Việt Nam, Thái Lan.
-                                            </p>
-
-                                            <div
-                                                    class="introduce-1-2-3__img w-75 text-center mt-4 m-auto"
-                                            >
-                                                <img
-                                                        src="./asset/img/product/introduce img 4.jpg"
-                                                        alt=""
-                                                />
-                                                <p class="text-secondary fst-italic lh-base">
-                                                    Đông trùng hạ thảo nhân tạo là loại được nuôi cấy
-                                                    trong phòng thí nghiệm
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="introduce-1-2-4">
-                                            <h3 class="fw-bold">
-                                                1.2.4. Đông trùng hạ thảo dạng tươi
-                                            </h3>
-
-                                            <p>
-                                                Là dạng đông trùng hạ thảo còn nguyên con, được khai
-                                                thác dưới 1 tháng, hình dạng tự nhiên, nguyên con và
-                                                vẫn còn ký sinh trên vật chủ. Nhiệt độ bảo quản có
-                                                thể lên đến -50 độ C.
-                                            </p>
-
-                                            <div
-                                                    class="introduce-1-2-4__img w-75 text-center mt-4 m-auto"
-                                            >
-                                                <img
-                                                        src="./asset/img/product/introduce img 5.jpg"
-                                                        alt=""
-                                                />
-                                                <p class="text-secondary fst-italic lh-base">
-                                                    Đông trùng hạ thảo dạng tươi là dạng nguyên con,
-                                                    được khai thác dưới 1 tháng
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="introduce-1-2-5">
-                                            <h3 class="fw-bold">
-                                                1.2.5. Đông trùng hạ thảo dạng khô
-                                            </h3>
-
-                                            <p>
-                                                Là loại sản phẩm còn nguyên con, được làm sạch, phơi
-                                                khô hoặc bằng phương pháp sấy đối lưu, hoặc sấy
-                                                lạnh, độ ẩm của đông trùng hạ thảo dạng khô chỉ còn
-                                                5% nước là đạt tiêu chuẩn. Sử dụng được lâu, có thể
-                                                bảo quản trong 3 năm và hàm lượng dược tính không
-                                                cao bằng dạng tươi, đạt khoảng 95 -98%.
-                                            </p>
-
-                                            <div
-                                                    class="introduce-1-2-5__img w-75 text-center mt-4 m-auto"
-                                            >
-                                                <img
-                                                        src="./asset/img/product/introduce img 6.jpg"
-                                                        alt=""
-                                                />
-                                                <p class="text-secondary fst-italic lh-base">
-                                                    Đông trùng hạ thảo dạng tươi là dạng nguyên con,
-                                                    được khai thác dưới 1 tháng
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <%=cdc.getContent()%>
                             </div>
                         </section>
                     </div>

@@ -36,6 +36,7 @@
                 <jsp:param name="thumbnail" value="<%=p.getThumbnail()%>"/>
                 <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
                 <jsp:param name="price" value="<%=p.getPrice()%>"/>
+                <jsp:param name="desc" value="<%=p.getDesc()%>"/>
                 <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
             </jsp:include>
         </div>
@@ -51,6 +52,7 @@
                 <jsp:param name="thumbnail" value="<%=p.getThumbnail()%>"/>
                 <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
                 <jsp:param name="price" value="<%=p.getPrice()%>"/>
+                <jsp:param name="desc" value="<%=p.getDesc()%>"/>
                 <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
             </jsp:include>
         </div>
