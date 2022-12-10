@@ -109,52 +109,7 @@
                         </div>
                     </div>
                     <!-- Pagination -->
-                    <nav aria-label="Page navigation example " class="mt-3">
-                        <ul
-                                class="pagination"
-                                style="display: flex; justify-content: center"
-                        >
-                            <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                <a
-                                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                        href="#"
-                                        aria-label="Previous"
-                                >
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                <a
-                                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                        href="#"
-                                >1</a
-                                >
-                            </li>
-                            <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                <a
-                                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                        href="#"
-                                >2</a
-                                >
-                            </li>
-                            <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                <a
-                                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                        href="#"
-                                >3</a
-                                >
-                            </li>
-                            <li class="page-item" style="width: 4.3rem; height: 4rem">
-                                <a
-                                        class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
-                                        href="#"
-                                        aria-label="Next"
-                                >
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <jsp:include page="include/common/pagination.jsp"></jsp:include>
                 </div>
             </div>
         </div>

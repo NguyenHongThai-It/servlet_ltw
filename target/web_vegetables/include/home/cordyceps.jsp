@@ -73,6 +73,7 @@
                 <div class="col-lg-4 col-md-6 col-12  auto-width">
                     <jsp:include page="../common/card.jsp">
                         <jsp:param name="id" value="<%=p.getId()%>"/>
+                        <jsp:param name="desc" value="<%=p.getDesc()%>"/>
 
                         <jsp:param name="name" value="<%=p.getName()%>"/>
                         <jsp:param name="price" value="<%=p.getPrice()%>"/>

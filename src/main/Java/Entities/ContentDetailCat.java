@@ -1,11 +1,11 @@
 package Entities;
 
 public class ContentDetailCat {
-    private int id;
+    private String id;
     private String content;
     private int status;
 
-    public ContentDetailCat(int id, String content, int status) {
+    public ContentDetailCat(String id, String content, int status) {
         this.id = id;
         this.content = content;
         this.status = status;
@@ -14,11 +14,11 @@ public class ContentDetailCat {
     public ContentDetailCat() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

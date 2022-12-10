@@ -16,6 +16,7 @@
     String thumbnail = request.getParameter("thumbnail") != null ? request.getParameter("thumbnail") : "";
     String disc_extra = request.getParameter("disc_extra") != null ? request.getParameter("disc_extra") : "";
     String price = request.getParameter("price") != null ? request.getParameter("price") : "";
+    String desc = request.getParameter("desc") != null ? request.getParameter("desc") : "";
     String price_disc = request.getParameter("price_disc") != null ? request.getParameter("price_disc") : "";
 
 %>
@@ -64,7 +65,7 @@
                             type="button"
                             class="btn btn-primary"
                             data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
+                            data-bs-target="#exampleModal<%=id%>"
                     >
                               <span
                                       class="media-fontsize-sm btn btn-light_1 d-flex align-items-center justify-content-center"
@@ -98,4 +99,12 @@
         </div>
     </div>
 </div>
-<jsp:include page="modal.jsp"></jsp:include>
+<jsp:include page="modal.jsp">
+    <jsp:param name="id" value="<%=id%>"/>
+    <jsp:param name="name" value="<%=name%>"/>
+    <jsp:param name="thumbnail" value="<%=thumbnail%>"/>
+    <jsp:param name="desc" value="<%=desc%>"/>
+    <jsp:param name="disc_extra" value="<%=disc_extra%>"/>
+    <jsp:param name="price" value="<%=price%>"/>
+    <jsp:param name="price_disc" value="<%=price_disc%>"/>
+</jsp:include>

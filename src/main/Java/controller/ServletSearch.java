@@ -13,6 +13,8 @@ import java.util.List;
 @WebServlet("/search")
 public class ServletSearch extends HttpServlet {
     Utils util = new Utils();
+    int page = 1;
+    int recordsPerPage = 3;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,11 +42,23 @@ public class ServletSearch extends HttpServlet {
     }
 
     public boolean handleSearch(HttpServletRequest request) {
+        String pageStr = request.getParameter("page");
+
+        if (pageStr != null) {
+            page = Integer.parseInt(pageStr);
+            if (Integer.parseInt(pageStr) <= 0) page = 1;
+        }
+        int offset = (page - 1) * recordsPerPage;
+        int noOfRecords = recordsPerPage;
+
         String action = request.getParameter("action");
         String name = request.getParameter("name");
         if (name == null) name = "";
         boolean temp = action.equalsIgnoreCase("search");
-        List<Product> lp = new ProductModel().getListProductByName(name);
+        List<Product> lp = new ProductModel().getListProductByName(name, offset, noOfRecords);
+        List<Product> count = new ProductModel().getListProductByName(name, 0, 1000000000);
+
+        request.setAttribute("countProduct", count);
         request.setAttribute("listProduct", lp);
         return temp;
     }

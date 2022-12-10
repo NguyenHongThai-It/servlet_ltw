@@ -187,6 +187,8 @@
                         <jsp:param name="price_disc" value="<%=p.getPriceDisc()%>"/>
                         <jsp:param name="disc_extra" value="<%=p.getDiscExtra()%>"/>
                         <jsp:param name="thumbnail" value="<%=p.getThumbnail()%>"/>
+                        <jsp:param name="desc" value="<%=p.getDesc()%>"/>
+
                     </jsp:include>
                 </div>
 

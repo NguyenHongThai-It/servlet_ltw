@@ -75,7 +75,7 @@
                             </div>
                             <span style="text-indent: 50px;">
                       &MediumSpace; &MediumSpace; &MediumSpace; &MediumSpace; &MediumSpace;
-                      "UserName"</span>
+                      <%=user.getName()%></span>
                         </a>
 
                         <div class="bg-white login--overlay">
@@ -95,6 +95,15 @@
                                         Đơn hàng đã đặt
                                     </div>
                                 </a>
+                                <%
+                                    if (user.getRole() >= 1) {
+                                %>
+                                <a href="<%=request.getContextPath()%>/dashboard-user">
+                                    <div class="login-section-1 login--section pointer">
+                                        Trang quản trị
+                                    </div>
+                                </a>
+                                <%}%>
                                 <form action="<%=request.getContextPath()%>/logout " method="post">
                                     <input type="hidden" name="action" value="logout">
                                     <button type="submit"

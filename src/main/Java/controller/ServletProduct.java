@@ -1,6 +1,8 @@
 package controller;
 
+import Entities.ContentDetailCat;
 import Entities.Product;
+import Model.CategoryModel;
 import Model.ProductModel;
 import utils.Utils;
 
@@ -14,6 +16,8 @@ import java.util.List;
 @WebServlet("/product")
 public class ServletProduct extends HttpServlet {
     Utils util = new Utils();
+    int page = 1;
+    int recordsPerPage = 3;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +29,8 @@ public class ServletProduct extends HttpServlet {
         util.passListCatById(request, "listHerbal", "4");
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
-
+        getListProductWithKey(request, 4, "bestsell", "listProduct");
+        getContentDetailCat(request);
         passListProductByCat(request, 12);
         util.passContactInfor(request);
 
@@ -39,8 +44,19 @@ public class ServletProduct extends HttpServlet {
 
     public void passListProductByCat(HttpServletRequest request, int lim) {
         String condition = request.getParameter("cond");
+//        handle pagination
+        String pageStr = request.getParameter("page");
+
+        if (pageStr != null) {
+            page = Integer.parseInt(pageStr);
+            if (Integer.parseInt(pageStr) <= 0) page = 1;
+        }
+        int offset = (page - 1) * recordsPerPage;
+        int noOfRecords = recordsPerPage;
+
         ProductModel pm = new ProductModel();
         List<Product> lp = null;
+        List<Product> count = null;
         if (condition == null) condition = "";
         switch (condition) {
             case "cat": {
@@ -48,7 +64,9 @@ public class ServletProduct extends HttpServlet {
                 int type = 0;
                 if (temp1 != null) {
                     type = Integer.parseInt(temp1);
-                    lp = pm.getListProductByCatPageProduct(type);
+                    lp = pm.getListProductByCatPageProduct(type, offset, noOfRecords);
+                    count = pm.getListProductByCatPageProduct(type, 0, 1000000000);
+
                 }
                 break;
             }
@@ -59,7 +77,9 @@ public class ServletProduct extends HttpServlet {
 
                 if (parentId != null && temp2 != null) {
                     type = Integer.parseInt(temp2);
-                    lp = pm.getListProductByCat(type, parentId);
+                    lp = pm.getListProductByCat(type, parentId, offset, noOfRecords);
+                    count = pm.getListProductByCat(type, parentId, 0, 1000000000);
+
                 }
                 break;
             }
@@ -77,14 +97,30 @@ public class ServletProduct extends HttpServlet {
                     }
                 }
                 System.out.println(str);
-                lp = pm.getListProductByFilter(str, s);
+                lp = pm.getListProductByFilter(str, s, offset, noOfRecords);
+                count = pm.getListProductByFilter(str, s, 0, 1000000000);
+
                 break;
             }
             default:
-                lp = pm.getListProduct(lim);
+                lp = pm.getListProduct(offset, noOfRecords);
         }
 
+        request.setAttribute("countProduct", count);
+        request.setAttribute("listProductPage", lp);
+    }
 
-        request.setAttribute("listProduct", lp);
+    private void getListProductWithKey(HttpServletRequest request, int limit, String key, String name) {
+        List<Product> listProduct = new ArrayList<Product>();
+        listProduct = new ProductModel().getProductListWithKey(limit, key);
+        request.setAttribute(name, listProduct);
+    }
+
+    private void getContentDetailCat(HttpServletRequest request) {
+        String type = request.getParameter("type");
+
+        CategoryModel cm = new CategoryModel();
+        ContentDetailCat cdc = cm.getContentDetailCat(type, 1);
+        request.setAttribute("cdc", cdc);
     }
 }
