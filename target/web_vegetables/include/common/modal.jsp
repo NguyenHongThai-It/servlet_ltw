@@ -16,9 +16,6 @@
     String price = request.getParameter("price") != null ? request.getParameter("price") : "";
     String price_disc = request.getParameter("price_disc") != null ? request.getParameter("price_disc") : "";
     String desc = request.getParameter("desc") != null ? request.getParameter("desc") : "";
-    out.print(desc);
-
-
 %>
 <div
         class="modal modal-lg fade"

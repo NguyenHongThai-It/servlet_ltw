@@ -41,7 +41,7 @@
 
                         %>
                         <a
-                                href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                                href="<%=request.getContextPath()%>/product?type=<%=cat.getId()%>&cond=cat"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
                             <li><%=cat.getName()%>
@@ -78,7 +78,7 @@
 
                         %>
                         <a
-                                href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                                href="<%=request.getContextPath()%>/product?type=<%=cat.getId()%>&cond=cat"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
                             <li><%=cat.getName()%>
@@ -125,7 +125,7 @@
 
                         %>
                         <a
-                                href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                                href="<%=request.getContextPath()%>/product?type=<%=cat.getId()%>&cond=cat"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
                             <li><%=cat.getName()%>
@@ -168,7 +168,7 @@
 
                         %>
                         <a
-                                href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                                href="<%=request.getContextPath()%>/product?type=<%=cat.getId()%>&cond=cat"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
                             <li><%=cat.getName()%>
@@ -209,7 +209,7 @@
 
                         %>
                         <a
-                                href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
+                                href="<%=request.getContextPath()%>/product?type=<%=cat.getId()%>&cond=cat"
                                 class="border-bottom border-gray_4 category-item list-group-item list-group-item-action"
                         >
                             <li><%=cat.getName()%>
