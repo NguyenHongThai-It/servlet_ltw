@@ -9,28 +9,27 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    List<Product> count = request.getAttribute("countProduct") != null ? (List<Product>) request.getAttribute("countProduct") : new ArrayList<Product>();
-    double numDived = (double) count.size() / 3;
+    int count = request.getAttribute("countProduct") != null ? (int) request.getAttribute("countProduct") : 0;
+    double numDived = (double) count / 5;
     String urlPt = request.getServletPath().replace(".jsp", "");
 
     int pageTemp = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
     String newUrl = "";
     String str = "&page=" + pageTemp;
     int pageCount = (int) Math.ceil(numDived);
-    if (count.size() != 0) {
+    if (count != 0) {
 
 %>
 <nav aria-label="Page navigation example " class="mt-3">
     <ul
-            class="pagination"
-            style="display: flex; justify-content: center"
+            class="pagination d-flex justify-content-center flex-wrap"
     >
         <li class="page-item" style="width: 4.3rem; height: 4rem">
             <%
                 if (pageTemp <= 1) {
             %>
             <a
-                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link disabled"
+                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link disabled text-red_2 opacity-50"
                     href="#"
                     aria-label="Previous"
             >
@@ -39,10 +38,10 @@
             <% }%>
 
             <%
-                newUrl = request.getQueryString().contains("page") ? request.getQueryString().replace(str, "&page=" + (pageTemp - 1)) : request.getQueryString() + "&page=" + (pageTemp - 1);
+                newUrl = (request.getQueryString() != null && request.getQueryString().contains("page")) ? request.getQueryString().replace(str, "&page=" + (pageTemp - 1)) : request.getQueryString() + "&page=" + (pageTemp - 1);
                 if (pageTemp > 1) {%>
             <a
-                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link "
+                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link text-red_2"
                     href="<%=request.getContextPath()%><%=urlPt%>?<%=newUrl%>"
                     aria-label="Previous"
             >
@@ -55,14 +54,14 @@
 
             for (int i = 0; i < pageCount; i++) {
 
-                newUrl = request.getQueryString().contains("page") ? request.getQueryString().replace(str, "&page=" + (i + 1)) : request.getQueryString() + "&page=" + (i + 1);
+                newUrl = (request.getQueryString() != null && request.getQueryString().contains("page"))? request.getQueryString().replace(str, "&page=" + (i + 1)) : request.getQueryString() + "&page=" + (i + 1);
 //
 
         %>
 
         <li class="page-item" style="width: 4.3rem; height: 4rem">
             <a
-                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link"
+                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link text-red_2"
                     href="<%=request.getContextPath()%><%=urlPt%>?<%=newUrl%>"
             ><%=i + 1%>
             </a
@@ -72,12 +71,12 @@
 
         <li class="page-item" style="width: 4.3rem; height: 4rem">
             <%
-                newUrl = request.getQueryString().contains("page") ? request.getQueryString().replace(str, "&page=" + (pageTemp + 1)) : request.getQueryString() + "&page=" + (pageTemp + 1);
+                newUrl =(request.getQueryString() != null && request.getQueryString().contains("page")) ? request.getQueryString().replace(str, "&page=" + (pageTemp + 1)) : request.getQueryString() + "&page=" + (pageTemp + 1);
 
                 if (pageTemp < numDived) {
             %>
             <a
-                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link "
+                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link text-red_2"
                     href="<%=request.getContextPath()%><%=urlPt%>?<%=newUrl%>"
                     aria-label="Next"
             >
@@ -87,7 +86,7 @@
 
             <% if (pageTemp >= numDived) {%>
             <a
-                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link disabled"
+                    class="h-100 w-100 fs-2 d-flex justify-content-center align-items-center page-link disabled text-red_2 opacity-50"
                     href="#"
                     aria-label="Next"
             >

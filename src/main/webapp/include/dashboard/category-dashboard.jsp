@@ -32,9 +32,9 @@
     <ul class="navbar-nav mb-md-4">
         <li>
             <div class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide" href="#">
-                Contacts
+                Online
                 <span
-                        class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-4">13</span>
+                        class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-4"><%=lu.size()%></span>
             </div>
         </li>
 

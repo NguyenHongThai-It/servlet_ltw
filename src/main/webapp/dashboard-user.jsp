@@ -18,7 +18,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
+    <title>Dashboard user</title>
 
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -34,16 +34,9 @@
 </head>
 
 <body>
-${listUser}
 <!-- Edit Form -->
-<jsp:include page="include/dashboard/form-user.jsp"></jsp:include>
 
-<!-- Banner -->
-<a href="https://webpixels.io/components?ref=bbbootstrap"
-   class="btn w-full btn-primary text-truncate rounded-0 py-2 border-0 position-relative" style="z-index: 1000">
-    <strong>Crafted with Webpixels CSS:</strong> The design system for
-    Bootstrap 5. Browse all components &rarr;
-</a>
+
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
     <!-- Vertical Navbar -->
@@ -101,12 +94,12 @@ ${listUser}
                         <!-- Actions -->
                         <div class="col-sm-6 col-12 text-sm-end">
                             <div class="mx-n1">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <a href="<%=request.getContextPath()%>/user-form" class="btn btn-primary"
                                         data-bs-target="#exampleModal"
                                         class="btn d-inline-flex btn-sm btn-primary mx-1">
                                     <span class="pe-2"> <i class="bi bi-plus"></i> </span>
                                     <span>Create</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -278,7 +271,7 @@ ${listUser}
                             <tr>
                                 <td>
                                     <img alt="..."
-                                         src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                                         src="<%=u.getAvatar()%>"
                                          class="avatar avatar-sm rounded-circle me-2"/>
                                     <a class="text-heading font-semibold" href="#">
                                         <%=u.getUserId()%>
@@ -325,13 +318,15 @@ ${listUser}
                                             </span>
                                     <%}%>
                                 </td>
-                                <td class="text-end">
+                                <td class="text-end d-flex align-items-center gap-3 justify-content-end">
+
                                     <%
                                         if (userCurrent.getRole() >= 2) {
 
 
                                     %>
-                                    <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+                                    <a href="<%=request.getContextPath()%>/user-form?id=<%=u.getUserId()%>"
+                                       class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
                                         <span class="pe-2"> <i class="bi bi-pencil"></i> </span>
                                         <span>Edit</span>
                                     </a>
@@ -344,10 +339,16 @@ ${listUser}
 
 
                                     %>
-                                    <button type="button"
-                                            class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
+                                    <form action="<%=request.getContextPath()%>/dashboard-user" method="post">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                            <input type="hidden" name="key" value="remove">
+                                            <input type="hidden" name="id" value="<%=u.getUserId()%>">
+
+                                        </button>
+                                    </form>
+
                                     <%}%>
 
                                 </td>
@@ -359,6 +360,7 @@ ${listUser}
                     <div class="card-footer border-0 py-5">
                         <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
                     </div>
+                    <jsp:include page="include/common/pagination.jsp"></jsp:include>
                 </div>
             </div>
         </main>

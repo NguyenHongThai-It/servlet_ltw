@@ -45,6 +45,7 @@
                         src="<%=is.getImg()%>"
                         alt=""
                         class="block-carousel__img"
+                        style="max-width: 22.5rem; max-height: 16.8rem"
                 /><%=is.getContent()%>
                 </a
                 >

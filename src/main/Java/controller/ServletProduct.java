@@ -106,7 +106,7 @@ public class ServletProduct extends HttpServlet {
                 lp = pm.getListProduct(offset, noOfRecords);
         }
 
-        request.setAttribute("countProduct", count);
+        request.setAttribute("countProduct", count.size());
         request.setAttribute("listProductPage", lp);
     }
 

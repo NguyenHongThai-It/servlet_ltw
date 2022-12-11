@@ -58,7 +58,7 @@ public class ServletSearch extends HttpServlet {
         List<Product> lp = new ProductModel().getListProductByName(name, offset, noOfRecords);
         List<Product> count = new ProductModel().getListProductByName(name, 0, 1000000000);
 
-        request.setAttribute("countProduct", count);
+        request.setAttribute("countProduct", count.size());
         request.setAttribute("listProduct", lp);
         return temp;
     }

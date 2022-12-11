@@ -8,6 +8,6 @@
     <error-code>
       404
     </error-code>
-    <location>/not-found.jsp</location>
+    <location>/not-found</location>
   </error-page>
 </web-app>
