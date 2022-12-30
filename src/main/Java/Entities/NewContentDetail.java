@@ -1,6 +1,8 @@
 package Entities;
 
-public class NewContentDetail {
+import java.io.Serializable;
+
+public class NewContentDetail implements Serializable {
     private String id;
     private String content;
     private int status;

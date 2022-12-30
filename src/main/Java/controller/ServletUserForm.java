@@ -60,7 +60,7 @@ public class ServletUserForm extends HttpServlet {
         }
         UserModel um = new UserModel();
         um.createUser(email, password, name, surname, phone, Integer.parseInt(role), address, status);
-//        request.setAttribute("success", "Bạn đã tạo thành công user");
+        request.setAttribute("success", "Bạn đã tạo thành công user");
         response.sendRedirect(request.getContextPath() + "/dashboard-user");
     }
 

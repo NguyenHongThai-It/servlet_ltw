@@ -39,7 +39,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Brand -->
-            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="<%=request.getContextPath()%>/home">
                 <img src="https://preview.webpixels.io/web/img/logos/clever-primary.svg" alt="..."/>
             </a>
             <!-- User menu (mobile) -->
@@ -226,18 +226,18 @@
                                     <% }%>
 
                                 </div>
-                                <div class="col-6">
-                                    <p class="edit-form__desc">ID</p>
-                                    <% if (userEdit == null) {%>
-                                    <input type="text" name="id" id="id" placeholder="id"
-                                           class="edit-form__input filter--rounded">
-                                    <% }%>
-                                    <% if (userEdit != null) {%>
-                                    <input type="text" name="id" id="id" placeholder="id"
-                                           class="edit-form__input filter--rounded" value="<%=userEdit.getUserId()%>">
-                                    <% }%>
+<%--                                <div class="col-6">--%>
+<%--                                    <p class="edit-form__desc">ID</p>--%>
+<%--                                    <% if (userEdit == null) {%>--%>
+<%--                                    <input type="text" name="id" id="id" placeholder="id"--%>
+<%--                                           class="edit-form__input filter--rounded">--%>
+<%--                                    <% }%>--%>
+<%--                                    <% if (userEdit != null) {%>--%>
+<%--                                    <input type="text" name="id" id="id" placeholder="id"--%>
+<%--                                           class="edit-form__input filter--rounded" value="<%=userEdit.getUserId()%>">--%>
+<%--                                    <% }%>--%>
 
-                                </div>
+<%--                                </div>--%>
 
                                 <div class="col-6">
                                     <p class="edit-form__desc">SDT</p>
@@ -303,19 +303,34 @@
 
                                 <div class="col-3">
                                     <label class="edit-form__desc me-2 d-block">Quyền Hạn</label>
-                                    <input type="radio" name="role" value="0" checked/> 0
-                                    <input type="radio" name="role" value="1"/> 1
-                                    <input type="radio" name="role" value="2"/> 2
+                                    <%
+                                        if (userEdit != null) {%>
+                                    <input type="radio" name="role" value="0"
+                                           checked="<%=userEdit.getRole()==0?true:false%>"/> User
+                                    <input type="radio" name="role" value="1"
+                                           checked="<%=userEdit.getRole()==0?true:false%>"/> Mod
+                                    <input type="radio" name="role" value="2"
+                                           checked="<%=userEdit.getRole()==0?true:false%>"/> Admin
 
+                                    <%} %>
+                                    <% if (userEdit == null) {%>
+                                    <input type="radio" name="role" value="0"
+                                           checked/> User
+                                    <input type="radio" name="role" value="1"
+                                    /> Mod
+                                    <input type="radio" name="role" value="2"
+                                    /> Admin
+                                    <% }%>
                                 </div>
                                 <div class="col-3 ">
                                     <label class="edit-form__desc me-2  d-block" for="status">Trạng thái</label>
                                     <% if (userEdit == null) {%>
-                                    <input type="checkbox" name="status" id="status" value="1"/> Có
+                                    <input type="checkbox" name="status" id="status" value="1" class="me-2"/> Có
 
                                     <% }%>
                                     <% if (userEdit != null) {%>
-                                    <input type="checkbox" name="status" id="status" value="<%=userEdit.getStatus()%>">Có
+                                    <input type="checkbox" name="status" id="status"
+                                           value="<%=userEdit.getStatus()%> checked" class="me-2">Có
 
                                     <% }%>
 
@@ -355,7 +370,7 @@
                                 <% }%>
                                 <% if (userEdit != null) {%>
                                 <input type="hidden" name="key" value="edit">
-                                <input type="hidden" name="idCurrent" value="<%=userEdit.getId()%>">
+                                <input type="hidden" name="idCurrent" value="<%=userEdit.getUserId()%>">
 
                                 <% }%>
                                 <div class="col-12 d-flex justify-content-end align-items-end mt-5 pt-5 border-top">

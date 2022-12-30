@@ -562,4 +562,46 @@ public class UserModel {
         }
         return user;
     }
+
+    public User forgetPasswrod(String upw, String umail) {
+        User user = null;
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+            String passwordHash = BCrypt.hashpw(upw, BCrypt.gensalt());
+            String query = "update users set password = ? where email = ? ";
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setString(1, passwordHash);
+            pstmtObj.setString(2, umail);
+
+            pstmtObj.executeUpdate();
+
+
+            user = getUser(umail, upw);
+        } catch (Exception e) {
+
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+
+        return user;
+    }
 }

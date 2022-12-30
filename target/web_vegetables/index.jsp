@@ -51,7 +51,8 @@
             referrerpolicy="no-referrer"
     ></script>
     <!-- CUSTOM -->
-    <link rel="stylesheet" href="./asset/scss/custom.css"/>
+        <link rel="stylesheet" href="./asset/scss/custom.css"/>
+
     <link rel="stylesheet" href="./asset/scss/base/common.css"/>
 
     <link rel="stylesheet" href="./asset/scss/css/home.css"/>
@@ -88,22 +89,22 @@
                     <c:forEach var="service" items="${listService}">
 
 
-                    <div class="col-lg-4 col-md-4">
-                        <div class="d-flex payment-method-justify">
-                            <img
-                                    class="me-4 logo-header"
-                                    src="https://kgin.com.vn/wp-content/uploads/2021/09/logo_header_1.jpg"
-                                    alt="Tiêu chuẩn Châu Âu"
-                            />
-                            <div>
-                                <b class="fs-3">${service.getContent()}</b>
-                                <br/>
-                                <span class="text-secondary fs-4"
-                                >${service.getSubContent()}</span
-                                >
+                        <div class="col-lg-4 col-md-4">
+                            <div class="d-flex payment-method-justify">
+                                <img
+                                        class="me-4 logo-header"
+                                        src="https://kgin.com.vn/wp-content/uploads/2021/09/logo_header_1.jpg"
+                                        alt="Tiêu chuẩn Châu Âu"
+                                />
+                                <div>
+                                    <b class="fs-3">${service.getContent()}</b>
+                                    <br/>
+                                    <span class="text-secondary fs-4"
+                                    >${service.getSubContent()}</span
+                                    >
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </c:forEach>
                 </div>
             </section>

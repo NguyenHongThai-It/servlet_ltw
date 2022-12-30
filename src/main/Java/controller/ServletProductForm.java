@@ -75,7 +75,7 @@ public class ServletProductForm extends HttpServlet {
         ProductModel pm = new ProductModel();
         System.out.println(product.toString());
         pm.createProduct(product);
-//        request.setAttribute("success", "Bạn đã tạo thành công user");
+        request.setAttribute("success", "Bạn đã tạo thành công user");
         response.sendRedirect(request.getContextPath() + "/dashboard-product");
     }
 
@@ -116,6 +116,8 @@ public class ServletProductForm extends HttpServlet {
         System.out.println(product.toString());
         pm.updateProductAllField(product, idCurrent);
         request.setAttribute("success", "Bạn đã tạo thành công user");
+        //        request.getRequestDispatcher("dashboard-user.jsp").forward(request, response);
+
         response.sendRedirect(request.getContextPath() + "/dashboard-product");
     }
 

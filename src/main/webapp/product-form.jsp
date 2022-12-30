@@ -42,7 +42,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Brand -->
-            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0"  href="<%=request.getContextPath()%>/home">
                 <img src="https://preview.webpixels.io/web/img/logos/clever-primary.svg" alt="..."/>
             </a>
             <!-- User menu (mobile) -->
@@ -203,18 +203,18 @@
                             <!-- Product Overview -->
                             <h3 class="fw-bold text-primary py-3 border-bottom-2">Sản Phẩm</h3>
                             <div class="row row-cols-auto bg-white pb-5">
-                                <div class="col-6">
-                                    <p class="edit-form__desc">ID</p>
-                                    <% if (proEdit == null) {%>
-                                    <input type="text" name="id" id="id" placeholder="Product id"
-                                           class="edit-form__input filter--rounded">
-                                    <% }%>
-                                    <% if (proEdit != null) {%>
-                                    <input type="text" name="id" id="id" placeholder="Product id"
-                                           class="edit-form__input filter--rounded" value="<%=proEdit.getId()%>">
-                                    <% }%>
+<%--                                <div class="col-6">--%>
+<%--                                    <p class="edit-form__desc">ID</p>--%>
+<%--                                    <% if (proEdit == null) {%>--%>
+<%--                                    <input type="text" name="id" id="id" placeholder="Product id"--%>
+<%--                                           class="edit-form__input filter--rounded">--%>
+<%--                                    <% }%>--%>
+<%--                                    <% if (proEdit != null) {%>--%>
+<%--                                    <input type="text" name="id" id="id" placeholder="Product id"--%>
+<%--                                           class="edit-form__input filter--rounded" value="<%=proEdit.getId()%>">--%>
+<%--                                    <% }%>--%>
 
-                                </div>
+<%--                                </div>--%>
 
                                 <div class="col-6">
                                     <p class="edit-form__desc">Tên Sản Phẩm</p>

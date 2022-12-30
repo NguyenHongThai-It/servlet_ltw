@@ -1,6 +1,8 @@
 package Entities;
 
-public class ContactInfor {
+import java.io.Serializable;
+
+public class ContactInfor implements Serializable {
     private String id;
     private String hotline;
     private String zalo;

@@ -1,6 +1,8 @@
 package Entities;
 
-public class OrderSuccess {
+import java.io.Serializable;
+
+public class OrderSuccess implements Serializable {
     private String id;
     private String productId;
     private int num;

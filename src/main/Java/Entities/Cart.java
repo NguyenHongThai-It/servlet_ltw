@@ -1,6 +1,8 @@
 package Entities;
 
-public class Cart {
+import java.io.Serializable;
+
+public class Cart implements Serializable {
     private String id;
     private String productId;
     private String userId;

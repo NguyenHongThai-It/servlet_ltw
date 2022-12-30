@@ -721,7 +721,7 @@ public class ProductModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String query = "insert into product (name,slug,description,rate,amount_sold,price,specification,origin,brand,price_disc,amount_rest,code_disc,dis_extra,content_detail_product,img,types,outstanding,bestsell,forOld,form,thumbnail,status,id) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "insert into product (name,slug,description,rate,amount_sold,price,specification,origin,brand,price_disc,amount_rest,code_disc,dis_extra,content_detail_product,img,types,outstanding,bestsell,forOld,form,thumbnail,status,id) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,UUID())";
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, pro.getName());
             pstmtObj.setString(2, pro.getSlug());
@@ -745,7 +745,6 @@ public class ProductModel {
             pstmtObj.setInt(20, pro.getForm());
             pstmtObj.setString(21, pro.getThumbnail());
             pstmtObj.setInt(22, pro.getStatus());
-            pstmtObj.setString(23, pro.getId());
 
             pstmtObj.executeUpdate();
 

@@ -42,7 +42,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Brand -->
-            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0"  href="<%=request.getContextPath()%>/home">
                 <img src="https://preview.webpixels.io/web/img/logos/clever-primary.svg" alt="..."/>
             </a>
             <!-- User menu (mobile) -->

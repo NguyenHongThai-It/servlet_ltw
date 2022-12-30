@@ -1,6 +1,8 @@
 package Entities;
 
-public class New {
+import java.io.Serializable;
+
+public class New implements Serializable {
     private String id;
     private String categoryId;
     private String name;

@@ -1,6 +1,8 @@
 package Entities;
 
-public class ContentDetailCat {
+import java.io.Serializable;
+
+public class ContentDetailCat implements Serializable {
     private String id;
     private String content;
     private int status;

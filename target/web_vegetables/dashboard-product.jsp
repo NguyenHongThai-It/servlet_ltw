@@ -54,7 +54,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Brand -->
-            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="<%=request.getContextPath()%>/home">
                 <img src="https://preview.webpixels.io/web/img/logos/clever-primary.svg" alt="..."/>
             </a>
             <!-- User menu (mobile) -->
@@ -107,6 +107,9 @@
                             </div>
                         </div>
                     </div>
+
+                    <p style="color: limegreen"><%=request.getAttribute("success") != null ? request.getAttribute("success").toString() : ""%>
+                    </p>
                     <!-- Nav -->
                     <ul class="nav nav-tabs mt-4 overflow-x border-0">
                         <li class="nav-item">
@@ -302,7 +305,7 @@
                                     </a>
                                     <%}%>
 
-                                    <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                    <a href="<%=request.getContextPath()%>/detail-product?id=<%=p.getId()%>" class="btn btn-sm btn-neutral">View</a>
 
                                     <%
                                         if (userCurrent.getRole() >= 2) {
@@ -322,7 +325,7 @@
                         </table>
                     </div>
                     <div class="card-footer border-0 py-5">
-                        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+                        <span class="text-muted text-sm">Hiện <%=lp.size()%> sản phẩm trong ${countProduct} kết quả được tìm thấy</span>
                     </div>
                     <jsp:include page="include/common/pagination.jsp"></jsp:include>
                 </div>

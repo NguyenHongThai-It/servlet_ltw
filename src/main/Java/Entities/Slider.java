@@ -1,6 +1,8 @@
 package Entities;
 
-public class Slider {
+import java.io.Serializable;
+
+public class Slider implements Serializable {
     private String id;
     private String name;
     private String link;

@@ -1,6 +1,8 @@
 package Entities;
 
-public class Service {
+import java.io.Serializable;
+
+public class Service implements Serializable {
     private String id;
     private String content;
     private String subContent;

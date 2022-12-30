@@ -41,6 +41,10 @@
 
     <!-- CUSTOM -->
     <link rel="stylesheet" href="./asset/scss/custom.css"/>
+
+    <link rel="stylesheet" href="./asset/scss/custom.css"/>
+    <link rel="stylesheet" href="asset"/>
+
     <link rel="stylesheet" href="./asset/scss/base/common.css"/>
     <link rel="stylesheet" href="./asset/scss/base/_header.css"/>
     <link rel="stylesheet" href="./asset/scss/base/_footer.css"/>

@@ -726,7 +726,7 @@
 </div>
 </body>
 
-<script src="asset/js/common.js"></script>
+<script src="./asset/js/common.js"></script>
 <script>
     const all = document.querySelectorAll(".app-address");
     const imgScroll = document.querySelector(".img-scroll");

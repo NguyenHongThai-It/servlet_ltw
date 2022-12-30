@@ -18,14 +18,24 @@ import java.util.List;
 @WebServlet("/login")
 public class ServletLogin extends HttpServlet {
 
+    Utils util = new Utils();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         if (new Utils().authentication(request)) {
             response.sendRedirect(request.getContextPath() + "/home");
             return;
         }
-        new Utils().passListNav(request);
+
+        util.passListMenu(request, "listMenu");
+        util.passListCatById(request, "listRedGinseng", "1");
+        util.passListCatById(request, "listCordyceps", "2");
+        util.passListCatById(request, "listGanoderma", "3");
+        util.passListCatById(request, "listHerbal", "4");
+        util.passListCatById(request, "listCatSP", "5");
+        util.passListCatById(request, "listCatNew", "6");
+        util.passListNav(request);
         request.getRequestDispatcher("login.jsp").forward(request, response);
 
 
@@ -43,7 +53,9 @@ public class ServletLogin extends HttpServlet {
 
         if (user == null) {
             request.setAttribute("errorLogin", "Mật khẩu hoặc tài khoản sai");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+//            request.getRequestDispatcher("login.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/login");
+
             return;
         }
         request.getSession().invalidate();

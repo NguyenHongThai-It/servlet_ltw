@@ -50,7 +50,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Brand -->
-            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="<%=request.getContextPath()%>/home">
                 <img src="https://preview.webpixels.io/web/img/logos/clever-primary.svg" alt="..."/>
             </a>
             <!-- User menu (mobile) -->
@@ -95,15 +95,17 @@
                         <div class="col-sm-6 col-12 text-sm-end">
                             <div class="mx-n1">
                                 <a href="<%=request.getContextPath()%>/user-form" class="btn btn-primary"
-                                        data-bs-target="#exampleModal"
-                                        class="btn d-inline-flex btn-sm btn-primary mx-1">
+                                   data-bs-target="#exampleModal"
+                                   class="btn d-inline-flex btn-sm btn-primary mx-1">
                                     <span class="pe-2"> <i class="bi bi-plus"></i> </span>
                                     <span>Create</span>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <!-- Nav -->
+                    <p style="color: limegreen"><%=request.getAttribute("success") != null ? request.getAttribute("success").toString() : ""%>
+
+                        <!-- Nav -->
                     <ul class="nav nav-tabs mt-4 overflow-x border-0">
                         <li class="nav-item">
                             <a href="#" class="nav-link active">All files</a>
@@ -358,7 +360,7 @@
                         </table>
                     </div>
                     <div class="card-footer border-0 py-5">
-                        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+                        <span class="text-muted text-sm">Hiện <%=lu.size()%> sản phẩm trong ${countProduct} kết quả được tìm thấy</span>
                     </div>
                     <jsp:include page="include/common/pagination.jsp"></jsp:include>
                 </div>

@@ -86,16 +86,11 @@
     <!-- Push content down -->
     <div class="mt-auto"></div>
     <!-- User (md) -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="bi bi-person-square"></i> Account
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
+    <form class="navbar-nav" action="<%=request.getContextPath()%>/logout" method="post">
+        <button class="nav-item bg-white">
+            <span class="nav-link">
                 <i class="bi bi-box-arrow-left"></i> Logout
-            </a>
-        </li>
-    </ul>
+            </span>
+        </button>
+    </form>
 </div>
