@@ -53,8 +53,7 @@ public class ServletLogin extends HttpServlet {
 
         if (user == null) {
             request.setAttribute("errorLogin", "Mật khẩu hoặc tài khoản sai");
-//            request.getRequestDispatcher("login.jsp").forward(request, response);
-            response.sendRedirect(request.getContextPath() + "/login");
+            doGet(request, response);
 
             return;
         }

@@ -35,8 +35,20 @@
 
 <body>
 <!-- Edit Form -->
+<%
+    List<User> lu = request.getAttribute("listUser") != null ? (List<User>) request.getAttribute("listUser") : new ArrayList<User>();
+    User userCurrent = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User();
+    List<User> lu1 = request.getAttribute("userWithRole0") != null ? (List<User>) request.getAttribute("userWithRole0") : new ArrayList<User>();
+    List<User> lu2 = request.getAttribute("userWithRole1") != null ? (List<User>) request.getAttribute("userWithRole1") : new ArrayList<User>();
+    List<User> lu3 = request.getAttribute("userWithRole2") != null ? (List<User>) request.getAttribute("userWithRole2") : new ArrayList<User>();
+    List<User> lu4 = request.getAttribute("userListActive") != null ? (List<User>) request.getAttribute("userListActive") : new ArrayList<User>();
+    int total = request.getAttribute("countProduct") != null ? (int) request.getAttribute("countProduct") : 1;
+    double percentOne = Math.ceil((lu1.size() * 100 / total));
+    double percentTwo = Math.ceil((lu2.size() * 100 / total));
+    double percentThree = Math.ceil((lu3.size() * 100 / total));
+    double percentFour = Math.ceil((lu4.size() * 100 / total));
 
-
+%>
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
     <!-- Vertical Navbar -->
@@ -125,8 +137,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Budget</span>
-                                        <span class="h3 font-bold mb-0">$750.90</span>
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Tổng user</span>
+                                        <span class="h3 font-bold mb-0">${userWithRole0.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -136,9 +148,9 @@
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
                                         <span class="badge badge-pill bg-soft-success text-success me-2">
-                                            <i class="bi bi-arrow-up me-1"></i>13%
+                                            <i class="bi bi-arrow-up me-1"></i><%=percentOne%>%
                                         </span>
-                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+<%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -148,9 +160,9 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">New
-                                                projects</span>
-                                        <span class="h3 font-bold mb-0">215</span>
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Tổng mod
+                                                </span>
+                                        <span class="h3 font-bold mb-0">${userWithRole1.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -160,9 +172,9 @@
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
                                         <span class="badge badge-pill bg-soft-success text-success me-2">
-                                            <i class="bi bi-arrow-up me-1"></i>30%
+                                            <i class="bi bi-arrow-up me-1"></i><%=percentTwo%>%
                                         </span>
-                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+<%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -172,9 +184,9 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total
-                                                hours</span>
-                                        <span class="h3 font-bold mb-0">1.400</span>
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Tổng
+                                                Admin</span>
+                                        <span class="h3 font-bold mb-0">${userWithRole2.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -183,10 +195,11 @@
                                     </div>
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
-                                        <span class="badge badge-pill bg-soft-danger text-danger me-2">
-                                            <i class="bi bi-arrow-down me-1"></i>-5%
+                                              <span class="badge badge-pill bg-soft-success text-success me-2">
+                                            <i class="bi bi-arrow-down me-1"></i><%=percentThree%>%
                                         </span>
-                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+
+<%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -196,9 +209,9 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Work
-                                                load</span>
-                                        <span class="h3 font-bold mb-0">95%</span>
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">
+                                                Tổng người hoạt động</span>
+                                        <span class="h3 font-bold mb-0">${userListActive.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
@@ -208,7 +221,7 @@
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
                                         <span class="badge badge-pill bg-soft-success text-success me-2">
-                                            <i class="bi bi-arrow-up me-1"></i>10%
+                                            <i class="bi bi-arrow-up me-1"></i><%=percentFour%>%
                                         </span>
                                     <span class="text-nowrap text-xs text-muted">Since last month</span>
                                 </div>
@@ -264,8 +277,7 @@
                             </thead>
                             <tbody>
                             <%
-                                List<User> lu = request.getAttribute("listUser") != null ? (List<User>) request.getAttribute("listUser") : new ArrayList<User>();
-                                User userCurrent = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User();
+
                                 for (User u : lu) {
 
 
@@ -360,7 +372,7 @@
                         </table>
                     </div>
                     <div class="card-footer border-0 py-5">
-                        <span class="text-muted text-sm">Hiện <%=lu.size()%> sản phẩm trong ${countProduct} kết quả được tìm thấy</span>
+                        <span class="text-muted text-sm">Hiện <%=lu.size()%> người dùng trong ${countProduct} kết quả được tìm thấy</span>
                     </div>
                     <jsp:include page="include/common/pagination.jsp"></jsp:include>
                 </div>

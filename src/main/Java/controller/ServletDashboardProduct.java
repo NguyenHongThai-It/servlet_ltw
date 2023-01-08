@@ -10,6 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/dashboard-product")
@@ -25,6 +26,9 @@ public class ServletDashboardProduct extends HttpServlet {
         }
         util.passListUserHighLevel(request, 10);
         passListUserByFilter(request);
+        passProductListWithStatus(request, 999);
+        passProductListWithStatus(request, 0);
+        passProductListWithStatus(request, 1);
         request.getRequestDispatcher("dashboard-product.jsp").forward(request, response);
 
     }
@@ -46,15 +50,16 @@ public class ServletDashboardProduct extends HttpServlet {
                 if (id == null || id == "") return;
                 id = id.trim();
                 pm.removeProduct(id);
-                request.setAttribute("successAction", "Xóa thành công product với id: " + id);
+                request.setAttribute("success", "Xóa thành công product với id: " + id);
 
                 break;
             }
             default:
                 break;
         }
+        doGet(request,response);
 //        request.getRequestDispatcher("dashboard-user.jsp").forward(request, response);
-        response.sendRedirect(request.getContextPath() + "/dashboard-product");
+//        response.sendRedirect(request.getContextPath() + "/dashboard-product");
     }
 
     public void passListUserByFilter(HttpServletRequest request) {
@@ -82,5 +87,12 @@ public class ServletDashboardProduct extends HttpServlet {
 
     }
 
+    public void passProductListWithStatus(HttpServletRequest request, int status) {
+        ProductModel pm = new ProductModel();
+        List<Product> lp = new ArrayList<>();
+        lp = pm.getListProductWithStatus(status);
+
+        request.setAttribute("productListWithStatus" + status, lp);
+    }
 
 }

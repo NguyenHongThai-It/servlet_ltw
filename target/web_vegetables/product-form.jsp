@@ -202,19 +202,23 @@
                         <div class="container bg-white rounded-3 py-2" style="width: 75%; margin-top: 5rem;">
                             <!-- Product Overview -->
                             <h3 class="fw-bold text-primary py-3 border-bottom-2">Sản Phẩm</h3>
-                            <div class="row row-cols-auto bg-white pb-5">
-                                <div class="col-6">
-                                    <p class="edit-form__desc">ID</p>
-                                    <% if (proEdit == null) {%>
-                                    <input type="text" name="id" id="id" placeholder="Product id"
-                                           class="edit-form__input filter--rounded">
-                                    <% }%>
-                                    <% if (proEdit != null) {%>
-                                    <input type="text" name="id" id="id" placeholder="Product id"
-                                           class="edit-form__input filter--rounded" value="<%=proEdit.getId()%>">
-                                    <% }%>
+                            <p style="color: limegreen"><%=request.getAttribute("success") != null ? request.getAttribute("success").toString() : ""%>
 
-                                </div>
+                            <p style="color: red"><%=request.getAttribute("error") != null ? request.getAttribute("error").toString() : ""%>
+
+                            <div class="row row-cols-auto bg-white pb-5">
+<%--                                <div class="col-6">--%>
+<%--                                    <p class="edit-form__desc">ID</p>--%>
+<%--                                    <% if (proEdit == null) {%>--%>
+<%--                                        <input type="text" name="id" id="id" placeholder="Product id"--%>
+<%--                                           class="edit-form__input filter--rounded">--%>
+<%--                                    <% }%>--%>
+<%--                                    <% if (proEdit != null) {%>--%>
+<%--                                    <input type="text" name="id" id="id" placeholder="Product id"--%>
+<%--                                           class="edit-form__input filter--rounded" value="<%=proEdit.getId()%>">--%>
+<%--                                    <% }%>--%>
+
+<%--                                </div>--%>
 
                                 <div class="col-6">
                                     <p class="edit-form__desc">Tên Sản Phẩm</p>
@@ -505,7 +509,7 @@
                                 <div class="col-6">
                                     <p class="edit-form__desc">Dạng sản phẩm (bột,viên...)</p>
                                     <% if (proEdit == null) {%>
-                                    <input type="text" oninput="checkForm()" name="form" id="form"
+                                    <input type="text" onchange="checkForm()" name="form" id="form"
                                            placeholder="Product Form" class="edit-form__input filter--rounded">
                                     <% }%>
                                     <% if (proEdit != null) {%>
@@ -535,6 +539,8 @@
     </div>
 </div>
 </body>
+<script src="asset/js/dashboard-product.js">
 
+</script>
 
 </html>

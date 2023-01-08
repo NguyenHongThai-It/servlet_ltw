@@ -52,7 +52,7 @@ public class NewPassword extends HttpServlet {
                 return;
 
             } else {
-                request.setAttribute("error", "Lấy lại mật khẩu thất bại");
+                request.setAttribute("errorTake", "Lấy lại mật khẩu thất bại");
                 dispatcher = request.getRequestDispatcher("/login");
                 dispatcher.forward(request, response);
                 return;

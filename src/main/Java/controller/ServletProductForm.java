@@ -1,6 +1,7 @@
 package controller;
 
 import Entities.Product;
+import Entities.User;
 import Model.ProductModel;
 import utils.Utils;
 
@@ -15,6 +16,11 @@ public class ServletProductForm extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        if (!util.authentication(request) || !util.authorizationForAdmin(user.getRole())) {
+            response.sendRedirect(request.getContextPath() + "/not-found");
+            return;
+        }
         util.passListUserHighLevel(request, 10);
         handleGetProduct(request);
         request.getRequestDispatcher("product-form.jsp").forward(request, response);
@@ -23,6 +29,11 @@ public class ServletProductForm extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        if (!util.authentication(request) || !util.authorizationForAdmin(user.getRole())) {
+            response.sendRedirect(request.getContextPath() + "/not-found");
+            return;
+        }
         String key = request.getParameter("key");
         if (key == null) return;
 
@@ -43,7 +54,7 @@ public class ServletProductForm extends HttpServlet {
     public void handleCreateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String thumbnail = request.getParameter("img");
-        String id = request.getParameter("id");
+//        String id = request.getParameter("id");
         String slug = request.getParameter("slug");
         String origin = request.getParameter("origin");
         String brand = request.getParameter("brand");
@@ -62,7 +73,7 @@ public class ServletProductForm extends HttpServlet {
         String outstanding = request.getParameter("outstanding");
         String forOld = request.getParameter("forOld");
         String form = request.getParameter("form");
-        if (name == "" || thumbnail == "" || id == "" || slug == "" || origin == "" ||
+        if (name == "" || thumbnail == "" || slug == "" || origin == "" ||
                 brand == "" || description == "" || content_detail_product == "" || type == ""
                 || specification == "" || amount_sold == "" || amount_rest == ""
                 || rate == "" || price == "" || price_disc == "" || code_disc == "" || dis_extra == "" || best_sell == "" || outstanding == ""
@@ -71,19 +82,21 @@ public class ServletProductForm extends HttpServlet {
             request.getRequestDispatcher("product-form.jsp").forward(request, response);
             return;
         }
-        Product product = new Product(id, name, slug, description, Integer.parseInt(rate), Integer.parseInt(amount_sold), Integer.parseInt(price), specification, origin, brand, Integer.parseInt(price_disc), Integer.parseInt(amount_rest), code_disc, Integer.parseInt(dis_extra), content_detail_product, 0, Integer.parseInt(type), Integer.parseInt(outstanding), Integer.parseInt(best_sell), Integer.parseInt(forOld), Integer.parseInt(form), thumbnail, 1);
+        Product product = new Product("", name, slug, description, Integer.parseInt(rate), Integer.parseInt(amount_sold), Integer.parseInt(price), specification, origin, brand, Integer.parseInt(price_disc), Integer.parseInt(amount_rest), code_disc, Integer.parseInt(dis_extra), content_detail_product, 0, Integer.parseInt(type), Integer.parseInt(outstanding), Integer.parseInt(best_sell), Integer.parseInt(forOld), Integer.parseInt(form), thumbnail, 1);
         ProductModel pm = new ProductModel();
         System.out.println(product.toString());
         pm.createProduct(product);
-        request.setAttribute("success", "Bạn đã tạo thành công user");
-        response.sendRedirect(request.getContextPath() + "/dashboard-product");
+        request.setAttribute("success", "Bạn đã tạo thành công product với tên: " + name);
+        doGet(request,response);
+
+//        response.sendRedirect(request.getContextPath() + "/dashboard-product");
     }
 
     public void handleEditProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idCurrent = request.getParameter("idCurrent");
         String name = request.getParameter("name");
         String thumbnail = request.getParameter("img");
-        String id = request.getParameter("id");
+//        String id = request.getParameter("id");
         String slug = request.getParameter("slug");
         String origin = request.getParameter("origin");
         String brand = request.getParameter("brand");
@@ -102,7 +115,7 @@ public class ServletProductForm extends HttpServlet {
         String outstanding = request.getParameter("outstanding");
         String forOld = request.getParameter("forOld");
         String form = request.getParameter("form");
-        if (name == "" || thumbnail == "" || id == "" || slug == "" || origin == "" ||
+        if (name == "" || thumbnail == "" || idCurrent == "" || slug == "" || origin == "" ||
                 brand == "" || description == "" || content_detail_product == "" || type == ""
                 || specification == "" || amount_sold == "" || amount_rest == ""
                 || rate == "" || price == "" || price_disc == "" || code_disc == "" || dis_extra == "" || best_sell == "" || outstanding == ""
@@ -111,14 +124,15 @@ public class ServletProductForm extends HttpServlet {
             request.getRequestDispatcher("product-form.jsp").forward(request, response);
             return;
         }
-        Product product = new Product(id, name, slug, description, Integer.parseInt(rate), Integer.parseInt(amount_sold), Integer.parseInt(price), specification, origin, brand, Integer.parseInt(price_disc), Integer.parseInt(amount_rest), code_disc, Integer.parseInt(dis_extra), content_detail_product, 0, Integer.parseInt(type), Integer.parseInt(outstanding), Integer.parseInt(best_sell), Integer.parseInt(forOld), Integer.parseInt(form), thumbnail, 1);
+        Product product = new Product(idCurrent, name, slug, description, Integer.parseInt(rate), Integer.parseInt(amount_sold), Integer.parseInt(price), specification, origin, brand, Integer.parseInt(price_disc), Integer.parseInt(amount_rest), code_disc, Integer.parseInt(dis_extra), content_detail_product, 0, Integer.parseInt(type), Integer.parseInt(outstanding), Integer.parseInt(best_sell), Integer.parseInt(forOld), Integer.parseInt(form), thumbnail, 1);
         ProductModel pm = new ProductModel();
         System.out.println(product.toString());
         pm.updateProductAllField(product, idCurrent);
-        request.setAttribute("success", "Bạn đã tạo thành công user");
-        //        request.getRequestDispatcher("dashboard-user.jsp").forward(request, response);
+        request.setAttribute("success", "Bạn đã edit thành công product với id: " + idCurrent);
+        doGet(request,response);
+//        request.getRequestDispatcher("product-form.jsp").forward(request, response);
 
-        response.sendRedirect(request.getContextPath() + "/dashboard-product");
+//        response.sendRedirect(request.getContextPath() + "/dashboard-product");
     }
 
     public Product handleGetProduct(HttpServletRequest request) {

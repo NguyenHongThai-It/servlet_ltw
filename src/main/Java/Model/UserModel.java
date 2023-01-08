@@ -32,7 +32,7 @@ public class UserModel {
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
 
-            String query = "select * from users where email = ?";
+            String query = "select * from users where email = ? and status =1";
 
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, email);
@@ -373,7 +373,7 @@ public class UserModel {
         return listUsers;
     }
 
-    public List<User> getAllUser() {
+    public List<User> getAllUserActive() {
         List<User> listUsers = new ArrayList<>();
         User user = null;
 
@@ -383,7 +383,7 @@ public class UserModel {
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
 
-            String query = "select * from users ";
+            String query = "select * from users where  status =1";
 
             pstmtObj = connObj.prepareStatement(query);
 
@@ -469,18 +469,18 @@ public class UserModel {
             connObj = dataSource.getConnection();
             String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 
-            String query = " update users set surname =?, name = ?, email=?, sdt=?, password=? ,address=?,role=?,status=? where id = ?";
+            String query = " update users set surname =?, name = ?, email=?, sdt=? ,address=?,role=?,status=? where id = ?";
 
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, surname);
             pstmtObj.setString(2, nameUser);
             pstmtObj.setString(3, email);
             pstmtObj.setString(4, tel);
-            pstmtObj.setString(5, passwordHash);
-            pstmtObj.setString(6, address);
-            pstmtObj.setInt(7, role);
-            pstmtObj.setInt(8, status);
-            pstmtObj.setString(9, idCurrent);
+//            pstmtObj.setString(5, passwordHash);
+            pstmtObj.setString(5, address);
+            pstmtObj.setInt(6, role);
+            pstmtObj.setInt(7, status);
+            pstmtObj.setString(8, idCurrent);
 
 //            pstmtObj.setString(10, user.getAvatar());
 
@@ -603,5 +603,56 @@ public class UserModel {
         }
 
         return user;
+    }
+
+    public List<User> getListUserWithRole(int roleParam) {
+        List<User> listUsers = new ArrayList<>();
+
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+
+            String query = "select * from users where role =?";
+
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setInt(1, roleParam);
+            rs = pstmtObj.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String surname = rs.getString("surname");
+                String name = rs.getString("name");
+                String userEmail = rs.getString("email");
+                String sdt = rs.getString("sdt");
+                String userPassword = rs.getString("password");
+                String avatar = rs.getString("avatar");
+                String address = rs.getString("address");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+                listUsers.add(new User(id, surname, name, userEmail, sdt, "", avatar, address, role, status));
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+        return listUsers;
     }
 }

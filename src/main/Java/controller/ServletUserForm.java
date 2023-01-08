@@ -15,6 +15,12 @@ public class ServletUserForm extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("user");
+
+        if (!util.authentication(request) || !util.authorizationForAdmin(user.getRole())) {
+            response.sendRedirect(request.getContextPath() + "/not-found");
+            return;
+        }
         util.passListUserHighLevel(request, 10);
         handleGetUser(request);
         request.getRequestDispatcher("user-form.jsp").forward(request, response);
@@ -23,6 +29,11 @@ public class ServletUserForm extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        if (!util.authentication(request) || !util.authorizationForAdmin(user.getRole())) {
+            response.sendRedirect(request.getContextPath() + "/not-found");
+            return;
+        }
         String key = request.getParameter("key");
         if (key == null) return;
 
@@ -43,7 +54,7 @@ public class ServletUserForm extends HttpServlet {
     public void handleCreateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String id = request.getParameter("id");
+//        String id = request.getParameter("id");
         String address = request.getParameter("address");
         String surname = request.getParameter("surname");
         String name = request.getParameter("name");
@@ -53,22 +64,24 @@ public class ServletUserForm extends HttpServlet {
         String avatar = request.getParameter("avatar");
         int status = 0;
         if (statusStr != null) status = 1;
-        if (email == "" || password == "" || id == "" || address == "" || surname == "" || name == "" || phone == "" || role == "") {
+        if (email == "" || password == "" ||  address == "" || surname == "" || name == "" || phone == "" || role == "") {
             request.setAttribute("error", "Xin hãy điền đầy đủ thông tin các trường");
             request.getRequestDispatcher("user-form.jsp").forward(request, response);
             return;
         }
         UserModel um = new UserModel();
         um.createUser(email, password, name, surname, phone, Integer.parseInt(role), address, status);
-        request.setAttribute("success", "Bạn đã tạo thành công user");
-        response.sendRedirect(request.getContextPath() + "/dashboard-user");
+        request.setAttribute("success", "Bạn đã tạo thành công user với email: " + email);
+        request.getRequestDispatcher("user-form.jsp").forward(request, response);
+
+//        response.sendRedirect(request.getContextPath() + "/dashboard-user");
     }
 
     public void handleEditUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idCurrent = request.getParameter("idCurrent");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String id = request.getParameter("id");
+//        String id = request.getParameter("id");
         String address = request.getParameter("address");
         String surname = request.getParameter("surname");
         String name = request.getParameter("name");
@@ -78,15 +91,17 @@ public class ServletUserForm extends HttpServlet {
         String avatar = request.getParameter("avatar");
         int status = 0;
         if (statusStr != null) status = 1;
-        if (email == "" || password == "" || id == "" || address == "" || surname == "" || name == "" || phone == "" || role == null || idCurrent == null) {
+        if (email == "" ||   address == "" || surname == "" || name == "" || phone == "" || role == null || idCurrent == null) {
             request.setAttribute("error", "Xin hãy điền đầy đủ thông tin các trường");
             request.getRequestDispatcher("user-form.jsp").forward(request, response);
             return;
         }
         UserModel um = new UserModel();
-        um.updateUserAllField(email, password, name, surname, phone, Integer.parseInt(role), address, status, id, idCurrent);
-//        request.setAttribute("success", "Bạn đã chỉnh sửa thành công user");
-        response.sendRedirect(request.getContextPath() + "/dashboard-user");
+        um.updateUserAllField(email, password, name, surname, phone, Integer.parseInt(role), address, status, idCurrent, idCurrent);
+        request.setAttribute("success", "Bạn đã tạo thành công user với email: " + email);
+        request.getRequestDispatcher("user-form.jsp").forward(request, response);
+
+//        response.sendRedirect(request.getContextPath() + "/dashboard-user");
     }
 
     public User handleGetUser(HttpServletRequest request) {

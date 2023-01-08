@@ -36,10 +36,17 @@
 </head>
 
 <body>
-
 <!-- Edit Form -->
 <jsp:include page="include/dashboard/form.jsp"></jsp:include>
-
+<%
+    List<Product> lp1 = request.getAttribute("productListWithStatus999") != null ? (List<Product>) request.getAttribute("productListWithStatus999") : new ArrayList<Product>();
+    List<Product> lp2 = request.getAttribute("productListWithStatus0") != null ? (List<Product>) request.getAttribute("productListWithStatus0") : new ArrayList<Product>();
+    List<Product> lp3 = request.getAttribute("productListWithStatus1") != null ? (List<Product>) request.getAttribute("productListWithStatus1") : new ArrayList<Product>();
+    int total = (request.getAttribute("countProduct") != null && (int) request.getAttribute("countProduct") != 0) ? (int) request.getAttribute("countProduct") : 1;
+    double percentOne = Math.ceil((lp1.size() * 100 / total));
+    double percentTwo = Math.ceil((lp2.size() * 100 / total));
+    double percentThree = Math.ceil((lp3.size() * 100 / total));
+%>
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
     <!-- Vertical Navbar -->
@@ -130,8 +137,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Budget</span>
-                                        <span class="h3 font-bold mb-0">$750.90</span>
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Tổng sản phẩm</span>
+                                        <span class="h3 font-bold mb-0">${productListWithStatus999.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -141,9 +148,9 @@
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
                     <span class="badge badge-pill bg-soft-success text-success me-2">
-                      <i class="bi bi-arrow-up me-1"></i>13%
+                      <i class="bi bi-arrow-up me-1"></i><%=percentOne%>%
                     </span>
-                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                    <%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -153,8 +160,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">New projects</span>
-                                        <span class="h3 font-bold mb-0">215</span>
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Sản phẩm chưa được đăng kí</span>
+                                        <span class="h3 font-bold mb-0">${productListWithStatus0.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -164,9 +171,9 @@
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
                     <span class="badge badge-pill bg-soft-success text-success me-2">
-                      <i class="bi bi-arrow-up me-1"></i>30%
+                      <i class="bi bi-arrow-up me-1"></i><%=percentTwo%>%
                     </span>
-                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                    <%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -176,8 +183,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total hours</span>
-                                        <span class="h3 font-bold mb-0">1.400</span>
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Sản phẩm đã được đăng kí</span>
+                                        <span class="h3 font-bold mb-0">${productListWithStatus1.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -186,33 +193,11 @@
                                     </div>
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
-                    <span class="badge badge-pill bg-soft-danger text-danger me-2">
-                      <i class="bi bi-arrow-down me-1"></i>-5%
+                                      <span class="badge badge-pill bg-soft-success text-success me-2">
+                      <i class="bi bi-arrow-up me-1"></i><%=percentThree%>%
                     </span>
-                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Work load</span>
-                                        <span class="h3 font-bold mb-0">95%</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                            <i class="bi bi-minecart-loaded"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-2 mb-0 text-sm">
-                    <span class="badge badge-pill bg-soft-success text-success me-2">
-                      <i class="bi bi-arrow-up me-1"></i>10%
-                    </span>
-                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+
+                                    <%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -292,7 +277,7 @@
                                 <td><%=p.getAmount()%>
                                 </td>
 
-                                <td class="text-end">
+                                <td class="text-end d-flex justify-content-end">
                                     <%
                                         if (userCurrent.getRole() >= 2) {
 
@@ -305,17 +290,24 @@
                                     </a>
                                     <%}%>
 
-                                    <a href="<%=request.getContextPath()%>/detail-product?id=<%=p.getId()%>" class="btn btn-sm btn-neutral">View</a>
+                                    <a href="<%=request.getContextPath()%>/detail-product?id=<%=p.getId()%>"
+                                       class="btn btn-sm btn-neutral">View</a>
 
                                     <%
                                         if (userCurrent.getRole() >= 2) {
 
 
                                     %>
-                                    <button type="button"
-                                            class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
+                                    <form class="ms-2" action="<%=request.getContextPath()%>/dashboard-product"
+                                          method="post">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                            <input type="hidden" name="key" value="remove">
+                                            <input type="hidden" name="id" value="<%=p.getId()%>">
+
+                                        </button>
+                                    </form>
                                     <%}%>
 
                                 </td>

@@ -5,6 +5,8 @@ import Entities.Product;
 import Entities.User;
 import Model.CartModel;
 import Model.OrderSuccessModel;
+import Model.ProductModel;
+import Service.CartService;
 import utils.Utils;
 
 import javax.servlet.*;
@@ -34,6 +36,7 @@ public class ServletCheckout extends HttpServlet {
         util.passListCatById(request, "listCatNew", "6");
 
         util.passContactInfor(request);
+        getListProductCart(request);
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
 
     }
@@ -48,6 +51,32 @@ public class ServletCheckout extends HttpServlet {
         handleAddOrder(request);
         response.sendRedirect(request.getContextPath() + "/thank-you");
 
+    }
+
+    public List<Product> getListProductCart(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        User user = (User) session.getAttribute("user");
+        List<Product> lp = new ArrayList<Product>();
+        ProductModel pm = new ProductModel();
+        CartService cs = new CartService();
+        CartModel cm = new CartModel();
+        int total = 0;
+        if (user != null) {
+            List<Cart> lc = cm.getListCartWithUserOrProduct(user.getUserId(), 0);
+            for (Cart c : lc) {
+                Product pro = pm.getProductById(c.getProductId());
+                int temp = cs.handleTotalPriceRow(pro.getId());
+                lp.add(pro);
+                total += temp;
+                request.setAttribute("quantity" + pro.getId(), c.getQuantity());
+
+                request.setAttribute("total" + pro.getId(), temp);
+            }
+        }
+        request.setAttribute("total", total);
+
+        request.setAttribute("listProduct", lp);
+        return lp;
     }
 
     public List<String> handleRemoveCart(User user) {

@@ -657,7 +657,7 @@ public class ProductModel {
         }
     }
 
-    public void updateProductAllField(Product pro,String idCurrent) {
+    public void updateProductAllField(Product pro, String idCurrent) {
         try {
             jdbcObj = new ConnectionPool();
 
@@ -784,6 +784,71 @@ public class ProductModel {
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, namePro.trim() + "%");
             pstmtObj.setString(2, idPro.trim() + "%");
+            rs = pstmtObj.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String name = rs.getString("name");
+                String slug = rs.getString("slug");
+                String desc = rs.getString("description");
+                int rate = rs.getInt("rate");
+                int amount_sold = rs.getInt("amount_sold");
+                int price = rs.getInt("price");
+                String spec = rs.getString("specification");
+                String origin = rs.getString("origin");
+                String brand = rs.getString("brand");
+                int price_disc = rs.getInt("price_disc");
+                int amount_rest = rs.getInt("amount_rest");
+                String code_disc = rs.getString("code_disc");
+                int dis_extra = rs.getInt("dis_extra");
+                String content_detail_product = rs.getString("content_detail_product");
+                int img = rs.getInt("img");
+                int types = rs.getInt("types");
+                int outstanding = rs.getInt("outstanding");
+                int bestSell = rs.getInt("bestsell");
+                int forOld = rs.getInt("forOld");
+                int form = rs.getInt("form");
+                String thumbnail = rs.getString("thumbnail");
+                int status = rs.getInt("status");
+
+                listProduct.add(new Product(id, name, slug, desc, rate, amount_sold, price, spec, origin, brand, price_disc, amount_rest, code_disc, dis_extra, content_detail_product, img, types, outstanding, bestSell, forOld, form, thumbnail, status));
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+
+        return listProduct;
+    }
+
+    public List<Product> getListProductWithStatus(int statusParam) {
+        List<Product> listProduct = new ArrayList<Product>();
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+            String query = "Select * from product ";
+            if (statusParam >= 0 && statusParam!=999) query += "where status=?";
+            pstmtObj = connObj.prepareStatement(query);
+            if (statusParam >= 0 && statusParam!=999) pstmtObj.setInt(1, statusParam);
             rs = pstmtObj.executeQuery();
 
             while (rs.next()) {

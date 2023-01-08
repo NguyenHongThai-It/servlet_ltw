@@ -1,15 +1,15 @@
 <%@ page import="Entities.User" %>
+<%@ page import="Entities.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 12/3/2022
-  Time: 11:03 PM
+  Time: 11:04 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page isELIgnored="false" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Dashboard user</title>
+    <title>Dashboard product</title>
 
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -30,35 +30,34 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="./asset//scss//css//dashboard-user.css"/>
+    <!-- CUSTOM -->
+    <script src="./asset/js/dashboard-product.js"></script>
+    <link rel="stylesheet" href="./asset//scss//css//dashboard-product.css"/>
 </head>
 
 <body>
 <!-- Edit Form -->
+<jsp:include page="include/dashboard/form.jsp"></jsp:include>
 <%
-    List<User> lu = request.getAttribute("listUser") != null ? (List<User>) request.getAttribute("listUser") : new ArrayList<User>();
-    User userCurrent = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User();
-    List<User> lu1 = request.getAttribute("userWithRole0") != null ? (List<User>) request.getAttribute("userWithRole0") : new ArrayList<User>();
-    List<User> lu2 = request.getAttribute("userWithRole1") != null ? (List<User>) request.getAttribute("userWithRole1") : new ArrayList<User>();
-    List<User> lu3 = request.getAttribute("userWithRole2") != null ? (List<User>) request.getAttribute("userWithRole2") : new ArrayList<User>();
-    List<User> lu4 = request.getAttribute("userListActive") != null ? (List<User>) request.getAttribute("userListActive") : new ArrayList<User>();
+    List<Product> lp1 = request.getAttribute("productListWithStatus999") != null ? (List<Product>) request.getAttribute("productListWithStatus999") : new ArrayList<Product>();
+    List<Product> lp2 = request.getAttribute("productListWithStatus0") != null ? (List<Product>) request.getAttribute("productListWithStatus0") : new ArrayList<Product>();
+    List<Product> lp3 = request.getAttribute("productListWithStatus1") != null ? (List<Product>) request.getAttribute("productListWithStatus1") : new ArrayList<Product>();
     int total = request.getAttribute("countProduct") != null ? (int) request.getAttribute("countProduct") : 1;
-    double percentOne = Math.ceil((lu1.size() * 100 / total));
-    double percentTwo = Math.ceil((lu2.size() * 100 / total));
-    double percentThree = Math.ceil((lu3.size() * 100 / total));
-    double percentFour = Math.ceil((lu4.size() * 100 / total));
-
+    double percentOne = Math.ceil((lp1.size() * 100 / total));
+    double percentTwo = Math.ceil((lp2.size() * 100 / total));
+    double percentThree = Math.ceil((lp3.size() * 100 / total));
 %>
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
     <!-- Vertical Navbar -->
-    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
-         id="navbarVertical">
+    <nav
+            class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+            id="navbarVertical">
         <div class="container-fluid">
             <!-- Toggler -->
             <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                    data-bs-target="#sidebarCollapse"
+                    aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Brand -->
@@ -90,6 +89,7 @@
                 </div>
             </div>
             <jsp:include page="include/dashboard/category-dashboard.jsp"></jsp:include>
+
         </div>
     </nav>
     <!-- Main content -->
@@ -101,13 +101,12 @@
                     <div class="row align-items-center">
                         <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                             <!-- Title -->
-                            <h1 class="h2 mb-0 ls-tight">User</h1>
+                            <h1 class="h2 mb-0 ls-tight">Product</h1>
                         </div>
                         <!-- Actions -->
                         <div class="col-sm-6 col-12 text-sm-end">
                             <div class="mx-n1">
-                                <a href="<%=request.getContextPath()%>/user-form" class="btn btn-primary"
-                                   data-bs-target="#exampleModal"
+                                <a href="<%=request.getContextPath()%>/product-form" class="btn btn-primary"
                                    class="btn d-inline-flex btn-sm btn-primary mx-1">
                                     <span class="pe-2"> <i class="bi bi-plus"></i> </span>
                                     <span>Create</span>
@@ -115,9 +114,10 @@
                             </div>
                         </div>
                     </div>
-                    <p style="color: limegreen"><%=request.getAttribute("success") != null ? request.getAttribute("success").toString() : ""%>
 
-                        <!-- Nav -->
+                    <p style="color: limegreen"><%=request.getAttribute("success") != null ? request.getAttribute("success").toString() : ""%>
+                    </p>
+                    <!-- Nav -->
                     <ul class="nav nav-tabs mt-4 overflow-x border-0">
                         <li class="nav-item">
                             <a href="#" class="nav-link active">All files</a>
@@ -137,8 +137,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Tổng user</span>
-                                        <span class="h3 font-bold mb-0">${userWithRole0.size()}</span>
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Tổng sản phẩm</span>
+                                        <span class="h3 font-bold mb-0">${productListWithStatus999.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -147,10 +147,10 @@
                                     </div>
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
-                                        <span class="badge badge-pill bg-soft-success text-success me-2">
-                                            <i class="bi bi-arrow-up me-1"></i><%=percentOne%>%
-                                        </span>
-<%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
+                    <span class="badge badge-pill bg-soft-success text-success me-2">
+                      <i class="bi bi-arrow-up me-1"></i><%=percentOne%>%
+                    </span>
+                                    <%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -160,9 +160,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Tổng mod
-                                                </span>
-                                        <span class="h3 font-bold mb-0">${userWithRole1.size()}</span>
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Sản phẩm chưa được đăng kí</span>
+                                        <span class="h3 font-bold mb-0">${productListWithStatus0.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -171,10 +170,10 @@
                                     </div>
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
-                                        <span class="badge badge-pill bg-soft-success text-success me-2">
-                                            <i class="bi bi-arrow-up me-1"></i><%=percentTwo%>%
-                                        </span>
-<%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
+                    <span class="badge badge-pill bg-soft-success text-success me-2">
+                      <i class="bi bi-arrow-up me-1"></i><%=percentTwo%>%
+                    </span>
+                                    <%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -184,9 +183,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Tổng
-                                                Admin</span>
-                                        <span class="h3 font-bold mb-0">${userWithRole2.size()}</span>
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Sản phẩm đã được đăng kí</span>
+                                        <span class="h3 font-bold mb-0">${productListWithStatus1.size()}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -195,35 +193,11 @@
                                     </div>
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
-                                              <span class="badge badge-pill bg-soft-success text-success me-2">
-                                            <i class="bi bi-arrow-down me-1"></i><%=percentThree%>%
-                                        </span>
+                                      <span class="badge badge-pill bg-soft-success text-success me-2">
+                      <i class="bi bi-arrow-up me-1"></i><%=percentThree%>%
+                    </span>
 
-<%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">
-                                                Tổng người hoạt động</span>
-                                        <span class="h3 font-bold mb-0">${userListActive.size()}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                            <i class="bi bi-minecart-loaded"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-2 mb-0 text-sm">
-                                        <span class="badge badge-pill bg-soft-success text-success me-2">
-                                            <i class="bi bi-arrow-up me-1"></i><%=percentFour%>%
-                                        </span>
-                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                    <%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -231,10 +205,9 @@
                 </div>
                 <div class="card shadow border-0 mb-7">
                     <div class="card-header d-md-flex justify-content-between">
-                        <h4 class="mb-0">Users</h4>
+                        <h4 class="mb-0">Product</h4>
 
-
-                        <form action="<%=request.getContextPath()%>/dashboard-user" method="get"
+                        <form action="<%=request.getContextPath()%>/dashboard-product" method="get"
                               class="d-flex flex-column flex-md-row gap-3">
                             <div class="filter__item">
                                 <input type="text" placeholder="Tìm kiếm theo tên" name="name" style="width: 100%;"
@@ -249,7 +222,7 @@
                                 <select name="sort" class="filter--rounded nav-item dropdown border border-dark px-3"
                                         style="padding: 5px;">
                                     <ul class="dropdown-menu">
-                                        <option value=""> Sắp xếp theo role</option>
+                                        <option value=""> Sắp xếp theo giá</option>
                                         <option value="asc"> Tăng dần</option>
                                         <option value="desc"> Giảm dần</option>
 
@@ -262,6 +235,7 @@
                             </button>
 
                         </form>
+
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover table-nowrap">
@@ -269,100 +243,65 @@
                             <tr>
                                 <th scope="col">Id</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Sdt</th>
-                                <th scope="col">Role</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">amount</th>
                                 <th scope="col" class="text-end me-5">Action</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             <%
-
-                                for (User u : lu) {
-
+                                User userCurrent = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User();
+                                List<Product> lp = request.getAttribute("listProduct") != null ? (List<Product>) request.getAttribute("listProduct") : new ArrayList<Product>();
+                                for (Product p : lp) {
 
                             %>
                             <tr>
                                 <td>
                                     <img alt="..."
-                                         src="<%=u.getAvatar()%>"
+                                         src="<%=p.getThumbnail()%>"
                                          class="avatar avatar-sm rounded-circle me-2"/>
                                     <a class="text-heading font-semibold" href="#">
-                                        <%=u.getUserId()%>
+                                        <%=p.getId()%>
                                     </a>
                                 </td>
-                                <td><%=u.getName()%>
+                                <td><%=p.getName()%>
                                 </td>
                                 <td>
-                                    <img alt="..."
-                                         src="https://preview.webpixels.io/web/img/other/logos/logo-1.png"
+                                    <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png"
                                          class="avatar avatar-xs rounded-circle me-2"/>
                                     <a class="text-heading font-semibold" href="#">
-                                        <%=u.getEmail()%>
+                                        <%=p.getPriceDisc()%>
                                     </a>
                                 </td>
-                                <td><%=u.getPhone()%>
+                                <td><%=p.getAmount()%>
                                 </td>
-                                <td>
-                                    <%
-                                        if (u.getRole() == 0) {
 
-
-                                    %>
-                                    <span class="badge badge-lg badge-dot">
-                                                <i class="bg-success"></i>User
-                                            </span>
-                                    <%}%>
-                                    <%
-                                        if (u.getRole() == 1) {
-
-
-                                    %>
-                                    <span class="badge badge-lg badge-dot">
-                                                <i class="bg-success"></i>Moderator
-                                            </span>
-                                    <%}%>
-                                    <%
-                                        if (u.getRole() >= 2) {
-
-
-                                    %>
-                                    <span class="badge badge-lg badge-dot">
-                                                <i class="bg-success"></i>Admin
-                                            </span>
-                                    <%}%>
-                                </td>
-                                <td class="text-end d-flex align-items-center gap-3 justify-content-end">
-
+                                <td class="text-end">
                                     <%
                                         if (userCurrent.getRole() >= 2) {
 
 
                                     %>
-                                    <a href="<%=request.getContextPath()%>/user-form?id=<%=u.getUserId()%>"
+                                    <a href="<%=request.getContextPath()%>/product-form?id=<%=p.getId()%>"
                                        class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
                                         <span class="pe-2"> <i class="bi bi-pencil"></i> </span>
                                         <span>Edit</span>
                                     </a>
                                     <%}%>
 
-                                    <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                    <a href="<%=request.getContextPath()%>/detail-product?id=<%=p.getId()%>"
+                                       class="btn btn-sm btn-neutral">View</a>
 
                                     <%
                                         if (userCurrent.getRole() >= 2) {
 
 
                                     %>
-                                    <form action="<%=request.getContextPath()%>/dashboard-user" method="post">
-                                        <button type="submit"
-                                                class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                            <input type="hidden" name="key" value="remove">
-                                            <input type="hidden" name="id" value="<%=u.getUserId()%>">
-
-                                        </button>
-                                    </form>
-
+                                    <button type="button"
+                                            class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                     <%}%>
 
                                 </td>
@@ -372,7 +311,7 @@
                         </table>
                     </div>
                     <div class="card-footer border-0 py-5">
-                        <span class="text-muted text-sm">Hiện <%=lu.size()%> người dùng trong ${countProduct} kết quả được tìm thấy</span>
+                        <span class="text-muted text-sm">Hiện <%=lp.size()%> sản phẩm trong ${countProduct} kết quả được tìm thấy</span>
                     </div>
                     <jsp:include page="include/common/pagination.jsp"></jsp:include>
                 </div>
@@ -380,19 +319,7 @@
         </main>
     </div>
 </div>
-
-<script>
-    function checkPhone() {
-        var x = document.getElementById('phone').value;
-        if (isNaN(x)) {
-            document.getElementById('phone').style.borderColor = "red";
-            document.getElementById('phone').style.color = "red";
-        } else {
-            document.getElementById('phone').style.borderColor = "black";
-            document.getElementById('phone').style.color = "black";
-        }
-    }
-</script>
 </body>
+
 
 </html>

@@ -102,6 +102,10 @@
                         <div class="text-red_bold1"
                         >
                             <%=request.getAttribute("error") != null ? request.getAttribute("error").toString() : ""%>
+                        </div
+                        <div class="text-red_bold1"
+                        >
+                            <%=request.getAttribute("errorTake") != null ? request.getAttribute("errorTake").toString() : ""%>
                         </div>
 
                         <button

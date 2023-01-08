@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/dashboard-user")
@@ -23,6 +24,10 @@ public class ServletDashboardUser extends HttpServlet {
         }
         util.passListUserHighLevel(request, 10);
         passListUserByFilter(request);
+        passAllUserWithRole(request, 0);
+        passAllUserWithRole(request, 1);
+        passAllUserWithRole(request, 2);
+        passUserListActive(request, "userListActive");
         request.getRequestDispatcher("dashboard-user.jsp").forward(request, response);
     }
 
@@ -44,14 +49,14 @@ public class ServletDashboardUser extends HttpServlet {
                 if (id == null || id == "") return;
                 id = id.trim();
                 um.removeUser(id);
-                request.setAttribute("successAction", "Xóa thành công user với id: " + id);
+                request.setAttribute("success", "Xóa thành công user với id: " + id);
                 break;
             }
             default:
                 break;
         }
-//        request.getRequestDispatcher("dashboard-user.jsp").forward(request, response);
-        response.sendRedirect(request.getContextPath() + "/dashboard-user");
+        request.getRequestDispatcher("dashboard-user.jsp").forward(request, response);
+//        response.sendRedirect(request.getContextPath() + "/dashboard-user");
     }
 
     public void passListUserByFilter(HttpServletRequest request) {
@@ -80,5 +85,22 @@ public class ServletDashboardUser extends HttpServlet {
 
     }
 
+    public void passAllUserWithRole(HttpServletRequest request, int role) {
+        UserModel um = new UserModel();
+        List<User> lu = new ArrayList<>();
+
+        lu = um.getListUserWithRole(role);
+
+        request.setAttribute("userWithRole" + role, lu);
+
+    }
+
+    public void passUserListActive(HttpServletRequest request, String name) {
+        UserModel um = new UserModel();
+        List<User> lu = new ArrayList<>();
+        lu = um.getAllUserActive();
+
+        request.setAttribute(name, lu);
+    }
 
 }

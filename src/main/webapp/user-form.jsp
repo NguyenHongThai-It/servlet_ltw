@@ -200,6 +200,9 @@
                         <div class="container bg-white rounded-3 py-2" style=" margin-top: 5rem;">
                             <!-- Product Overview -->
                             <h3 class="fw-bold text-primary py-3 border-bottom-2">Profile</h3>
+                            <p style="color: limegreen"><%=request.getAttribute("success") != null ? request.getAttribute("success").toString() : ""%>
+
+                            <p style="color: red"><%=request.getAttribute("error") != null ? request.getAttribute("error").toString() : ""%>
                             <div class="row row-cols-auto bg-white pb-5">
                                 <div class="col-6">
                                     <p class="edit-form__desc">Họ</p>
@@ -226,18 +229,18 @@
                                     <% }%>
 
                                 </div>
-<%--                                <div class="col-6">--%>
-<%--                                    <p class="edit-form__desc">ID</p>--%>
-<%--                                    <% if (userEdit == null) {%>--%>
-<%--                                    <input type="text" name="id" id="id" placeholder="id"--%>
-<%--                                           class="edit-form__input filter--rounded">--%>
-<%--                                    <% }%>--%>
-<%--                                    <% if (userEdit != null) {%>--%>
-<%--                                    <input type="text" name="id" id="id" placeholder="id"--%>
-<%--                                           class="edit-form__input filter--rounded" value="<%=userEdit.getUserId()%>">--%>
-<%--                                    <% }%>--%>
+                                <%--                                <div class="col-6">--%>
+                                <%--                                    <p class="edit-form__desc">ID</p>--%>
+                                <%--                                    <% if (userEdit == null) {%>--%>
+                                <%--                                    <input type="text" name="id" id="id" placeholder="id"--%>
+                                <%--                                           class="edit-form__input filter--rounded">--%>
+                                <%--                                    <% }%>--%>
+                                <%--                                    <% if (userEdit != null) {%>--%>
+                                <%--                                    <input type="text" name="id" id="id" placeholder="id"--%>
+                                <%--                                           class="edit-form__input filter--rounded" value="<%=userEdit.getUserId()%>">--%>
+                                <%--                                    <% }%>--%>
 
-<%--                                </div>--%>
+                                <%--                                </div>--%>
 
                                 <div class="col-6">
                                     <p class="edit-form__desc">SDT</p>
@@ -325,12 +328,13 @@
                                 <div class="col-3 ">
                                     <label class="edit-form__desc me-2  d-block" for="status">Trạng thái</label>
                                     <% if (userEdit == null) {%>
-                                    <input type="checkbox" name="status" id="status" value="1" class="me-2"/> Có
+                                    <input type="checkbox" name="status" id="status" value="1" class="me-2"
+                                    /> Có
 
                                     <% }%>
                                     <% if (userEdit != null) {%>
                                     <input type="checkbox" name="status" id="status"
-                                           value="<%=userEdit.getStatus()%> checked" class="me-2">Có
+                                           value="<%=userEdit.getStatus()%>"    checked="<%=userEdit.getRole() >0%>" class="me-2">Có
 
                                     <% }%>
 
