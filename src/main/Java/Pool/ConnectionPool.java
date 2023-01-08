@@ -14,7 +14,7 @@ import org.apache.commons.pool.impl.GenericObjectPool;
 
 public class ConnectionPool { // JDBC Driver Name & Database URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String JDBC_DB_URL = "jdbc:mysql://127.0.0.1:3306/vegetables_db?useSSL=FALSE";
+    static final String JDBC_DB_URL = "jdbc:mysql://127.0.0.1:3306/example?useSSL=FALSE";
 
     // JDBC Database Credentials
     static final String JDBC_USER = "root";

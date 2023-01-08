@@ -28,6 +28,7 @@
                 src="<%=thumbnail%>"
                 class="img-ani card-img-top"
                 alt="..."
+                style="min-height: 31.3rem"
         />
     </div>
     <div class="card-body">

@@ -23,7 +23,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
+    <title>Danh sách sản phẩm</title>
     <!-- FONT AWESOME -->
     <link
             rel="stylesheet"
@@ -257,7 +257,7 @@
                                                         class="desc__img col-4 transform-scale--small overflow-hidden"
                                                 >
                                                     <img
-                                                            src="asset/img/product/desc img 1.jpg"
+                                                            src="./asset/img/product/desc%20img%201.jpg"
                                                             alt=""
                                                     />
                                                 </div>
@@ -281,7 +281,7 @@
                                                         class="desc__img col-4 transform-scale--small overflow-hidden"
                                                 >
                                                     <img
-                                                            src="asset/img/product/desc img 2.jpg"
+                                                            src="./asset/img/product/desc%20img%202.jpg"
                                                             alt=""
                                                     />
                                                 </div>
@@ -305,7 +305,7 @@
                                                         class="desc__img col-4 transform-scale--small overflow-hidden"
                                                 >
                                                     <img
-                                                            src="asset/img/product/desc img 3.jpg"
+                                                            src="./asset/img/product/desc%20img%203.jpg"
                                                             alt=""
                                                     />
                                                 </div>

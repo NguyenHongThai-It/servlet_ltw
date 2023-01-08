@@ -32,7 +32,7 @@ public class UserModel {
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
 
-            String query = "select * from users where email = ?";
+            String query = "select * from users where email = ? and status =1";
 
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, email);
@@ -88,7 +88,7 @@ public class UserModel {
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
             String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
-            String query = "INSERT INTO users  (id,email,password,name,surname,sdt,avatar,status) values (UUID(),?, ?, ?, ?, ?,?,1)";
+            String query = "INSERT INTO users  (id,email,password,name,surname,sdt,avatar,status,role) values (UUID(),?, ?, ?, ?, ?,?,1,0)";
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, email);
             pstmtObj.setString(2, passwordHash);
@@ -96,6 +96,56 @@ public class UserModel {
             pstmtObj.setString(4, surname);
             pstmtObj.setString(5, tel);
             pstmtObj.setString(6, "https://toidicafe.vn/static/images/2022/06/11/3532e135-4e0b-46ae-8ee4-638736ed8eac-demo.jpg");
+            pstmtObj.executeUpdate();
+
+
+            user = getUser(email, password);
+        } catch (Exception e) {
+
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+
+        return user;
+    }
+
+    public User createUser(String email, String password, String nameUser, String surname, String tel, int role, String address, int status) {
+
+        User user = null;
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+            String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
+            String query = "INSERT INTO users  (id,email,password,name,surname,sdt,avatar,status,role,address) values (UUID(),?, ?, ?, ?, ?,?,?,?,?)";
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setString(1, email);
+            pstmtObj.setString(2, passwordHash);
+            pstmtObj.setString(3, nameUser);
+            pstmtObj.setString(4, surname);
+            pstmtObj.setString(5, tel);
+            pstmtObj.setString(6, "https://toidicafe.vn/static/images/2022/06/11/3532e135-4e0b-46ae-8ee4-638736ed8eac-demo.jpg");
+            pstmtObj.setInt(7, status);
+            pstmtObj.setInt(8, role);
+            pstmtObj.setString(9, address);
+
             pstmtObj.executeUpdate();
 
 
@@ -261,7 +311,7 @@ public class UserModel {
 
     }
 
-    public List<User> getListUserByFilter(String nameFilter, String idFilter, String roleFilter, int lim) {
+    public List<User> getListUserByFilter(String nameFilter, String idFilter, String roleFilter, int offset, int noOfRecords) {
         List<User> listUsers = new ArrayList<User>();
 
         try {
@@ -272,16 +322,18 @@ public class UserModel {
 
             String query = "";
             if (roleFilter.length() != 0 && roleFilter.equalsIgnoreCase("asc")) {
-                query = "select * from users where name like ? and id like ? order by role asc limit ?";
+                query = "select * from users where name like ? and id like ? order by role asc limit ?,?";
             } else if (roleFilter.length() != 0 && roleFilter.equalsIgnoreCase("desc")) {
-                query = "select * from users where name like ? and id like ? order by role desc limit ?";
+                query = "select * from users where name like ? and id like ? order by role desc limit ?,?";
             } else {
-                query = "select * from users where name like ? and id like ? limit ?";
+                query = "select * from users where name like ? and id like ? limit ?,?";
             }
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setString(1, nameFilter + "%");
             pstmtObj.setString(2, idFilter + "%");
-            pstmtObj.setInt(3, lim);
+            pstmtObj.setInt(3, offset);
+            pstmtObj.setInt(4, noOfRecords);
+
             rs = pstmtObj.executeQuery();
             while (rs.next()) {
                 String id = rs.getString("id");
@@ -321,6 +373,59 @@ public class UserModel {
         return listUsers;
     }
 
+    public List<User> getAllUserActive() {
+        List<User> listUsers = new ArrayList<>();
+        User user = null;
+
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+
+            String query = "select * from users where  status =1";
+
+            pstmtObj = connObj.prepareStatement(query);
+
+            rs = pstmtObj.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String surname = rs.getString("surname");
+                String name = rs.getString("name");
+                String userEmail = rs.getString("email");
+                String sdt = rs.getString("sdt");
+                String userPassword = rs.getString("password");
+                String avatar = rs.getString("avatar");
+                String address = rs.getString("address");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+                listUsers.add(new User(id, surname, name, userEmail, sdt, "", avatar, address, role, status));
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+        return listUsers;
+
+    }
+
     public void removeUser(String idUser) {
         try {
             jdbcObj = new ConnectionPool();
@@ -356,25 +461,28 @@ public class UserModel {
         }
     }
 
-    public void updateUserAllField(User user) {
+    public void updateUserAllField(String email, String password, String nameUser, String surname, String tel, int role, String address, int status, String id, String idCurrent) {
         try {
             jdbcObj = new ConnectionPool();
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
+            String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 
-            String query = " update users set surname =?, name = ?, email=?, sdt=?, password=?,avatar=?, address=?,role=?,status=?";
+            String query = " update users set surname =?, name = ?, email=?, sdt=? ,address=?,role=?,status=? where id = ?";
 
             pstmtObj = connObj.prepareStatement(query);
-            pstmtObj.setString(1, user.getSurname());
-            pstmtObj.setString(2, user.getName());
-            pstmtObj.setString(3, user.getEmail());
-            pstmtObj.setString(4, user.getPhone());
-            pstmtObj.setString(5, user.getPassword());
-            pstmtObj.setString(6, user.getAvatar());
-            pstmtObj.setString(7, user.getAddress());
-            pstmtObj.setInt(8, user.getRole());
-            pstmtObj.setInt(8, user.getStatus());
+            pstmtObj.setString(1, surname);
+            pstmtObj.setString(2, nameUser);
+            pstmtObj.setString(3, email);
+            pstmtObj.setString(4, tel);
+//            pstmtObj.setString(5, passwordHash);
+            pstmtObj.setString(5, address);
+            pstmtObj.setInt(6, role);
+            pstmtObj.setInt(7, status);
+            pstmtObj.setString(8, idCurrent);
+
+//            pstmtObj.setString(10, user.getAvatar());
 
 
             pstmtObj.executeUpdate();
@@ -399,5 +507,152 @@ public class UserModel {
                 sqlException.printStackTrace();
             }
         }
+    }
+
+    public User getUserById(String idUser) {
+        List<User> listUsers = new ArrayList<>();
+        User user = null;
+
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+
+            String query = "select * from users where id = ?";
+
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setString(1, idUser);
+
+            rs = pstmtObj.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String surname = rs.getString("surname");
+                String name = rs.getString("name");
+                String userEmail = rs.getString("email");
+                String sdt = rs.getString("sdt");
+                String userPassword = rs.getString("password");
+                String avatar = rs.getString("avatar");
+                String address = rs.getString("address");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+                listUsers.add(new User(id, surname, name, userEmail, sdt, userPassword, avatar, address, role, status));
+            }
+            if (listUsers.size() != 0) user = listUsers.get(0);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+        return user;
+    }
+
+    public User forgetPasswrod(String upw, String umail) {
+        User user = null;
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+            String passwordHash = BCrypt.hashpw(upw, BCrypt.gensalt());
+            String query = "update users set password = ? where email = ? ";
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setString(1, passwordHash);
+            pstmtObj.setString(2, umail);
+
+            pstmtObj.executeUpdate();
+
+
+            user = getUser(umail, upw);
+        } catch (Exception e) {
+
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+
+        return user;
+    }
+
+    public List<User> getListUserWithRole(int roleParam) {
+        List<User> listUsers = new ArrayList<>();
+
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+
+            String query = "select * from users where role =?";
+
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setInt(1, roleParam);
+            rs = pstmtObj.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String surname = rs.getString("surname");
+                String name = rs.getString("name");
+                String userEmail = rs.getString("email");
+                String sdt = rs.getString("sdt");
+                String userPassword = rs.getString("password");
+                String avatar = rs.getString("avatar");
+                String address = rs.getString("address");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+                listUsers.add(new User(id, surname, name, userEmail, sdt, "", avatar, address, role, status));
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+        return listUsers;
     }
 }

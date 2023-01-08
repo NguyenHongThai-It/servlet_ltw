@@ -5,7 +5,11 @@
   Time: 6:26 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="vi_VN"/>
 <%
     User u = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User();
 %>
@@ -15,7 +19,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
+    <title>Thanh toán</title>
     <!-- FONT AWESOME -->
     <link
             rel="stylesheet"
@@ -31,7 +35,13 @@
             href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap"
             rel="stylesheet"
     />
+    <!-- BOOTSTRAP -->
 
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+    ></script>
     <!-- CUSTOM -->
     <link rel="stylesheet" href="./asset/scss/custom.css"/>
     <link rel="stylesheet" href="./asset/scss/base/common.css"/>
@@ -215,16 +225,17 @@
                     <div class="col-12 col-md-12 col-lg-4 p-3">
                         <h1 class="text-red_medium fw-bold">Đơn hàng</h1>
                         <div class="order border mt-4 p-4 pb-0">
-                            <div
-                                    class="d-flex justify-content-between align-items-center pt-4 pb-4 border-bottom"
-                            >
-                                <span class="d-block">Thành tiền</span>
-                                <span
-                                        class="d-block text-red_dark h2 fw-bold"
-                                        id="provisional-amount"
-                                >9.000.000đ</span
-                                >
-                            </div>
+<%--                            <div--%>
+                            <%--                                    class="d-flex justify-content-between align-items-center pt-4 pb-4 border-bottom"--%>
+                            <%--                            >--%>
+                            <%--                                <span class="d-block">Thành tiền</span>--%>
+                            <%--                                <span--%>
+                            <%--                                        class="d-block text-red_dark h2 fw-bold"--%>
+                            <%--                                        id="provisional-amount"--%>
+                            <%--                                >--%>
+                            <%--                             </span--%>
+                            <%--                                >--%>
+                            <%--                            </div>--%>
                             <div
                                     class="d-flex justify-content-between align-items-center pt-4 pb-4 border-bottom"
                             >
@@ -232,7 +243,7 @@
                                 <span
                                         class="d-block text-red_medium h1 fw-bold"
                                         id="total-amount"
-                                >9.000.000đ</span
+                                >   <fmt:formatNumber value="${total}" type="currency"/></span
                                 >
                             </div>
                             <div

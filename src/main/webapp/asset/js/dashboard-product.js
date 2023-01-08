@@ -1,5 +1,6 @@
 function checkPrice() {
     var x = document.getElementById('price').value;
+    console.log(x);
     if (isNaN(x)) {
         document.getElementById('price').style.borderColor = "red";
         document.getElementById('price').style.color = "red";
@@ -88,6 +89,7 @@ function checkBestSell() {
 
 function checkForm() {
     var x = document.getElementById('form').value;
+    console.log(x);
     if (isNaN(x)) {
         document.getElementById('form').style.borderColor = "red";
         document.getElementById('form').style.color = "red";

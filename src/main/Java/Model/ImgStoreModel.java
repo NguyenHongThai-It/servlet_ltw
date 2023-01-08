@@ -24,7 +24,7 @@ public class ImgStoreModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String query = "Select distinct(position), id,link,slug,img, orders,imgMap,status,productId,content from img_store where position  <= ? GROUP by position limit 8";
+            String query = "Select distinct(position), id,link,slug,img, orders,imgMap,status,productId,content from img_store where id >=30 and position  <= ? GROUP by position limit 8";
 
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setInt(1, position);
@@ -64,7 +64,7 @@ public class ImgStoreModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String query = "Select * from img_store where position  = ?";
+            String query = "Select * from img_store where id >=30 and position  = ?";
 
             pstmtObj = connObj.prepareStatement(query);
             pstmtObj.setInt(1, position);

@@ -1,6 +1,8 @@
 package Entities;
 
-public class Nav {
+import java.io.Serializable;
+
+public class Nav implements Serializable {
     private String id;
     private String name;
     private int img;

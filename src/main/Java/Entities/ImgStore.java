@@ -1,6 +1,8 @@
 package Entities;
 
-public class ImgStore {
+import java.io.Serializable;
+
+public class ImgStore implements Serializable {
     private String id;
     private String link;
     private String slug;

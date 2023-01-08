@@ -14,7 +14,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
+    <title>Not found</title>
     <!-- FONT AWESOME -->
     <link
             rel="stylesheet"
@@ -41,6 +41,10 @@
 
     <!-- CUSTOM -->
     <link rel="stylesheet" href="./asset/scss/custom.css"/>
+
+    <link rel="stylesheet" href="./asset/scss/custom.css"/>
+    <link rel="stylesheet" href="asset"/>
+
     <link rel="stylesheet" href="./asset/scss/base/common.css"/>
     <link rel="stylesheet" href="./asset/scss/base/_header.css"/>
     <link rel="stylesheet" href="./asset/scss/base/_footer.css"/>
@@ -74,7 +78,7 @@
                 </p>
                 <div class="text-center">
                     <a
-                            href="./home.html"
+                            href="<%=request.getContextPath()%>/home"
                             class="fs-4 bg-red_main border-0 d-inline-block text-white_1 fw-semibold px-3 rounded-4 mx-auto"
                             style="height: 4rem; line-height: 4rem"
                     >
