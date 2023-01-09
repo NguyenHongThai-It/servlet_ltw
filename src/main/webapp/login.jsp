@@ -114,6 +114,8 @@
                         >
                             Đăng nhập
                         </button>
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/web_vegetables_war_exploded/login&response_type=code
+    &client_id=46489466376-3n04244rci6b2p50jmuc308tgc1l17v7.apps.googleusercontent.com&approval_prompt=force">Login With Google</a>
                         <p class="mt-4">
                             <a
                                     href="<%=request.getContextPath()%>/forgotPassword"

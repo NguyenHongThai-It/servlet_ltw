@@ -79,6 +79,62 @@ public class UserModel {
 
     }
 
+    public User getUser(String email, String idGg, String nameUser) {
+        List<User> listUsers = new ArrayList<>();
+        User user = null;
+
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+
+            String query = "select * from users where email = ? and idGg=? and status =1";
+
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setString(1, email);
+            pstmtObj.setString(2, idGg);
+
+            rs = pstmtObj.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String surname = rs.getString("surname");
+                String name = rs.getString("name");
+                String userEmail = rs.getString("email");
+                String sdt = rs.getString("sdt");
+                String userPassword = rs.getString("password");
+                String avatar = rs.getString("avatar");
+                String address = rs.getString("address");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+                listUsers.add(new User(id, surname, name, userEmail, sdt, "", avatar, address, role, status));
+            }
+            if (listUsers.size() != 0) user = listUsers.get(0);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+        return user;
+
+    }
+
     public User createUser(String email, String password, String nameUser, String surname, String tel) {
 
         User user = null;
@@ -100,6 +156,51 @@ public class UserModel {
 
 
             user = getUser(email, password);
+        } catch (Exception e) {
+
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                // Closing ResultSet Object
+                if (rs != null) {
+                    rs.close();
+                }
+                // Closing PreparedStatement Object
+                if (pstmtObj != null) {
+                    pstmtObj.close();
+                }
+                // Closing Connection Object
+                if (connObj != null) {
+                    connObj.close();
+                }
+            } catch (Exception sqlException) {
+                sqlException.printStackTrace();
+            }
+        }
+
+        return user;
+    }
+
+    public User createUser(String idGg, String email, String nameUser) {
+
+        User user = null;
+        try {
+            jdbcObj = new ConnectionPool();
+
+            DataSource dataSource = jdbcObj.setUpPool();
+            connObj = dataSource.getConnection();
+            String passwordHash = BCrypt.hashpw("", BCrypt.gensalt());
+
+            String query = "INSERT INTO users  (id,idGg,email,name,avatar,status,role,password) values (UUID(),?, ?, ?,?,1,0,?)";
+            pstmtObj = connObj.prepareStatement(query);
+            pstmtObj.setString(1, idGg);
+            pstmtObj.setString(2, email);
+            pstmtObj.setString(3, nameUser);
+            pstmtObj.setString(4, "https://toidicafe.vn/static/images/2022/06/11/3532e135-4e0b-46ae-8ee4-638736ed8eac-demo.jpg");
+            pstmtObj.setString(5, passwordHash);
+            pstmtObj.executeUpdate();
+            user = getUser(email, idGg, nameUser);
+
         } catch (Exception e) {
 
             throw new RuntimeException(e.getMessage());

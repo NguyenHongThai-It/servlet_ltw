@@ -4,6 +4,8 @@ import Entities.Nav;
 import Entities.User;
 import Model.NavModel;
 import Model.UserModel;
+import utils.GooglePojo;
+import utils.GoogleUtils;
 import utils.Utils;
 
 import javax.annotation.Resource;
@@ -22,8 +24,8 @@ public class ServletLogin extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        if (new Utils().authentication(request)) {
+        HttpSession ss = request.getSession(true);
+        if (new Utils().authentication(request) || ss.getAttribute("code") != null) {
             response.sendRedirect(request.getContextPath() + "/home");
             return;
         }
@@ -36,6 +38,27 @@ public class ServletLogin extends HttpServlet {
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
         util.passListNav(request);
+
+        String code = request.getParameter("code");
+        System.out.println(code);
+        if (code != null) {
+
+            String accessToken = GoogleUtils.getToken(code);
+            GooglePojo googlePojo = GoogleUtils.getUserInfo(accessToken);
+            HttpSession newSession = request.getSession(true);
+//            newSession.setAttribute("id", googlePojo.getId());
+//            newSession.setAttribute("name", googlePojo.getName());
+//            newSession.setAttribute("email", googlePojo.getEmail());
+            UserModel um = new UserModel();
+            User u = um.getUser(googlePojo.getEmail(), googlePojo.getId(), "");
+            if (u == null) {
+               u= um.createUser(googlePojo.getId(), googlePojo.getEmail(), "user google");
+            }
+            newSession.setAttribute("user", u);
+            response.sendRedirect(request.getContextPath() + "/home");
+            return;
+        }
+
         request.getRequestDispatcher("login.jsp").forward(request, response);
 
 
@@ -50,7 +73,12 @@ public class ServletLogin extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User user = new UserModel().getUser(email, password);
+        if (email == "" || password == "") {
+            request.setAttribute("errorLogin", "Vui lòng điền đầy đủ các trường!");
+            doGet(request, response);
 
+            return;
+        }
         if (user == null) {
             request.setAttribute("errorLogin", "Mật khẩu hoặc tài khoản sai");
             doGet(request, response);

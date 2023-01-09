@@ -76,7 +76,7 @@
 
     <!-- Container -->
     <div
-            class="main bg-leather pb-5"
+            class="main bg-leather"
             style="background-image: url(./asset/img/home/background_1.jpg)"
     >
         <!-- Beadcrumb -->

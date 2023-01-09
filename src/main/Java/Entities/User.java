@@ -14,6 +14,7 @@ public class User implements Serializable {
     private String address;
     private int role;
     private int status;
+    private String idGg;
 
     public User(String userId, String surname, String name, String email, String phone, String password, String avatar, String address, int role, int status) {
         this.userId = userId;
@@ -26,6 +27,20 @@ public class User implements Serializable {
         this.address = address;
         this.role = role;
         this.status = status;
+    }
+
+    public User(String userId, String surname, String name, String email, String phone, String password, String avatar, String address, int role, int status, String idGg) {
+        this.userId = userId;
+        this.surname = surname;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.avatar = avatar;
+        this.address = address;
+        this.role = role;
+        this.status = status;
+        this.idGg = idGg;
     }
 
     public User() {
@@ -124,6 +139,7 @@ public class User implements Serializable {
                 ", address='" + address + '\'' +
                 ", role=" + role +
                 ", status=" + status +
+                ", idGg='" + idGg + '\'' +
                 '}';
     }
 }

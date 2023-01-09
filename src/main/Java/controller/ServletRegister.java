@@ -45,11 +45,18 @@ public class ServletRegister extends HttpServlet {
         String surname = request.getParameter("surname");
         String name = request.getParameter("name");
         String tel = request.getParameter("tel");
-
+        if (email == "" || password == "" || surname == "" || name == "" || tel == "") {
+            request.setAttribute("error", "Vui lòng điền đầy đủ các trường!");
+            doGet(request,response);
+//            response.sendRedirect(request.getContextPath() + "/home");
+            return;
+        }
         User user = new UserModel().createUser(email, password, name, surname, tel);
         if (user == null) {
-            request.setAttribute("errorLogin", "Email đã tồn tại");
-            response.sendRedirect(request.getContextPath() + "/home");
+            request.setAttribute("error", "Email đã tồn tại hoặc có lỗi đã xảy ra vui lòng thử lại sau.");
+            doGet(request,response);
+
+//            response.sendRedirect(request.getContextPath() + "/home");
 
             return;
         }

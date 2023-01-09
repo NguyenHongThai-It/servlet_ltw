@@ -42,7 +42,7 @@
     List<User> lu2 = request.getAttribute("userWithRole1") != null ? (List<User>) request.getAttribute("userWithRole1") : new ArrayList<User>();
     List<User> lu3 = request.getAttribute("userWithRole2") != null ? (List<User>) request.getAttribute("userWithRole2") : new ArrayList<User>();
     List<User> lu4 = request.getAttribute("userListActive") != null ? (List<User>) request.getAttribute("userListActive") : new ArrayList<User>();
-    int total = request.getAttribute("countProduct") != null ? (int) request.getAttribute("countProduct") : 1;
+    int total = (request.getAttribute("countProduct") != null && (int) request.getAttribute("countProduct") != 0) ? (int) request.getAttribute("countProduct") : 1;
     double percentOne = Math.ceil((lu1.size() * 100 / total));
     double percentTwo = Math.ceil((lu2.size() * 100 / total));
     double percentThree = Math.ceil((lu3.size() * 100 / total));
@@ -150,7 +150,7 @@
                                         <span class="badge badge-pill bg-soft-success text-success me-2">
                                             <i class="bi bi-arrow-up me-1"></i><%=percentOne%>%
                                         </span>
-<%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
+                                    <%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                                         <span class="badge badge-pill bg-soft-success text-success me-2">
                                             <i class="bi bi-arrow-up me-1"></i><%=percentTwo%>%
                                         </span>
-<%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
+                                    <%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@
                                             <i class="bi bi-arrow-down me-1"></i><%=percentThree%>%
                                         </span>
 
-<%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
+                                    <%--                                    <span class="text-nowrap text-xs text-muted">Since last month</span>--%>
                                 </div>
                             </div>
                         </div>
