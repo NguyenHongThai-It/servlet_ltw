@@ -18,7 +18,7 @@ public class ServletDashboardUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
-        if (!util.authentication(request) || !util.authorizationForAdmin(user.getRole())) {
+        if (!util.authentication(request) || !util.authorizationForMod(user.getRole())) {
             response.sendRedirect(request.getContextPath() + "/not-found");
             return;
         }
@@ -62,7 +62,7 @@ public class ServletDashboardUser extends HttpServlet {
     public void passListUserByFilter(HttpServletRequest request) {
         String pageStr = request.getParameter("page");
         int page = 1;
-        int recordsPerPage = 5;
+        int recordsPerPage = 6;
         if (pageStr != null) {
             page = Integer.parseInt(pageStr);
             if (Integer.parseInt(pageStr) <= 0) page = 1;

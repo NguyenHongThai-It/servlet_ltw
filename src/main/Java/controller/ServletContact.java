@@ -32,6 +32,7 @@ public class ServletContact extends HttpServlet {
         util.passListProductWithKey(request, 3, "bestsell");
         passListNew(request, 3);
         util.passContactInfor(request);
+        util.passListProductCartForHeader(request);
 
         request.setAttribute("page", "contact");
         request.getRequestDispatcher("contact.jsp").forward(request, response);

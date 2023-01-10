@@ -83,7 +83,8 @@
                     </p>
                     <div class="mt-3 shop-system__btn rounded-pill ms-5 me-5">
                         <a
-                                href="./album.html"
+                                href="https://www.google.com/maps/dir/?api=1&destination=21.0336724,105.8109417"
+                                target="_blank"
                                 class="shop-system__title mt-2 mb-2 fs-4 fw-bold"
                         >
                             <i class="me-3 fa-sharp fa-solid fa-location-dot"></i>

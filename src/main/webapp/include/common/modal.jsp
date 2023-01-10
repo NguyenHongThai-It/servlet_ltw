@@ -122,7 +122,9 @@
                                     ><strong>:</strong>
                           <span class="text-red_dark fs-1 fw-semibold"
                           >
-                          <fmt:formatNumber value="<%=price_disc%>" type="currency"/>
+                         <fmt:formatNumber
+                                 value="<%=Integer.parseInt(price) -(Integer.parseInt(price)*Integer.parseInt(disc_extra)/100)%>"
+                                 type="currency"/>
                           </span
                           ></span
                                     >

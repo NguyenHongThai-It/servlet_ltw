@@ -49,7 +49,7 @@
                     <% }%>
 
 
-                    <a href="<%=request.getContextPath()%>/product" class="category-btn">
+                    <a href="<%=request.getContextPath()%>/product?type=<%=listCat.get(0).getParentId()%>&cond=menu&parentId=<%=listCat.get(0).getParentId()%>" class="category-btn">
                         <div class="category-btn--border">
                             <div class="category-btn--textField">Xem Tất Cả</div>
                         </div>

@@ -126,7 +126,7 @@
                                         style="height: 3.5rem; width: 3.5rem"
                                 />
                                 <a
-                                        href="<%=request.getContextPath()%><%=cat.getSlug()%>"
+                                        href="<%=request.getContextPath()%>/product?type=<%=cat.getTypes()%>&cond=cat"
                                         class="text-decoration-none text-white"
                                 >
                                     <%=cat.getName()%>

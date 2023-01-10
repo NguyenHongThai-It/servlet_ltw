@@ -114,11 +114,17 @@
                         >
                             Đăng nhập
                         </button>
+                        <a class="d-flex align-items-center px-3 py-3 rounded-2 mt-3 text-white bg-blue_light fw-bold fs-4 " style="margin: 0 auto; width: fit-content; " href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/web_vegetables_war_exploded/login&response_type=code
+    &client_id=46489466376-3n04244rci6b2p50jmuc308tgc1l17v7.apps.googleusercontent.com&approval_prompt=force">Login With Google
+                            <i class="fa-brands fa-google-plus-g text-white fs-4 ms-2"></i>
+                        </a>
                         <p class="mt-4">
                             <a
                                     href="<%=request.getContextPath()%>/forgotPassword"
                                     class="fs-4 hover-link mt-4 fw-semibold fst-italic text-gray_8"
-                            >Quên mật khẩu</a
+                            >Quên mật khẩu
+
+                            </a
                             >
                         </p>
                         <p class="mt-4">

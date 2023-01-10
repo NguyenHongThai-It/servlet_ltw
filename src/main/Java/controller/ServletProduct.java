@@ -17,7 +17,7 @@ import java.util.List;
 public class ServletProduct extends HttpServlet {
     Utils util = new Utils();
     int page = 1;
-    int recordsPerPage = 3;
+    int recordsPerPage = 6  ;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,6 +33,7 @@ public class ServletProduct extends HttpServlet {
         getContentDetailCat(request);
         passListProductByCat(request, 12);
         util.passContactInfor(request);
+        util.passListProductCartForHeader(request);
 
         request.getRequestDispatcher("product.jsp").forward(request, response);
     }
@@ -55,15 +56,15 @@ public class ServletProduct extends HttpServlet {
         int noOfRecords = recordsPerPage;
 
         ProductModel pm = new ProductModel();
-        List<Product> lp = null;
-        List<Product> count = null;
+        List<Product> lp = new ArrayList<Product>();
+        List<Product> count = new ArrayList<Product>();
         if (condition == null) condition = "";
         switch (condition) {
             case "cat": {
                 String temp1 = request.getParameter("type");
                 int type = 0;
                 if (temp1 != null) {
-                    type = Integer.parseInt(temp1);
+                    type = Integer.parseInt(temp1.trim());
                     lp = pm.getListProductByCatPageProduct(type, offset, noOfRecords);
                     count = pm.getListProductByCatPageProduct(type, 0, 1000000000);
 
@@ -103,9 +104,9 @@ public class ServletProduct extends HttpServlet {
                 break;
             }
             default:
+                count = pm.getListProduct(0, 1000000000);
                 lp = pm.getListProduct(offset, noOfRecords);
         }
-
         request.setAttribute("countProduct", count.size());
         request.setAttribute("listProductPage", lp);
     }
@@ -118,7 +119,7 @@ public class ServletProduct extends HttpServlet {
 
     private void getContentDetailCat(HttpServletRequest request) {
         String type = request.getParameter("type");
-
+        if(type==null) type = String.valueOf(1);
         CategoryModel cm = new CategoryModel();
         ContentDetailCat cdc = cm.getContentDetailCat(type, 1);
         request.setAttribute("cdc", cdc);

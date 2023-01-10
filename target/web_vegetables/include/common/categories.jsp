@@ -86,7 +86,7 @@
                         </a>
                         <%} %>
 
-                        <a href="<%=request.getContextPath()%>/product" class="category-btn">
+                        <a href="<%=request.getContextPath()%>/product?type=<%=listCat4.get(0).getParentId()%>&cond=menu&parentId=<%=listCat4.get(0).getParentId()%>" class="category-btn">
                             <div class="category-btn--border">
                                 <div class="category-btn--textField">Xem Tất Cả</div>
                             </div>
@@ -132,7 +132,7 @@
                             </li>
                         </a>
                         <%} %>
-                        <a href="<%=request.getContextPath()%>/product" class="category-btn">
+                        <a href="<%=request.getContextPath()%>/product?type=<%=listCat1.get(0).getParentId()%>&cond=menu&parentId=<%=listCat1.get(0).getParentId()%>" class="category-btn">
                             <div class="category-btn--border">
                                 <div class="category-btn--textField">Xem Tất Cả</div>
                             </div>
@@ -175,7 +175,7 @@
                             </li>
                         </a>
                         <%} %>
-                        <a href="<%=request.getContextPath()%>/product" class="category-btn">
+                        <a href="<%=request.getContextPath()%>/product?type=<%=listCat2.get(0).getParentId()%>&cond=menu&parentId=<%=listCat2.get(0).getParentId()%>" class="category-btn">
                             <div class="category-btn--border">
                                 <div class="category-btn--textField">Xem Tất Cả</div>
                             </div>
@@ -216,7 +216,7 @@
                             </li>
                         </a>
                         <%} %>
-                        <a href="<%=request.getContextPath()%>/product" class="category-btn">
+                        <a href="<%=request.getContextPath()%>/product?type=<%=listCat3.get(0).getParentId()%>&cond=menu&parentId=<%=listCat3.get(0).getParentId()%>" class="category-btn">
                             <div class="category-btn--border">
                                 <div class="category-btn--textField">Xem Tất Cả</div>
                             </div>
@@ -262,7 +262,7 @@
                                     value="ASC"
                             />
                             <label for="less-1-MIL" class="w-100"
-                            >&#60; Tăng dần</label
+                            > Tăng dần</label
                             >
                         </div>
                         <div
@@ -277,7 +277,7 @@
 
                             />
                             <label for="1-MIL-to-2.5-MIL" class="w-100"
-                            >1 Triệu &#8722; giảm dần</label
+                            > Giảm dần</label
                             >
                         </div>
 

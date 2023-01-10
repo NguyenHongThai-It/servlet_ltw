@@ -134,7 +134,10 @@
                                 <i class="fa-solid fa-key"></i>
                             </div>
                         </div>
-
+                        <div class="text-red_bold1"
+                        >
+                            <%=request.getAttribute("error") != null ? request.getAttribute("error").toString() : ""%>
+                        </div>
                         <button
                                 class="px-5 py-3 border-0 bg-red_2 text-white_1 mt-4 fw-bold rounded-3 fs-4"
                                 type="submit"

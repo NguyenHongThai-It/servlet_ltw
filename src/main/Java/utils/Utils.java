@@ -56,7 +56,7 @@ public class Utils {
     }
 
     public boolean authorizationForMod(int role) throws IOException, ServletException {
-        return role > 1 && role < 2;
+        return role >= 1 && role <= 2;
     }
 
     public boolean authorizationForAdmin(int role) throws IOException, ServletException {
@@ -98,5 +98,22 @@ public class Utils {
                     request.getParameter("page"));
         int offset = (page - 1) * recordsPerPage;
         int noOfRecords = recordsPerPage;
+    }
+
+    public void passListProductCartForHeader(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        User user = (User) session.getAttribute("user");
+        List<Product> lp = new ArrayList<Product>();
+        ProductModel pm = new ProductModel();
+        CartModel cm = new CartModel();
+        if (user != null) {
+            List<Cart> lc = cm.getListCartWithUserOrProduct(user.getUserId(), 0);
+            for (Cart c : lc) {
+                Product pro = pm.getProductById(c.getProductId());
+                lp.add(pro);
+            }
+        }
+
+        request.setAttribute("totalCart", lp.size());
     }
 }

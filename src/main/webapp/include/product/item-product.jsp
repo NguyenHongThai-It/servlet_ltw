@@ -29,7 +29,7 @@
     >
         <img
                 class="horizontal-item__img m-auto"
-                src="./asset/img/product/cao-hslc-dai-dien-sua.jpg"
+                src="<%=thumbnail%>"
                 alt=""
         />
     </div>

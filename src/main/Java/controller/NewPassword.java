@@ -37,11 +37,22 @@ public class NewPassword extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession();
+        RequestDispatcher dispatcher = null;
+
+        if (session.getAttribute("email") == null) {
+            response.sendRedirect(request.getContextPath() + "/not-found");
+            return;
+        }
+
         String newPassword = request.getParameter("password");
         String confPassword = request.getParameter("confPassword");
-        RequestDispatcher dispatcher = null;
+        if (!newPassword.equals(confPassword)) {
+            request.setAttribute("errorPassword", "Mật khẩu không trùng khớp.");
+            request.setAttribute("status", "success");
+            request.getRequestDispatcher("newPassword.jsp").forward(request, response);
+            return;
+        }
         if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
 
             User user = new UserModel().forgetPasswrod(newPassword, (String) session.getAttribute("email"));

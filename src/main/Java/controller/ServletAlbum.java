@@ -25,6 +25,8 @@ public class ServletAlbum extends HttpServlet {
         util.passListCatById(request, "listHerbal", "4");
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
+        util.passListProductCartForHeader(request);
+
         String posTemp = request.getParameter("pos");
         int pos = 2;
         if (posTemp != null) pos = Integer.parseInt(posTemp);
