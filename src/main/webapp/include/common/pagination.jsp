@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     int count = request.getAttribute("countProduct") != null ? (int) request.getAttribute("countProduct") : 0;
-    double numDived = (double) count / 5;
+    double numDived = (double) count / 6;
     String urlPt = request.getServletPath().replace(".jsp", "");
 
     int pageTemp = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;

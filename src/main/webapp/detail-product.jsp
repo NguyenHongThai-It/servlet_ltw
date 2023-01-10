@@ -1,4 +1,4 @@
-<%--
+<%@ page import="Entities.Product" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 11/18/2022
@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <fmt:setLocale value="vi_VN"/>
-
+<% Product temp = request.getAttribute("product") != null ? (Product) request.getAttribute("product") : new Product();%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,7 +180,9 @@
                                         ><strong>:</strong>
                           <span class="text-red_dark fs-1 fw-semibold"
                           >
-                              <fmt:formatNumber value="${product.getPriceDisc()}" type="currency"/>
+                              <fmt:formatNumber
+                                      value="<%=temp.getPrice() - (temp.getDiscExtra()*temp.getPrice()/100)%>"
+                                      type="currency"/>
 
                           </span
                           ></span

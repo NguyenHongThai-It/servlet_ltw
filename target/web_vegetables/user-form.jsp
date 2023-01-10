@@ -268,28 +268,52 @@
                                     <% }%>
 
                                 </div>
-
+                            <% if (userEdit == null) {%>
                                 <div class="col-6">
                                     <p class="edit-form__desc">Mật Khẩu</p>
 
                                     <div class="d-flex align-items-center border-dark border pe-3 filter--rounded">
-                                        <% if (userEdit == null) {%>
+
                                         <input type="password" name="password" id="password" placeholder="Mật Khẩu"
                                                class="edit-form__input border-0 filter--rounded"
                                                style="outline: none;">
                                         <a href="#" class="text-dark" id="password-toggle"><i
                                                 class="fa-solid fa-eye"></i></a>
-                                        <% }%>
-                                        <% if (userEdit != null) {%>
-                                        <input type="password" name="password" id="password" placeholder="Mật Khẩu"
-                                               class="edit-form__input border-0 filter--rounded"
-                                               style="outline: none;">
-                                        <a href="#" class="text-dark" id="password-toggle"><i
-                                                class="fa-solid fa-eye"></i></a>
-                                        <% }%>
+
+
+<%--                                        <input type="password" name="password" id="password" placeholder="Mật Khẩu"--%>
+<%--                                               class="edit-form__input border-0 filter--rounded"--%>
+<%--                                               style="outline: none;">--%>
+<%--                                        <a href="#" class="text-dark" id="password-toggle"><i--%>
+<%--                                                class="fa-solid fa-eye"></i></a>--%>
+
 
                                     </div>
                                 </div>
+                            <% }%>
+<%--                            <% if (userEdit != null) {%>--%>
+<%--                            <div class="col-6">--%>
+<%--                                <p class="edit-form__desc">Mật Khẩu</p>--%>
+
+<%--                                <div class="d-flex align-items-center border-dark border pe-3 filter--rounded">--%>
+
+<%--                                    <input type="password" name="password" id="password" placeholder="Mật Khẩu"--%>
+<%--                                           class="edit-form__input border-0 filter--rounded"--%>
+<%--                                           style="outline: none;">--%>
+<%--                                    <a href="#" class="text-dark" id="password-toggle"><i--%>
+<%--                                            class="fa-solid fa-eye"></i></a>--%>
+
+
+<%--                                    <input type="password" name="password" id="password" placeholder="Mật Khẩu"--%>
+<%--                                           class="edit-form__input border-0 filter--rounded"--%>
+<%--                                           style="outline: none;">--%>
+<%--                                    <a href="#" class="text-dark" id="password-toggle"><i--%>
+<%--                                            class="fa-solid fa-eye"></i></a>--%>
+
+
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <% }%>--%>
 
                                 <div class="col-6">
                                     <p class="edit-form__desc">Địa Chỉ</p>

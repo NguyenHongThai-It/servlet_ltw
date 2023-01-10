@@ -92,6 +92,12 @@
                     <div class="text-center fs-3 fw-bold"
                          style="color:#25fc2d;">
                         <%=request.getAttribute("success") != null ? request.getAttribute("success") : ""%>
+
+                    </div>
+                    <div class="text-center fs-3 fw-bold"
+                         style="color:red;">
+                        <%=request.getAttribute("error") != null ? request.getAttribute("error") : ""%>
+
                     </div>
 
                     <div class="content-right-list">

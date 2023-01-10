@@ -189,7 +189,7 @@ public class UserModel {
 
             DataSource dataSource = jdbcObj.setUpPool();
             connObj = dataSource.getConnection();
-            String passwordHash = BCrypt.hashpw("", BCrypt.gensalt());
+            String passwordHash = BCrypt.hashpw("123456", BCrypt.gensalt());
 
             String query = "INSERT INTO users  (id,idGg,email,name,avatar,status,role,password) values (UUID(),?, ?, ?,?,1,0,?)";
             pstmtObj = connObj.prepareStatement(query);

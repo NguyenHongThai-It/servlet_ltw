@@ -8,6 +8,7 @@
 <%
     List<Nav> list = request.getAttribute("listNavs") != null ? (List<Nav>) request.getAttribute("listNavs") : new ArrayList<Nav>();
     User user = session.getAttribute("user") != null ? (User) session.getAttribute("user") : new User();
+    int totalCart = request.getAttribute("totalCart") != null ? (int) request.getAttribute("totalCart") : 0;
 %>
 
 <section class="container header" id="header">
@@ -86,8 +87,12 @@
                                     </div>
                                 </a>
                                 <a href="<%=request.getContextPath()%>/cart">
-                                    <div class="login-section-1 login--section pointer">
+                                    <div class="d-flex align-items-center gap-2 login-section-1 login--section pointer">
                                         Giỏ hàng
+
+                                        <div class="d-flex align-items-center justify-content-center bg-red_2 rounded-circle px-2 py-2 text-white"
+                                             style="width:20px; height: 20px"><%=totalCart%>
+                                        </div>
                                     </div>
                                 </a>
                                 <a href="<%=request.getContextPath()%>/thank-you">

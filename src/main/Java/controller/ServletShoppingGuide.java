@@ -27,6 +27,7 @@ public class ServletShoppingGuide extends HttpServlet {
 
         util.passListProductWithKey(request, 4, "bestsell");
         util.passSystemProductList(request, "listSP");
+        util.passListProductCartForHeader(request);
 
         util.passListNew(request, 4);
         util.passContactInfor(request);

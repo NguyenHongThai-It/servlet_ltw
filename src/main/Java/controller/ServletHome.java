@@ -37,7 +37,7 @@ public class ServletHome extends HttpServlet {
         util.passListCatById(request, "listHerbal", "4");
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
-
+        util.passListProductCartForHeader(request);
         getListProductByCat(request, 1, "1", "listProductBy1");
         getListProductByCat(request, 2, "2", "listProductBy2");
         getListProductByCat(request, 3, "3", "listProductBy3");

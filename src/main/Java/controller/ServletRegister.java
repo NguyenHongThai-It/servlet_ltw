@@ -34,6 +34,8 @@ public class ServletRegister extends HttpServlet {
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
         util.passListNav(request);
+        util.passContactInfor(request);
+        util.passListProductCartForHeader(request);
 
         request.getRequestDispatcher("register.jsp").forward(request, response);
     }

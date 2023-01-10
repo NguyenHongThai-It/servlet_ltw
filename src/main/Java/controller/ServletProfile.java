@@ -28,6 +28,7 @@ public class ServletProfile extends HttpServlet {
         util.passListCatById(request, "listHerbal", "4");
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
+        util.passListProductCartForHeader(request);
 
 
         util.passContactInfor(request);
@@ -83,10 +84,17 @@ public class ServletProfile extends HttpServlet {
                     break;
                 }
                 case "updatePassword": {
-                    String name = request.getParameter("password");
+                    String pass = request.getParameter("password");
                     String currentPass = request.getParameter("currentPass");
+                    User tempUser = um.getUser(user.getEmail(),currentPass);
+                    System.out.println(pass);
 
-                    um.updateUser(session, user, name, action, currentPass);
+                    if(tempUser==null){
+                        request.setAttribute("error", "Password sai.");
+                    break;
+                    }
+
+                    um.updateUser(session, user, pass, action, currentPass);
                     request.setAttribute("success", "Cập nhật mật khẩu thành công");
 
                     break;
@@ -95,7 +103,8 @@ public class ServletProfile extends HttpServlet {
                     break;
             }
         }
-        request.getRequestDispatcher("profile.jsp").forward(request, response);
+        doGet(request,response);
+//        request.getRequestDispatcher("profile.jsp").forward(request, response);
 //        response.sendRedirect(request.getContextPath() + "/profile");
     }
 }

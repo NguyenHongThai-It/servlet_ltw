@@ -32,6 +32,7 @@ public class ServletAbout extends HttpServlet {
         util.passListCatById(request, "listHerbal", "4");
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
+        util.passListProductCartForHeader(request);
 
         getListImageAlbum(request, 10);
         util.passSystemProductList(request, "listSP");

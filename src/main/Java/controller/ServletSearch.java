@@ -14,7 +14,7 @@ import java.util.List;
 public class ServletSearch extends HttpServlet {
     Utils util = new Utils();
     int page = 1;
-    int recordsPerPage = 3;
+    int recordsPerPage = 6;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,6 +27,7 @@ public class ServletSearch extends HttpServlet {
         util.passListCatById(request, "listHerbal", "4");
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
+        util.passListProductCartForHeader(request);
 
         handleSearch(request);
 

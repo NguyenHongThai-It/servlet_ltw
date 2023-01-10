@@ -49,7 +49,9 @@
 
                               đ</span
                             >
-                    <p class="media-fontsize-lg lh-1"><fmt:formatNumber value="<%=price_disc%>" type="currency"/>
+                    <p class="media-fontsize-lg lh-1"><fmt:formatNumber
+                            value="<%=Integer.parseInt(price) -(Integer.parseInt(price)*Integer.parseInt(disc_extra)/100)%>"
+                            type="currency"/>
 
                     </p>
                 </div>

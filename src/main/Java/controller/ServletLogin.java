@@ -9,6 +9,9 @@ import utils.GoogleUtils;
 import utils.Utils;
 
 import javax.annotation.Resource;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -16,6 +19,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 @WebServlet("/login")
 public class ServletLogin extends HttpServlet {
@@ -38,6 +42,8 @@ public class ServletLogin extends HttpServlet {
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
         util.passListNav(request);
+        util.passContactInfor(request);
+        util.passListProductCartForHeader(request);
 
         String code = request.getParameter("code");
         System.out.println(code);
@@ -52,7 +58,34 @@ public class ServletLogin extends HttpServlet {
             UserModel um = new UserModel();
             User u = um.getUser(googlePojo.getEmail(), googlePojo.getId(), "");
             if (u == null) {
-               u= um.createUser(googlePojo.getId(), googlePojo.getEmail(), "user google");
+                u = um.createUser(googlePojo.getId(), googlePojo.getEmail(), "user google");
+                Properties props = new Properties();
+                props.put("mail.smtp.host", "smtp.gmail.com");
+                props.put("mail.smtp.socketFactory.port", "465");
+                props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+                props.put("mail.smtp.auth", "true");
+                props.put("mail.smtp.port", "465");
+                Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("tranvotam123@gmail.com", "udnzqgrnzacudaja");// Put your email
+                        // id and
+                        // password here
+                    }
+                });
+                try {
+                    MimeMessage message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(googlePojo.getEmail()));// change accordingly
+                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(googlePojo.getEmail()));
+                    message.setSubject("Hello");
+                    message.setText("your password is: 123456");
+                    message.setText("Please change your password to secure than more!");
+
+                    // send message
+                    Transport.send(message);
+                    System.out.println("message sent successfully");
+                } catch (MessagingException e) {
+                    throw new RuntimeException(e);
+                }
             }
             newSession.setAttribute("user", u);
             response.sendRedirect(request.getContextPath() + "/home");

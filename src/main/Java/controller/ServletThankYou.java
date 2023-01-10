@@ -35,6 +35,7 @@ public class ServletThankYou extends HttpServlet {
         util.passListCatById(request, "listHerbal", "4");
         util.passListCatById(request, "listCatSP", "5");
         util.passListCatById(request, "listCatNew", "6");
+        util.passListProductCartForHeader(request);
 
         getListProductOrdered(request);
         util.passContactInfor(request);

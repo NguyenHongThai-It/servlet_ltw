@@ -104,6 +104,7 @@
                             <h1 class="h2 mb-0 ls-tight">User</h1>
                         </div>
                         <!-- Actions -->
+                        <% if (userCurrent.getRole() >= 2) {%>
                         <div class="col-sm-6 col-12 text-sm-end">
                             <div class="mx-n1">
                                 <a href="<%=request.getContextPath()%>/user-form" class="btn btn-primary"
@@ -114,6 +115,8 @@
                                 </a>
                             </div>
                         </div>
+
+                        <% }%>
                     </div>
                     <p style="color: limegreen"><%=request.getAttribute("success") != null ? request.getAttribute("success").toString() : ""%>
 
